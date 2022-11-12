@@ -11,6 +11,10 @@
 class Rabbit: public Animal {
 public:
     Rabbit();
+    void reproduce() override;
+    void move() override;
+    void perceive() override;
+    void triggerInstant() override;
 };
 
 

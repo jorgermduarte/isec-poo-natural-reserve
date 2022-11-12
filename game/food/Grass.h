@@ -7,7 +7,8 @@
 
 #include "Food.h"
 
-class Grass:  Food{
+class Grass: public Food{
+public:
     Grass();
 };
 

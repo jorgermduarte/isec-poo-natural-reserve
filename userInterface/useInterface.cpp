@@ -10,7 +10,11 @@ void displayNaturalReserveAux(Game &game, int x){
     {
         if(col[x].animals.size() > 0){
             std::cout << col[x].animals.begin()->identifier + " ";
-        }else{
+        }
+        else if(col[x].foods.size() > 0){
+            std::cout << col[x].foods.begin()->identifier + " ";
+        }
+        else{
             std::cout << std::to_string(col[x].position.row)  + std::to_string(col[x].position.column) + " ";
         }
     }

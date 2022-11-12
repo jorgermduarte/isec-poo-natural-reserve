@@ -8,6 +8,7 @@
 #include "GameService.h"
 #include "../game/animal/Rabbit.h"
 #include "../game/animal/Sheep.h"
+#include "../game/food/Grass.h"
 
 void GameService::defineNaturalReserveConfiguration() {
     int length = 0;
@@ -67,10 +68,14 @@ void GameService::initialize() {
     //TODO: remove the rabbit test ( test pourpuses)
     Rabbit rabbit = {};
     Sheep sheep = {};
+    Grass grass = {};
+    grass.defineRandomPosition(this->game.configuration.size.rows,this->game.configuration.size.cols);
     rabbit.defineRandomPosition(this->game.configuration.size.rows,this->game.configuration.size.cols);
     sheep.defineRandomPosition(this->game.configuration.size.rows,this->game.configuration.size.cols);
+
     this->game.addAnimal(rabbit);
     this->game.addAnimal(sheep);
+    this->game.addFood(grass);
 
     displayNaturalReserve(this->game);
     displayAnimals(this->game);

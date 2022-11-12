@@ -8,6 +8,18 @@ Animal::Animal() {
 
 }
 
+int Animal::getCurrentLifetime() {
+    return this->currentLifetime;
+}
+
+void Animal::defineRandomPosition(int maxRow,int maxLine) {
+    int row = rand() % (maxRow);
+    int col = rand() % (maxLine);
+    this->position.row = row;
+    this->position.column = col;
+}
+
+//TODO: implement the feed animal
 void Animal::feedAnimal() {
 
 }
@@ -20,21 +32,10 @@ void Animal::perceive() {
 
 }
 
-void Animal::triggerInstant() {
-
-}
-
 void Animal::reproduce() {
 
 }
 
-int Animal::getCurrentLifetime() {
-    return this->currentLifetime;
-}
+void Animal::triggerInstant() {
 
-void Animal::defineRandomPosition(int maxRow,int maxLine) {
-    int row = rand() % (maxRow);
-    int col = rand() % (maxLine);
-    this->position.row = row;
-    this->position.column = col;
 }

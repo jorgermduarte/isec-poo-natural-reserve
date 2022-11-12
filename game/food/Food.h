@@ -17,8 +17,7 @@ private:
     int currentLifetime;
     bool available;
 public:
-    Food();
-    char identifier;
+    std::string identifier;
     Position position = {0,0};
     int nutritiveValue;
     int toxicity;
@@ -26,6 +25,7 @@ public:
     int maxLifetime;
     void isFoodAvailable();
     void incrementLifeTick();
+    void defineRandomPosition(int maxRow,int maxLine);
 };
 
 

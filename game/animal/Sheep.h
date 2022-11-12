@@ -10,6 +10,10 @@
 class Sheep : public Animal {
 public:
     Sheep();
+    void reproduce() override;
+    void move() override;
+    void perceive() override;
+    void triggerInstant() override;
 };
 
 

@@ -13,6 +13,9 @@ void Food::isFoodAvailable() {
 
 }
 
-Food::Food() {
-
+void Food::defineRandomPosition(int maxRow, int maxLine) {
+    int row = rand() % (maxRow);
+    int col = rand() % (maxLine);
+    this->position.row = row;
+    this->position.column = col;
 }
