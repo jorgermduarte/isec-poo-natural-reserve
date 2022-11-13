@@ -8,6 +8,7 @@
 #include <unordered_map>
 #include <string>
 #include <vector>
+#include "../game/game/Game.h"
 
 const static std::unordered_map<std::string,int> allowedCommands{
         {"animal",0},
@@ -39,7 +40,7 @@ void exec_command_see(std::vector<std::string> args);
 void exec_command_info(std::vector<std::string> args);
 void exec_command_n();
 void exec_command_n(std::vector<std::string> args);
-void exec_command_anim();
+void exec_command_anim(Game* game);
 void exec_command_visanim();
 void exec_command_store(std::vector<std::string> args);
 void exec_command_restore(std::vector<std::string> args);

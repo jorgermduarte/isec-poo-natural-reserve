@@ -4,6 +4,7 @@
 #include <iostream>
 #include "commands.h"
 #include "../utils/utils.h"
+#include "../game/game/Game.h"
 
 void exec_command_animal(std::vector<std::string> args){
     std::cout << "  > Executing the animal command" << std::endl;
@@ -14,7 +15,6 @@ void exec_command_animal(std::vector<std::string> args){
     }else if(args.size() == 2){
         std::cout << "  > Spawning the specie of type " + args[1] +  " in a random position" << std::endl;
     }else if(args.size() == 4){
-
         std::string line = args[2];
         std::string column = args[3];
 
@@ -58,9 +58,11 @@ void exec_command_n(){
 void exec_command_n(std::vector<std::string> args){
     std::cout << "  > Executing the n command with args" << std::endl;
 }
-//TODO: required for the first meta
-void exec_command_anim(){
+void exec_command_anim(Game* game){
     std::cout << "  > Executing the anim command" << std::endl;
+    for (const auto &item: game->animals){
+        std::cout << "      [" + std::to_string(item.id) + "]" +  " " + item.identifier + " HP: " + std::to_string(item.health) << std::endl;
+    }
 }
 //TODO: required for the first meta
 void exec_command_visanim(){

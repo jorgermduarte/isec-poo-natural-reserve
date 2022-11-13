@@ -6,7 +6,7 @@
 #include "validateCommands.h"
 #include "commands.h"
 
-void executeCommand(std::string &command){
+void executeCommand(std::string &command,Game* game){
     vector<string> args = getCommandArguments(command);
     //displayStringsList(args);
 
@@ -49,7 +49,7 @@ void executeCommand(std::string &command){
                     exec_command_n(args);
                 break;
             case 10:
-                exec_command_anim();
+                exec_command_anim(game);
                 break;
             case 11:
                 exec_command_visanim();
@@ -74,7 +74,7 @@ void executeCommand(std::string &command){
     }
 }
 
-void initializeCommands(){
+void initializeCommands(Game* game){
     std::string command;
     cout << " > Command: ";
     getline(cin, command);
@@ -84,9 +84,9 @@ void initializeCommands(){
         if(!validateCommand(command)){
             cout << " # Please provide a valid command ..." << endl;
         }else{
-            executeCommand(command);
+            executeCommand(command,game);
         }
-        initializeCommands();
+        initializeCommands(game);
     }
 }
 
@@ -114,14 +114,19 @@ vector<string> readCommandsFile(){
 }
 
 void handleCommands(Game* game){
-    std::cout << "================================| COMMANDS | ================================== " << std::endl;
 
     //read commands file
     std::vector<string> commandsInFile = readCommandsFile();
-    for (string cmd: commandsInFile){
-        cout << "#Command from file: " + cmd << endl;
-        executeCommand(cmd);
+    if(commandsInFile.size() > 0){
+        std::cout << "============================| COMMANDS FROM FILE | ============================= " << std::endl;
+        for (string cmd: commandsInFile){
+            cout << "#Command from file: " + cmd << endl;
+            executeCommand(cmd, game);
+        }
+        std::cout << "=======================| END OF COMMANDS FROM FILE | ========================== " << std::endl;
     }
 
-    initializeCommands();
+    std::cout << "================================| COMMANDS | ================================== " << std::endl;
+
+    initializeCommands(game);
 }
