@@ -11,8 +11,6 @@
 
 class GameService {
 private:
-    //TODO: this property will be used to change the board preview limitations on screen
-    Position screenPosition = { 0,0 };
     Game game;
     void defineNaturalReserveConfiguration();
     void initializeMatrix();

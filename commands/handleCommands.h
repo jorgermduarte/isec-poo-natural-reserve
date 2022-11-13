@@ -6,7 +6,6 @@
 #define POO_NATURAL_RESERVE_HANDLECOMMANDS_H
 
 #include <iostream>
-
 using namespace std;
 
 void handleCommands();
