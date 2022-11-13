@@ -79,5 +79,5 @@ void GameService::initialize() {
 
     displayNaturalReserve(this->game);
     displayAnimals(this->game);
-    handleCommands(this->game);
+    handleCommands(&this->game);
 }
