@@ -1,27 +1,82 @@
 //
 // Created by duarte on 10-11-2022.
 //
+#include <fstream>
 #include "handleCommands.h"
 #include "validateCommands.h"
 #include "commands.h"
 
+void displayStringsList(std::vector<string> args){
+    for(string arg: args){
+        cout <<"  > Argument: " + arg << endl;
+    }
+}
+
 void executeCommand(std::string &command){
     vector<string> args = getCommandArguments(command);
+    //displayStringsList(args);
 
     //verify if the argument[0] (command type) exists on the map (allowed command)
     std::unordered_map<std::string,int>::const_iterator got = allowedCommands.find(args[0]);
     if(got != allowedCommands.end()){
         //handling the execution of the different commands
         switch(got->second) {
-            case 0: // this is the "food" case
-                cout << "Executing the food function" << endl;
+            case 0: // this is the "animal" case
+                exec_command_animal(args);
                 break;
-            case 1: // this is the "xpto" case
-                cout << "Executing the xpto function" << endl;
+            case 1: // this is the "kill" case
+                exec_command_kill(args);
+                break;
+            case 2:
+                exec_command_food(args);
+                break;
+            case 3:
+                exec_command_feed(args);
+                break;
+            case 4:
+                exec_command_feedid(args);
+                break;
+            case 5:
+                exec_command_nofood(args);
+                break;
+            case 6:
+                exec_command_empty(args);
+                break;
+            case 7:
+                exec_command_see(args);
+                break;
+            case 8:
+                exec_command_info(args);
+                break;
+            case 9:
+                if(args.size() == 0)
+                    exec_command_n();
+                else
+                    exec_command_n(args);
+                break;
+            case 10:
+                exec_command_anim();
+                break;
+            case 11:
+                exec_command_visanim();
+                break;
+            case 12:
+                exec_command_store(args);
+                break;
+            case 13:
+                exec_command_restore(args);
+                break;
+            case 14:
+                exec_command_load(args);
+                break;
+            case 15:
+                exec_command_slide(args);
                 break;
             default:
                 break;
         }
+    }else{
+        cout << "   > Invalid command detected " << endl;
     }
 }
 
@@ -41,8 +96,38 @@ void initializeCommands(){
     }
 }
 
+vector<string> readCommandsFile(){
+    vector<string> commands;
 
-void handleCommands(){
+    FILE *f = NULL;
+    string fileName = "commands.txt";
+
+    string currentCommand;
+    fstream newfile;
+    newfile.open(fileName,ios::in); //open a file to perform read operation using file object
+    if (newfile.is_open()){ //checking whether the file is open
+        cout << "We have detected a commands.txt file, executing.." << endl;
+        string tp;
+        while(getline(newfile, tp)){ //read data from file object and put it into string.
+            commands.push_back(tp);
+        }
+        newfile.close(); //close the file object.
+    }else{
+        cout << " > Couldn't find any file with the name commands.txt" << endl;
+    }
+
+    return commands;
+}
+
+void handleCommands(Game* game){
     std::cout << "================================| COMMANDS | ================================== " << std::endl;
+
+    //read commands file
+    std::vector<string> commandsInFile = readCommandsFile();
+    for (string cmd: commandsInFile){
+        cout << "#Command from file: " + cmd << endl;
+        executeCommand(cmd);
+    }
+
     initializeCommands();
 }

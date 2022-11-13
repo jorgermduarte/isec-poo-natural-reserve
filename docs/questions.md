@@ -1,0 +1,2 @@
+- Existirá um ficheiro de comandos a serem executados na primeira instancia da aplicação?
+  - Ou este ficheiro de comandos será o "historico" do jogo que será carregado quando o utilizador assim o desejar, mantendo o estado do jogo?

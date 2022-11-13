@@ -6,10 +6,15 @@
 #define POO_NATURAL_RESERVE_HANDLECOMMANDS_H
 
 #include <iostream>
+#include <vector>
+#include "../game/game/Game.h"
+
 using namespace std;
 
-void handleCommands();
+void handleCommands(Game* game);
 
 void executeCommand();
+
+vector<string> readCommandsFile();
 
 #endif //POO_NATURAL_RESERVE_HANDLECOMMANDS_H
