@@ -1,6 +1,8 @@
 Meta 1 – 27 de novembro
 - Requisitos - funcionalidades para a meta 1:
-  - [ ] Leitura do ficheiro de comandos e também dos valores do ficheiro constantes.txt.
+  - [ ] Leitura de ficheiros
+    - [x] Ficheiro de comandos
+    - [ ] Ficheiro de constantes.txt
   - [x] Construção da reserva. 
     - [x] A representação da reserva irá ser melhorada com matéria dada
     posteriormente e agora só se pretende algo que possa ser representado no ecrã.
@@ -22,8 +24,13 @@ Meta 1 – 27 de novembro
       - [ ] incluindo a sintaxe de todos os parâmetros que tenham.
   
   - [ ] Implementar os comandos para: 
-    - [ ] ver animais e alimentos, deslizar a área visível para o
-    lado/cima/abaixo, executar comandos em ficheiro (que são também validados), e terminar.
+    - [ ] ver animais
+      - [x] anim
+      - [ ] visanim
+    - [ ] **ver alimentos**
+      - Qual comando???????
+    - [ ] deslizar a área visível para o lado/cima/abaixo
+    - [x] executar comandos em ficheiro (que são também validados), e terminar.
   
   - [x] projeto já deverá estar devidamente organizado em .h e .cpp
 
