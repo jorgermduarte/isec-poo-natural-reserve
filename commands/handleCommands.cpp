@@ -6,12 +6,6 @@
 #include "validateCommands.h"
 #include "commands.h"
 
-void displayStringsList(std::vector<string> args){
-    for(string arg: args){
-        cout <<"  > Argument: " + arg << endl;
-    }
-}
-
 void executeCommand(std::string &command){
     vector<string> args = getCommandArguments(command);
     //displayStringsList(args);

@@ -3,10 +3,30 @@
 //
 #include <iostream>
 #include "commands.h"
-#include "../game/game/Game.h"
+#include "../utils/utils.h"
 
 void exec_command_animal(std::vector<std::string> args){
     std::cout << "  > Executing the animal command" << std::endl;
+    //displayStringsList(args);
+
+    if(args.size() < 2){
+        std::cout << "  > Invalid command provided, the animal command must contain at least 1 argument <specie: c / o / l / g / m> or <specie: c / o / l / g / m> <line> <column>" << std::endl;
+    }else if(args.size() == 2){
+        std::cout << "  > Spawning the specie of type " + args[1] +  " in a random position" << std::endl;
+    }else if(args.size() == 4){
+
+        std::string line = args[2];
+        std::string column = args[3];
+
+        if(isNumber(line) && isNumber(column)){
+            std::cout << "  > Spawning the specie of type " + args[1] +  " in the position: l:" + line + " c:" + column << std::endl;
+        }else{
+            std::cout << "  > Invalid command provided, the animal command should contain the position and line arguments as integers and not characters" << std::endl;
+        }
+    }else{
+        std::cout << "  > Invalid command provided, the animal command must contain at least 1 argument <specie: c / o / l / g / m> or <specie: c / o / l / g / m> <line> <column>" << std::endl;
+    }
+
 }
 void exec_command_kill(std::vector<std::string> args){
     std::cout << "  > Executing the kill command" << std::endl;
