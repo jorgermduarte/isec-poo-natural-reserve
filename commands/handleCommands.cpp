@@ -5,6 +5,7 @@
 #include "handleCommands.h"
 #include "validateCommands.h"
 #include "commands.h"
+#include "../userInterface/useInterface.h"
 
 void executeCommand(std::string &command,Game* game){
     vector<string> args = getCommandArguments(command);
@@ -64,7 +65,7 @@ void executeCommand(std::string &command,Game* game){
                 exec_command_load(args,game);
                 break;
             case 15:
-                exec_command_slide(args);
+                exec_command_slide(args,game);
                 break;
             default:
                 break;
@@ -86,6 +87,8 @@ void initializeCommands(Game* game){
         }else{
             executeCommand(command,game);
         }
+        displayNaturalReserve(*game);
+        displayAnimals(*game);
         initializeCommands(game);
     }
 }

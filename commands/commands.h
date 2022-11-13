@@ -45,6 +45,6 @@ void exec_command_visanim();
 void exec_command_store(std::vector<std::string> args);
 void exec_command_restore(std::vector<std::string> args);
 void exec_command_load(std::vector<std::string> args, Game* game);
-void exec_command_slide(std::vector<std::string> args);
+void exec_command_slide(std::vector<std::string> args, Game* game);
 
 #endif //POO_NATURAL_RESERVE_COMMANDS_H

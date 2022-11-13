@@ -28,9 +28,7 @@ Meta 1 – 27 de novembro
       - [x] anim
       - [ ] visanim
       - [x] info
-    - [ ] **ver alimentos**
-      - Qual comando???????
-    - [ ] deslizar a área visível para o lado/cima/abaixo
+    - [x] deslizar a área visível para o lado/cima/abaixo
     - [x] executar comandos em ficheiro (que são também validados), e terminar.
   
   - [x] projeto já deverá estar devidamente organizado em .h e .cpp

@@ -3,10 +3,10 @@
 //
 #include <iostream>
 #include "useInterface.h"
-#define DISPLAY_AREA_PERCENTAGE 0.8;
+#include "../game/game/GameConfiguration.h"
 
-void displayNaturalReserveAux(Game &game, int x, int visibleCols){
-    for(int i = 0; i < visibleCols; i++){
+void displayNaturalReserveAux(Game &game, int x, int visibleCols, int displayVisibleCol){
+    for(int i = displayVisibleCol; i < visibleCols; i++){
         std::vector<MatrixCell> col = game.matrix[i];
 
         if(col[x].animals.size() > 0){
@@ -30,12 +30,8 @@ void displayNaturalReserve(Game &game){
     int currentDisplayAreaCols = game.configuration.size.cols * DISPLAY_AREA_PERCENTAGE;
     currentDisplayAreaCols += game.configuration.screenPosition.column;
 
-    std::cout << "Visible cols: " + std::to_string(currentDisplayAreaCols) << std::endl;
-    std::cout << "Visible rows: " + std::to_string(currentDisplayAreaRows) << std::endl;
-    std::cout << "=============================================================================== " << std::endl;
-
-    for(int i = 0; i < currentDisplayAreaRows; i++){
-        displayNaturalReserveAux(game,i,currentDisplayAreaCols);
+    for(int i = game.configuration.screenPosition.row; i < currentDisplayAreaRows; i++){
+        displayNaturalReserveAux(game,i,currentDisplayAreaCols,game.configuration.screenPosition.column);
         std::cout << std::endl;
     }
 }

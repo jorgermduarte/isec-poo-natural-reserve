@@ -65,7 +65,7 @@ void GameService::initialize() {
     //set the matrix with the default values
     this->initializeMatrix();
 
-    //TODO: remove the rabbit test ( test pourpuses)
+    //TODO: remove the rabbit test ( test purposes)
     Rabbit rabbit = {};
     Sheep sheep = {};
     Grass grass = {};

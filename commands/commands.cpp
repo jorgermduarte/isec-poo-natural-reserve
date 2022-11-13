@@ -54,7 +54,6 @@ void exec_command_see(std::vector<std::string> args){
     std::cout << "  > Executing the see command" << std::endl;
 }
 
-
 void exec_command_info(std::vector<std::string> args, Game* game){
     std::cout << "  > Executing the info command" << std::endl;
     if(args.size() == 2){
@@ -91,6 +90,7 @@ void exec_command_info(std::vector<std::string> args, Game* game){
         std::cout << "  > Invalid command provided, the info command must contain at least 1 argument info <ID>" << std::endl;
     }
 }
+
 void exec_command_n(){
     std::cout << "  > Executing the n command" << std::endl;
 }
@@ -151,9 +151,46 @@ void exec_command_load(std::vector<std::string> args, Game* game){
 
 }
 
-//TODO: required for the first meta
-void exec_command_slide(std::vector<std::string> args){
+void exec_command_slide(std::vector<std::string> args, Game* game){
     std::cout << "  > Executing the slide command" << std::endl;
+
+    unordered_map<string,int> allowedDirections = {
+            {"up",1},
+            {"down", 2},
+            {"left", 3},
+            {"right", 4}
+    };
+
+    unordered_map<string,int> allowedSecondArgument = {
+            {"lines",1},
+            {"columns", 2},
+    };
+
+    if(args.size() == 3){
+        //validate  the first argument
+        std::unordered_map<std::string,int>::const_iterator got = allowedDirections.find(args[1]);
+
+        bool allowedDirection = false;
+        bool allowedTarget = false;
+
+        if(got != allowedCommands.end()){
+            allowedDirection = true;
+        }
+        std::unordered_map<std::string,int>::const_iterator got2 = allowedSecondArgument.find(args[2]);
+        if(got2 != allowedSecondArgument.end()){
+            allowedTarget = true;
+        }
+
+        if(allowedDirection == true && allowedTarget == true){
+            game->configuration.moveScreenDisplayPosition(args[1],args[2]);
+            std::cout << "  > Moved the natural reserve display correctly" << endl;
+        }else{
+            std::cout << "  > Please verify your arguments, remind that the second argument must be <lines/columns> and the first <direction: up/down/right/left>" << endl;
+        }
+
+    }else{
+        std::cout << "  > Failed to execute the slide command, please follow the sintax: slide <direction: up/down/right/left> <lines/columns> " << std::endl;
+    }
 }
 
 
