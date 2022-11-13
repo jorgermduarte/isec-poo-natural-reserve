@@ -5,7 +5,7 @@
 #include "Animal.h"
 
 Animal::Animal() {
-
+    this->id = Entity::defineNewId();
 }
 
 int Animal::getCurrentLifetime() {

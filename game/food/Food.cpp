@@ -19,3 +19,7 @@ void Food::defineRandomPosition(int maxRow, int maxLine) {
     this->position.row = row;
     this->position.column = col;
 }
+
+Food::Food() {
+    this->id = Entity::defineNewId();
+}

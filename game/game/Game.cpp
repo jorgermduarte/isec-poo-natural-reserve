@@ -12,6 +12,7 @@ int Game::matrixGetNumColumns() {
     if(this->matrixGetNumRows() > 0){
         return this->matrix[0].size();
     }
+    return 0;
 }
 
 void Game::addAnimal(Animal animal) {

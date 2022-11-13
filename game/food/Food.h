@@ -8,6 +8,7 @@
 #include <string>
 #include <list>
 #include "../Position.h"
+#include "../Entity.h"
 
 //TODO: verify if we can spawn food above food
 //TODO: verify if lists belong to C++
@@ -17,15 +18,18 @@ private:
     int currentLifetime;
     bool available;
 public:
+    int id;
     std::string identifier;
     Position position = {0,0};
     int nutritiveValue;
     int toxicity;
     std::list<int> smells;
     int maxLifetime;
+    Food();
     void isFoodAvailable();
     void incrementLifeTick();
     void defineRandomPosition(int maxRow,int maxLine);
+
 };
 
 

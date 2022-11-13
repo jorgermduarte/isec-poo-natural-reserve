@@ -8,12 +8,14 @@
 
 #include <string>
 #include "../Position.h"
+#include "../Entity.h"
 
 //TODO: add the shared Id to the animal
 class Animal {
 private:
     int currentLifetime;
 public:
+    int id;
     std::string identifier;
     Position position = {0,0};
     int weight;

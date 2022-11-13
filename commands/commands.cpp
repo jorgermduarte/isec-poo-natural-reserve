@@ -38,9 +38,11 @@ void exec_command_n(){
 void exec_command_n(std::vector<std::string> args){
     std::cout << "  > Executing the n command with args" << std::endl;
 }
+//TODO: required for the first meta
 void exec_command_anim(){
     std::cout << "  > Executing the anim command" << std::endl;
 }
+//TODO: required for the first meta
 void exec_command_visanim(){
     std::cout << "  > Executing the visanim command" << std::endl;
 }
@@ -54,6 +56,7 @@ void exec_command_load(std::vector<std::string> args){
     std::cout << "  > Executing the load command" << std::endl;
 }
 
+//TODO: required for the first meta
 void exec_command_slide(std::vector<std::string> args){
     std::cout << "  > Executing the slide command" << std::endl;
 }
