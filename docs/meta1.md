@@ -27,6 +27,7 @@ Meta 1 – 27 de novembro
     - [ ] ver animais
       - [x] anim
       - [ ] visanim
+      - [x] info
     - [ ] **ver alimentos**
       - Qual comando???????
     - [ ] deslizar a área visível para o lado/cima/abaixo

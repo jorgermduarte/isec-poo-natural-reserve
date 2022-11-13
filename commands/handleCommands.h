@@ -13,8 +13,6 @@ using namespace std;
 
 void handleCommands(Game* game);
 
-void executeCommand();
-
-vector<string> readCommandsFile();
+void executeCommand(std::string &command,Game* game);
 
 #endif //POO_NATURAL_RESERVE_HANDLECOMMANDS_H

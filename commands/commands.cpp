@@ -2,9 +2,13 @@
 // Created by duarte on 11-11-2022.
 //
 #include <iostream>
+#include <fstream>
 #include "commands.h"
 #include "../utils/utils.h"
 #include "../game/game/Game.h"
+#include "handleCommands.h"
+
+using namespace std;
 
 void exec_command_animal(std::vector<std::string> args){
     std::cout << "  > Executing the animal command" << std::endl;
@@ -49,8 +53,43 @@ void exec_command_empty(std::vector<std::string> args){
 void exec_command_see(std::vector<std::string> args){
     std::cout << "  > Executing the see command" << std::endl;
 }
-void exec_command_info(std::vector<std::string> args){
+
+
+void exec_command_info(std::vector<std::string> args, Game* game){
     std::cout << "  > Executing the info command" << std::endl;
+    if(args.size() == 2){
+        if(isNumber(args[1])){
+            bool found = false;
+            int id = atoi(args[1].c_str());
+
+            for (const auto &item: game->animals){
+                if(item.id == id){
+                    std::cout << "      [" + std::to_string(item.id) + "]" +  " " + item.identifier + " HP: " + std::to_string(item.health) << std::endl;
+                    found = true;
+                    break;
+                }
+            }
+            if(!found){
+                for (const auto &item: game->foods){
+                    if(item.id == id){
+                        std::cout << "      [" + std::to_string(item.id) + "]" +  " " + item.identifier + " Toxicity: " + std::to_string(item.toxicity) + " Nutritive Value: " +
+                                to_string(item.nutritiveValue)  << std::endl;
+                        found = true;
+                        break;
+                    }
+                }
+            }
+
+            if(!found){
+                std::cout << "  > Sorry, couldn't find any entity for the ID specified..." << std::endl;
+            }
+
+        }else{
+            std::cout << "  > Invalid command provided, the id argument in the info command must be a number" << std::endl;
+        }
+    }else{
+        std::cout << "  > Invalid command provided, the info command must contain at least 1 argument info <ID>" << std::endl;
+    }
 }
 void exec_command_n(){
     std::cout << "  > Executing the n command" << std::endl;
@@ -74,11 +113,47 @@ void exec_command_store(std::vector<std::string> args){
 void exec_command_restore(std::vector<std::string> args){
     std::cout << "  > Executing the restore command" << std::endl;
 }
-void exec_command_load(std::vector<std::string> args){
+
+void exec_command_load(std::vector<std::string> args, Game* game){
     std::cout << "  > Executing the load command" << std::endl;
+
+    if(args.size() == 2){
+        //read commands file
+        std::vector<std::string> commands;
+        FILE *f = NULL;
+
+        std::string currentCommand;
+        fstream newfile;
+        newfile.open(args[1],ios::in); //open a file to perform read operation using file object
+        if (newfile.is_open()){ //checking whether the file is open
+            cout << "We have detected a " + args[1] + " file, executing.." << endl;
+            string tp;
+            while(getline(newfile, tp)){ //read data from file object and put it into string.
+                commands.push_back(tp);
+            }
+            newfile.close(); //close the file object.
+        }else{
+            cout << "   > Couldn't find any file with the name " + args[1] << endl;
+        }
+
+        if(commands.size() > 0){
+            std::cout << "============================| COMMANDS FROM FILE | ============================= " << std::endl;
+            for (string cmd: commands){
+                cout << "#Command from file: " + cmd << endl;
+                executeCommand(cmd, game);
+            }
+            std::cout << "=======================| END OF COMMANDS FROM FILE | ========================== " << std::endl;
+        }
+
+    }else{
+        std::cout << "  > Invalid command provided, the load command requires only one argument the file-name, example: load file-name.txt " << endl;
+    }
+
 }
 
 //TODO: required for the first meta
 void exec_command_slide(std::vector<std::string> args){
     std::cout << "  > Executing the slide command" << std::endl;
 }
+
+
