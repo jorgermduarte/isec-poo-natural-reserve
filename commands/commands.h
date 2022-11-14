@@ -10,6 +10,9 @@
 #include <vector>
 #include "../game/game/Game.h"
 
+const static std::vector<std::string> allowedAnimalsTypes = { "c", "o", "m"};
+const static std::vector<std::string> allowedFoodTypes = { "r", "t", "b", "a"};
+
 const static std::unordered_map<std::string,int> allowedCommands{
         {"animal",0},
         {"kill",1},
@@ -26,11 +29,13 @@ const static std::unordered_map<std::string,int> allowedCommands{
         {"store",12},
         {"restore",13},
         {"load",14},
-        {"slide",15}
+        {"slide",15},
+        {"killid",16}
 };
 
 void exec_command_animal(std::vector<std::string> args);
 void exec_command_kill(std::vector<std::string> args);
+void exec_command_killid(std::vector<std::string> args);
 void exec_command_food(std::vector<std::string> args);
 void exec_command_feed(std::vector<std::string> args);
 void exec_command_feedid(std::vector<std::string> args);

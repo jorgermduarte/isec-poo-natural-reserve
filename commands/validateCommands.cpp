@@ -28,7 +28,7 @@ vector<string> getCommandArguments(string &command){
 
 bool validateArgumentsSize(string &command){
     vector<string> args = split(command," ");
-    if(args.size() > 3){
+    if(args.size() > MAX_ARGUMENTS_SIZE) {
         return false;
     }else{
         return true;

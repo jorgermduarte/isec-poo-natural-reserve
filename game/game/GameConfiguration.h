@@ -7,8 +7,12 @@
 
 #include "MatrixSize.h"
 #include "../Position.h"
-#define DISPLAY_AREA_PERCENTAGE 0.8;
 
+const static double DISPLAY_AREA_PERCENTAGE = 0.8;
+const static double MAX_ARGUMENTS_SIZE = 5;
+
+//#define DISPLAY_AREA_PERCENTAGE 0.8;
+//#define MAX_ARGUMENTS_SIZE 5;
 
 class GameConfiguration {
 public:

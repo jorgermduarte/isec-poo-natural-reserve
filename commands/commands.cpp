@@ -32,26 +32,110 @@ void exec_command_animal(std::vector<std::string> args){
     }
 
 }
+
 void exec_command_kill(std::vector<std::string> args){
     std::cout << "  > Executing the kill command" << std::endl;
+
+    if(args.size()== 2){
+        if(isNumber(args[1])){
+            //kill an entity id on args[1];
+            std::cout << "  > killing the animal with id: " + args[1] << std::endl;
+        }else{
+            std::cout << "  > Invalid command provided, the id must be an integer" << std::endl;
+        }
+    }else if (args.size() == 3){
+        //kill entities at a given position args[1] and args[2]
+        std::string line = args[1];
+        std::string column = args[2];
+        if (isNumber(line) && isNumber(column)) {
+            std::cout << "  > killing the animal in the position: l: " + args[1] + " c:" + args[2] << std::endl;
+        } else {
+            std::cout << "  > Invalid command provided, the line and columns arguments must be integers" << std::endl;
+        }
+    }else{
+        std::cout << "  > Invalid command provided, the kill command can be kill <line> <column> or , kill <id> " << std::endl;
+    }
 }
+
 void exec_command_food(std::vector<std::string> args){
     std::cout << "  > Executing the food command" << std::endl;
+    bool validFood = false;
+    if ( args.size() == 2 ) {
+        for( const auto &item : allowedFoodTypes){
+            if(args[1]== item) {
+                validFood = true;
+                std::cout << "Spawning " + item + " in a random position "<< std::endl;
+            }
+        }
+        if(validFood == false){
+            std::cout << " Please insert valid a type of food" << std::endl;
+        }
+    }
+    else if(args.size() == 4) {
+        for (const auto &item: allowedFoodTypes) {
+            if (args[1] == item) {
+                validFood = true;
+                if (isNumber(args[2]) && isNumber(args[3])) {
+                    std::cout << "  > Spawning " + args[1] + " in the position: l: " + args[2] + " c:" + args[3]  << std::endl;
+                }
+            }
+        }
+        if (validFood == false) {
+            std::cout << " Please insert valid a type of food or integer values on the line/column" << std::endl;
+        }
+    }else{
+        std::cout << " Food command should look like: (food <tipo: r / t / b / a> <linha> <coluna>  or (food <tipo: r / t / b / a>)" << std::endl;
+    }
 }
+
+//TODO: implement validations
+void exec_command_killid(std::vector<std::string> args){
+    std::cout << "  > Executing the killid command" << std::endl;
+}
+
+//TODO: implement validations
 void exec_command_feed(std::vector<std::string> args){
     std::cout << "  > Executing the feed command" << std::endl;
 }
+
+//TODO: implement validations
 void exec_command_feedid(std::vector<std::string> args){
     std::cout << "  > Executing the feedid command" << std::endl;
 }
+
+//TODO: implement validations
 void exec_command_nofood(std::vector<std::string> args){
     std::cout << "  > Executing the nofood command" << std::endl;
 }
+
+//TODO: implement validations
 void exec_command_empty(std::vector<std::string> args){
     std::cout << "  > Executing the empty command" << std::endl;
 }
+
+//TODO: implement validations
 void exec_command_see(std::vector<std::string> args){
     std::cout << "  > Executing the see command" << std::endl;
+}
+
+//TODO: implement validations
+void exec_command_n(){
+    std::cout << "  > Executing the n command" << std::endl;
+}
+
+//TODO: implement validations
+void exec_command_n(std::vector<std::string> args){
+    std::cout << "  > Executing the n command with args" << std::endl;
+}
+
+//TODO: implement validations
+void exec_command_store(std::vector<std::string> args){
+    std::cout << "  > Executing the store command" << std::endl;
+}
+
+//TODO: implement validations
+void exec_command_restore(std::vector<std::string> args){
+    std::cout << "  > Executing the restore command" << std::endl;
 }
 
 void exec_command_info(std::vector<std::string> args, Game* game){
@@ -72,7 +156,7 @@ void exec_command_info(std::vector<std::string> args, Game* game){
                 for (const auto &item: game->foods){
                     if(item.id == id){
                         std::cout << "      [" + std::to_string(item.id) + "]" +  " " + item.identifier + " Toxicity: " + std::to_string(item.toxicity) + " Nutritive Value: " +
-                                to_string(item.nutritiveValue)  << std::endl;
+                                     to_string(item.nutritiveValue)  << std::endl;
                         found = true;
                         break;
                     }
@@ -91,12 +175,6 @@ void exec_command_info(std::vector<std::string> args, Game* game){
     }
 }
 
-void exec_command_n(){
-    std::cout << "  > Executing the n command" << std::endl;
-}
-void exec_command_n(std::vector<std::string> args){
-    std::cout << "  > Executing the n command with args" << std::endl;
-}
 void exec_command_anim(Game* game){
     std::cout << "  > Executing the anim command" << std::endl;
     for (const auto &item: game->animals){
@@ -124,12 +202,6 @@ void exec_command_visanim(Game* game){
             std::cout << "      [" + std::to_string(item.id) + "]" +  " " + item.identifier + " HP: " + std::to_string(item.health) << std::endl;
         }
     }
-}
-void exec_command_store(std::vector<std::string> args){
-    std::cout << "  > Executing the store command" << std::endl;
-}
-void exec_command_restore(std::vector<std::string> args){
-    std::cout << "  > Executing the restore command" << std::endl;
 }
 
 void exec_command_load(std::vector<std::string> args, Game* game){

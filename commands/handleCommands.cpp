@@ -67,6 +67,9 @@ void executeCommand(std::string &command,Game* game){
             case 15:
                 exec_command_slide(args,game);
                 break;
+            case 16:
+                exec_command_killid(args);
+                break;
             default:
                 break;
         }
@@ -77,6 +80,7 @@ void executeCommand(std::string &command,Game* game){
 
 void initializeCommands(Game* game){
     std::string command;
+    std::cout << "================================| COMMANDS | ================================== " << std::endl;
     cout << " > Command: ";
     getline(cin, command);
     std::cout << "  > Command provided: " + command << std::endl;
@@ -94,7 +98,5 @@ void initializeCommands(Game* game){
 }
 
 void handleCommands(Game* game){
-    std::cout << "================================| COMMANDS | ================================== " << std::endl;
-
     initializeCommands(game);
 }
