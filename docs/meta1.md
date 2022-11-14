@@ -11,7 +11,7 @@ Meta 1 – 27 de novembro
     - [x] Não é preciso considerar as variações inerentes às espécies
     e deve mesmo limitar-se aquilo que é genérico e comum a todos. (verificar again)
   - [x] Definição do conceito de Alimento. 
-    - [ ] Idem focar apenas o que é comum a todos os alimentos. (verificar again)
+    - [x] Idem focar apenas o que é comum a todos os alimentos. (verificar again)
   - [x] Representação visual da reserva e conteúdo incluído nesta meta. 
     - [x] Inclui-se aqui a questão de
     ver apenas a área visível da reserva.
