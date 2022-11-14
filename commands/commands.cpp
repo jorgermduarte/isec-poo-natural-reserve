@@ -103,9 +103,27 @@ void exec_command_anim(Game* game){
         std::cout << "      [" + std::to_string(item.id) + "]" +  " " + item.identifier + " HP: " + std::to_string(item.health) << std::endl;
     }
 }
-//TODO: required for the first meta
-void exec_command_visanim(){
+
+void exec_command_visanim(Game* game){
     std::cout << "  > Executing the visanim command" << std::endl;
+    int defaultPresentationCols = game->configuration.size.cols * DISPLAY_AREA_PERCENTAGE;
+    int defaultPresentationRows = game->configuration.size.rows * DISPLAY_AREA_PERCENTAGE;
+
+    int currentMaxCols = defaultPresentationCols + game->configuration.screenPosition.column - 1;
+    int currentMaxRows = defaultPresentationRows + game->configuration.screenPosition.row - 1;
+    int minCols = game->configuration.screenPosition.column;
+    int minRows = game->configuration.screenPosition.row;
+
+    //cout << to_string(currentMaxCols) << " - " << to_string(currentMaxRows) << " - min _> " << to_string(minCols) + " . " << to_string(minRows) << endl;
+
+    for (const auto &item: game->animals){
+        if(
+                item.position.row >= minRows && item.position.column >= minCols
+                && item.position.row <= currentMaxRows && item.position.column <= currentMaxCols
+                ){
+            std::cout << "      [" + std::to_string(item.id) + "]" +  " " + item.identifier + " HP: " + std::to_string(item.health) << std::endl;
+        }
+    }
 }
 void exec_command_store(std::vector<std::string> args){
     std::cout << "  > Executing the store command" << std::endl;

@@ -53,7 +53,7 @@ void executeCommand(std::string &command,Game* game){
                 exec_command_anim(game);
                 break;
             case 11:
-                exec_command_visanim();
+                exec_command_visanim(game);
                 break;
             case 12:
                 exec_command_store(args);

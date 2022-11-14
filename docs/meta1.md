@@ -22,16 +22,20 @@ Meta 1 – 27 de novembro
     - [x] Os comandos não farão ainda nada, mas devem ser já
     interpretados e validados
       - [ ] incluindo a sintaxe de todos os parâmetros que tenham.
-  
   - [ ] Implementar os comandos para: 
     - [ ] ver animais
       - [x] anim
-      - [ ] visanim
+      - [x] visanim
       - [x] info
     - [x] deslizar a área visível para o lado/cima/abaixo
     - [x] executar comandos em ficheiro (que são também validados), e terminar.
-  
   - [x] projeto já deverá estar devidamente organizado em .h e .cpp
+
+left todo:
+  - [ ] Ficheiro de constantes.txt
+  - [ ] Double check das classes abstratas
+  - [ ] Verificação de todas as funções ainda não implementadas
+  - [ ] Adição comando em falta killid
 
 
 Relatório – Nesta meta o relatório é simplificado, mas deve incluir a descrição das opções tomadas e
