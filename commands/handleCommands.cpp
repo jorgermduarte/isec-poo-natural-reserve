@@ -44,10 +44,7 @@ void executeCommand(std::string &command,Game* game){
                 exec_command_info(args,game);
                 break;
             case 9:
-                if(args.size() == 0)
-                    exec_command_n();
-                else
-                    exec_command_n(args);
+                exec_command_n(args);
                 break;
             case 10:
                 exec_command_anim(game);

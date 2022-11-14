@@ -16,14 +16,14 @@ Meta 1 – 27 de novembro
     - [x] Inclui-se aqui a questão de
     ver apenas a área visível da reserva.
   
-  - [ ] Implementação da leitura e validação de todos os comandos, seja por teclado, ou seja por
+  - [x] Implementação da leitura e validação de todos os comandos, seja por teclado, ou seja por
   leitura do ficheiro de comandos. 
     - [x] Base projeto para leitura e validação dos comandos
     - [x] Os comandos não farão ainda nada, mas devem ser já
     interpretados e validados
-      - [ ] incluindo a sintaxe de todos os parâmetros que tenham.
-  - [ ] Implementar os comandos para: 
-    - [ ] ver animais
+      - [x] incluindo a sintaxe de todos os parâmetros que tenham.
+  - [x] Implementar os comandos para: 
+    - [x] ver animais
       - [x] anim
       - [x] visanim
       - [x] info
@@ -33,9 +33,8 @@ Meta 1 – 27 de novembro
 
 left todo:
   - [ ] Ficheiro de constantes.txt
-  - [ ] Double check das classes abstratas
-  - [ ] Verificação de todas as funções ainda não implementadas
-  - [ ] Adição comando em falta killid
+  - [ ] Double check das classes
+  - [ ] Novo identificador como os simbulos/emojis nao funcionam em windows ? :think:
 
 
 Relatório – Nesta meta o relatório é simplificado, mas deve incluir a descrição das opções tomadas e
