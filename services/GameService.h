@@ -14,6 +14,7 @@ private:
     Game game;
     void defineNaturalReserveConfiguration();
     void initializeMatrix();
+    void readConstantsFile();
 public:
     void initialize();
 };

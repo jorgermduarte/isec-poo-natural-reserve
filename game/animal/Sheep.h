@@ -9,6 +9,7 @@
 
 class Sheep : public Animal {
 public:
+    static int maxHP;
     Sheep();
     void reproduce() override;
     void move() override;

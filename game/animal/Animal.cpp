@@ -3,13 +3,23 @@
 //
 
 #include "Animal.h"
+int Animal::maxHP = 0;
 
 Animal::Animal() {
     this->id = Entity::defineNewId();
 }
 
-int Animal::getCurrentLifetime() {
-    return this->currentLifetime;
+int Animal::getCurrentHP() {
+    return this->currentHP;
+}
+
+void Animal::setCurrentHP(int value) {
+    this->currentHP = value;
+}
+
+void Animal::setPosition(int row, int column) {
+    this->position.column = column;
+    this->position.row = row;
 }
 
 void Animal::defineRandomPosition(int maxRow,int maxLine) {
@@ -19,7 +29,6 @@ void Animal::defineRandomPosition(int maxRow,int maxLine) {
     this->position.column = col;
 }
 
-//TODO: implement the feed animal
 void Animal::feedAnimal() {
 
 }

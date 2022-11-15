@@ -39,7 +39,6 @@ void displayNaturalReserve(Game &game){
 void displayAnimals(Game &game){
     std::cout << "=============================== | ANIMALS | =================================== " << std::endl;
     for (const auto &animal: game.animals){
-        std::cout << "[" + std::to_string(animal.id)+ "] [" + std::to_string(animal.position.row) + std::to_string(animal.position.column) + "] " + animal.identifier + " HP: " + std::to_string(animal.health) + " MAX AGE: " + std::to_string(animal.maxLifetime) <<
-                std::endl;
+        std::cout << "[" + std::to_string(animal.id)+ "] [" + std::to_string(animal.position.row) + std::to_string(animal.position.column) + "] " + animal.identifier + " HP: " + std::to_string(animal.currentHP) << std::endl;
     }
 }

@@ -3,12 +3,15 @@
 //
 
 #include <limits>
+#include <fstream>
 #include "../commands/handleCommands.h"
 #include "../userInterface/useInterface.h"
 #include "GameService.h"
 #include "../game/animal/Rabbit.h"
 #include "../game/animal/Sheep.h"
 #include "../game/food/Grass.h"
+#include "../commands/validateCommands.h"
+#include "../utils/utils.h"
 
 void GameService::defineNaturalReserveConfiguration() {
     int length = 0;
@@ -58,12 +61,73 @@ void GameService::initializeMatrix() {
     //cout << " > num rows configured: " + to_string(this->game.matrixGetNumRows()) + " cols: " + to_string(this->game.matrixGetNumColumns()) << endl;
 }
 
+void GameService::readConstantsFile() {
+    std::vector<std::string> commands;
+    FILE *f = NULL;
+
+    std::string currentCommand;
+    fstream newfile;
+    string fileName = "constantes.txt";
+
+    newfile.open(fileName,ios::in); //open a file to perform read operation using file object
+    if (newfile.is_open()){ //checking whether the file is open
+        std::cout << "============================| CONSTANTS  -  FILE | ============================ " << std::endl;
+
+        cout << "We have detected the a configuration file, executing.." << endl;
+        string tp;
+        while(getline(newfile, tp)){ //read data from file object and put it into string.
+            commands.push_back(tp);
+        }
+        newfile.close(); //close the file object.
+    }
+
+    if(commands.size() > 0){
+
+        //do something with the commands from the file
+        for (string item: commands){
+
+            if(item.size() > 1){
+                cout << "   > executing configuration setting: " + item << endl;
+                vector<string> args = getCommandArguments(item);
+
+                if(args.size() >= 2){
+                    //handling definitions for animals
+                    if(args[0] == "SSheep"){
+                        if(isNumber(args[1])){
+                            Sheep::maxHP = stoi(args[1]);
+                        }else{
+                            cout << "   > Invalid second parameter detected for the sheep configuration" << endl;
+                        }
+                    }
+                    //handling definitions for animals
+                    if(args[0] == "SRabbit"){
+                        if(isNumber(args[1])){
+                            Rabbit::maxHP = stoi(args[1]);
+                        }else{
+                            cout << "   > Invalid second parameter detected for the sheep configuration" << endl;
+                        }
+                    }
+                }else{
+                    cout << "   > line detected with ony with one argument" << endl;
+                }
+            }else{
+                cout << "   > empty line configuration detected " << endl;
+            }
+        }
+
+        std::cout << "==========================| END OF CONSTANTS FILE | =========================== " << std::endl;
+
+    }
+}
+
 void GameService::initialize() {
     std::cout << "           \U0001f334 \U0001f334 \U0001f334 Welcome to the natural reserve \U0001f334 \U0001f334 \U0001f334 " << std::endl;
     std::cout << "========================================================================" << std::endl;
     this->defineNaturalReserveConfiguration();
     //set the matrix with the default values
     this->initializeMatrix();
+
+    readConstantsFile();
 
     //TODO: remove the rabbit test ( test purposes)
     Rabbit rabbit = {};

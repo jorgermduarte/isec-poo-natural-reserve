@@ -5,11 +5,11 @@
 #ifndef POO_NATURAL_RESERVE_RABBIT_H
 #define POO_NATURAL_RESERVE_RABBIT_H
 
-
 #include "Animal.h"
 
 class Rabbit: public Animal {
 public:
+    static int maxHP;
     Rabbit();
     void reproduce() override;
     void move() override;

@@ -1,8 +1,8 @@
 Meta 1 – 27 de novembro
 - Requisitos - funcionalidades para a meta 1:
-  - [ ] Leitura de ficheiros
+  - [x] Leitura de ficheiros
     - [x] Ficheiro de comandos
-    - [ ] Ficheiro de constantes.txt
+    - [x] Ficheiro de constantes.txt
   - [x] Construção da reserva. 
     - [x] A representação da reserva irá ser melhorada com matéria dada
     posteriormente e agora só se pretende algo que possa ser representado no ecrã.
@@ -31,8 +31,7 @@ Meta 1 – 27 de novembro
     - [x] executar comandos em ficheiro (que são também validados), e terminar.
   - [x] projeto já deverá estar devidamente organizado em .h e .cpp
 
-left todo:
-  - [ ] Ficheiro de constantes.txt
+**TODO:**
   - [ ] Double check das classes
   - [ ] Novo identificador como os simbulos/emojis nao funcionam em windows ? :think:
 
