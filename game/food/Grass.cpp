@@ -13,6 +13,7 @@ Grass::Grass() {
     this->smells.push_back(ENUM_Grass);
     this->smells.push_back(ENUM_Vegetables);
     this->identifierEmoji = "\U0001f33f";
+    this->identifier = 'r';
 
     //TODO: for now the food is spawning at 0,0 for test purposes
     // we need to implement a way to spawn the food in a random position in the matrix

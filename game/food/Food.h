@@ -19,6 +19,7 @@ private:
     bool available;
 public:
     int id;
+    char identifier;
     std::string identifierEmoji;
     Position position = {0,0};
     int nutritiveValue;
