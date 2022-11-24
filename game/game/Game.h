@@ -12,11 +12,7 @@
 #include "GameConfiguration.h"
 
 class Game {
-private:
-    static int uniqueIdentifier;
 public:
-    // the matrix is used for we know the positions of the animals and food on the natural reserve
-    // that's why the MatrixCell lists only contain the pointers
     std::vector<std::vector<MatrixCell>> matrix = {};
     std::list<Animal> animals = {};
     std::list<Food> foods = {};

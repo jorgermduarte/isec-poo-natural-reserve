@@ -31,11 +31,6 @@ Meta 1 – 27 de novembro
     - [x] executar comandos em ficheiro (que são também validados), e terminar.
   - [x] projeto já deverá estar devidamente organizado em .h e .cpp
 
-**TODO:**
-  - [ ] Double check das classes
-  - [ ] Novo identificador como os simbulos/emojis nao funcionam em windows ? :think:
-
-
 Relatório – Nesta meta o relatório é simplificado, mas deve incluir a descrição das opções tomadas e
 a descrição das estruturas usadas. Deve também dar uma indicação da estruturação do trabalho em
 termos de classes (quais, para que servem / o que representam e qual a relação entre elas).
