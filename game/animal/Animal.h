@@ -16,7 +16,8 @@ public:
     int id;
     static int maxHP;
     int currentHP;
-    std::string identifier;
+    char identifier;
+    std::string identifierEmoji;
     Position position = {0,0};
     int weight;
     int hunger;

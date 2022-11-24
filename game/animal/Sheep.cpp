@@ -6,7 +6,7 @@
 int Sheep::maxHP = 0;
 
 Sheep::Sheep() {
-    this->identifier = "\U0001f411";
+    this->identifierEmoji = "\U0001f411";
     this->weight = rand() % 4 + 1;
     this->currentHP = Sheep::maxHP;
 }

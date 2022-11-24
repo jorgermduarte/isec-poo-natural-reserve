@@ -19,7 +19,7 @@ private:
     bool available;
 public:
     int id;
-    std::string identifier;
+    std::string identifierEmoji;
     Position position = {0,0};
     int nutritiveValue;
     int toxicity;

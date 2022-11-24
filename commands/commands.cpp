@@ -226,7 +226,7 @@ void exec_command_info(std::vector<std::string> args, Game* game){
 
             for (const auto &item: game->animals){
                 if(item.id == id){
-                    std::cout << "      [" + std::to_string(item.id) + "]" +  " " + item.identifier + "Current HP: " + std::to_string(item.currentHP) + ", MAX HP: " + std::to_string(item.maxHP) << std::endl;
+                    std::cout << "      [" + std::to_string(item.id) + "]" +  " " + item.identifierEmoji + "Current HP: " + std::to_string(item.currentHP) + ", MAX HP: " + std::to_string(item.maxHP) << std::endl;
                     found = true;
                     break;
                 }
@@ -234,7 +234,7 @@ void exec_command_info(std::vector<std::string> args, Game* game){
             if(!found){
                 for (const auto &item: game->foods){
                     if(item.id == id){
-                        std::cout << "      [" + std::to_string(item.id) + "]" +  " " + item.identifier + " Toxicity: " + std::to_string(item.toxicity) + " Nutritive Value: " +
+                        std::cout << "      [" + std::to_string(item.id) + "]" +  " " + item.identifierEmoji + " Toxicity: " + std::to_string(item.toxicity) + " Nutritive Value: " +
                                      to_string(item.nutritiveValue)  << std::endl;
                         found = true;
                         break;
@@ -257,7 +257,7 @@ void exec_command_info(std::vector<std::string> args, Game* game){
 void exec_command_anim(Game* game){
     std::cout << "  > Executing the anim command" << std::endl;
     for (const auto &item: game->animals){
-        std::cout << "      [" + std::to_string(item.id) + "]" +  " " + item.identifier + "Current HP: " + std::to_string(item.currentHP) + ", MAX HP: " + std::to_string(item.maxHP) << std::endl;
+        std::cout << "      [" + std::to_string(item.id) + "]" +  " " + item.identifierEmoji + "Current HP: " + std::to_string(item.currentHP) + ", MAX HP: " + std::to_string(item.maxHP) << std::endl;
     }
 }
 
@@ -278,7 +278,7 @@ void exec_command_visanim(Game* game){
                 item.position.row >= minRows && item.position.column >= minCols
                 && item.position.row <= currentMaxRows && item.position.column <= currentMaxCols
                 ){
-            std::cout << "      [" + std::to_string(item.id) + "]" +  " " + item.identifier + "Current HP: " + std::to_string(item.currentHP) + ", MAX HP: " + std::to_string(item.maxHP) << std::endl;
+            std::cout << "      [" + std::to_string(item.id) + "]" +  " " + item.identifierEmoji + "Current HP: " + std::to_string(item.currentHP) + ", MAX HP: " + std::to_string(item.maxHP) << std::endl;
         }
     }
 }

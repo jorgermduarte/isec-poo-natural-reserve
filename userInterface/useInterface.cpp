@@ -10,13 +10,14 @@ void displayNaturalReserveAux(Game &game, int x, int visibleCols, int displayVis
         std::vector<MatrixCell> col = game.matrix[i];
 
         if(col[x].animals.size() > 0){
-            std::cout << col[x].animals.begin()->identifier + " ";
+            std::cout << col[x].animals.begin()->identifierEmoji + " ";
         }
         else if(col[x].foods.size() > 0){
-            std::cout << col[x].foods.begin()->identifier + " ";
+            std::cout << col[x].foods.begin()->identifierEmoji + " ";
         }
         else{
-            std::cout << std::to_string(col[x].position.row)  + std::to_string(col[x].position.column) + " ";
+            //std::cout << std::to_string(col[x].position.row)  + std::to_string(col[x].position.column) + " ";
+            std::cout << " # ";
         }
     }
 }
@@ -39,6 +40,6 @@ void displayNaturalReserve(Game &game){
 void displayAnimals(Game &game){
     std::cout << "=============================== | ANIMALS | =================================== " << std::endl;
     for (const auto &animal: game.animals){
-        std::cout << "[" + std::to_string(animal.id)+ "] [" + std::to_string(animal.position.row) + std::to_string(animal.position.column) + "] " + animal.identifier + " HP: " + std::to_string(animal.currentHP) << std::endl;
+        std::cout << "[" + std::to_string(animal.id)+ "] [" + std::to_string(animal.position.row) + std::to_string(animal.position.column) + "] " + animal.identifierEmoji + " HP: " + std::to_string(animal.currentHP) << std::endl;
     }
 }
