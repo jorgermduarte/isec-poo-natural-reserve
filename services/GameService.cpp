@@ -129,10 +129,14 @@ void GameService::initialize() {
 
     readConstantsFile();
 
+    //required to turn the spawn of the entities on random places always
+    srand((unsigned)time(NULL));
+
     //TODO: remove the rabbit test ( test purposes)
     Rabbit rabbit = {};
     Sheep sheep = {};
     Grass grass = {};
+
     grass.defineRandomPosition(this->game.configuration.size.rows,this->game.configuration.size.cols);
     rabbit.defineRandomPosition(this->game.configuration.size.rows,this->game.configuration.size.cols);
     sheep.defineRandomPosition(this->game.configuration.size.rows,this->game.configuration.size.cols);
