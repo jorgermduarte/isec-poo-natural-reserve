@@ -5,7 +5,6 @@
 #include "../models/animal/Animal.h"
 #include "../models/food/Food.h"
 
-
 template <typename T> Node<T>::Node(T *value) {
     this->value = value;
     this->prev = NULL;

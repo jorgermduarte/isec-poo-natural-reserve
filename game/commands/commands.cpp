@@ -16,6 +16,7 @@ void exec_command_animal(std::vector<std::string> args){
         std::cout << "  > Invalid command provided, the animal command must contain at least 1 argument <specie: c / o / l / g / m> or <specie: c / o / l / g / m> <line> <column>" << std::endl;
     }else if(args.size() == 2){
         std::cout << "  > Spawning the specie of type " + args[1] +  " in a random position" << std::endl;
+
     }else if(args.size() == 4){
         std::string line = args[2];
         std::string column = args[3];
@@ -215,6 +216,8 @@ void exec_command_restore(std::vector<std::string> args){
         cout << "   > The restore command requires only 1 argument, example: restore <name>" << endl;
     }
 }
+
+
 
 void exec_command_info(std::vector<std::string> args, Game* game){
     std::cout << "  > Executing the info command" << std::endl;

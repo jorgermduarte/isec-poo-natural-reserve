@@ -9,7 +9,7 @@ Sheep::Sheep() {
     this->identifierEmoji = "\U0001f411";
     this->weight = rand() % 4 + 1;
     this->currentHP = Sheep::maxHP;
-    this->identifier = 's';
+    this->identifier = 'O';
 }
 
 void Sheep::reproduce() {

@@ -14,6 +14,12 @@
 #include "../commands/validateCommands.h"
 #include "../utils/utils.h"
 #include "../models/animal/Fox.h"
+#include "../models/animal/Kangaroo.h"
+#include "../models/animal/Wolf.h"
+#include "../models/food/Carrot.h"
+#include "../models/food/Blueberries.h"
+#include "../models/food/Body.h"
+#include "../models/food/Beef.h"
 
 void GameService::defineNaturalReserveConfiguration() {
     int length = 0;
@@ -70,8 +76,6 @@ void GameService::readConstantsFile() {
     std::string currentCommand;
     fstream newfile;
     string fileName = "constantes.txt";
-
-    std::cout << " > Reading constants file..." << std::endl;
 
     newfile.open(fileName,ios::in); //open a file to perform read operation using file object
     if (newfile.is_open()){ //checking whether the file is open
@@ -141,6 +145,14 @@ void GameService::initialize() {
     Grass grass = {};
     Grass grass2 = {};
     Fox fox = {};
+    Kangaroo kangaroo = {};
+    Wolf wolf = {};
+
+    Carrot carrot = {};
+    Blueberries blueberry = {};
+    Body body = {};
+    Beef beef = {};
+
 
     //grass.defineRandomPosition(this->game.configuration.size.rows,this->game.configuration.size.cols);
     sheep.definePosition(0,0);
@@ -148,18 +160,33 @@ void GameService::initialize() {
     grass.definePosition(0,2);
     grass2.definePosition(0,3);
     rabbit2.definePosition(0,4);
+    kangaroo.definePosition(0,5);
     fox.definePosition(1,5);
+    wolf.definePosition(2,5);
+    carrot.definePosition(3,5);
+    blueberry.definePosition(4,5);
+    body.definePosition(5,5);
+    beef.definePosition(6,5);
 
     this->game.addAnimal(&rabbit);
     this->game.addAnimal(&sheep);
     this->game.addAnimal(&rabbit2);
     this->game.addAnimal(&fox);
+    this->game.addAnimal(&kangaroo);
+    this->game.addAnimal(&wolf);
 
     this->game.addFood(&grass);
     this->game.addFood(&grass2);
+    this->game.addFood(&carrot);
+    this->game.addFood(&blueberry);
+    this->game.addFood(&body);
+    this->game.addFood(&beef);
 
+    std::cout << "===============================================================================" << std::endl;
+    std::cout << " > The natural reserve has been initialized with the following animals and foods: " << std::endl;
     this->game.displayFoods();
     this->game.displayAnimals();
+    std::cout << "===============================================================================" << std::endl;
 
     displayAnimals(this->game);
     displayNaturalReserve(this->game);

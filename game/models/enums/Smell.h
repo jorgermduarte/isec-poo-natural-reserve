@@ -8,7 +8,9 @@
 
 enum Smell {
     ENUM_Grass,
-    ENUM_Vegetables
+    ENUM_Vegetables,
+    ENUM_Meat,
+    ENUM_Ketchup,
 };
 
 

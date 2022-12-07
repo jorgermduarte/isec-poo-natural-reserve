@@ -8,7 +8,7 @@ Rabbit::Rabbit() {
     this->identifierEmoji = "\U0001f407";
     this->weight = rand() % 4 + 1;
     this->currentHP = Rabbit::maxHP;
-    this->identifier = 'r';
+    this->identifier = 'C';
 }
 
 void Rabbit::reproduce() {
