@@ -5,13 +5,11 @@
 #include <limits>
 #include <fstream>
 #include <csignal>
-#include "../commands/handleCommands.h"
 #include "../user_interface/userInterface.h"
 #include "GameService.h"
 #include "../models/animal/Rabbit.h"
 #include "../models/animal/Sheep.h"
 #include "../models/food/Grass.h"
-#include "../commands/validateCommands.h"
 #include "../utils/utils.h"
 #include "../models/animal/Fox.h"
 #include "../models/animal/Kangaroo.h"
@@ -20,6 +18,9 @@
 #include "../models/food/Blueberries.h"
 #include "../models/food/Body.h"
 #include "../models/food/Beef.h"
+#include "../models/commands/Command.h"
+
+using namespace std;
 
 void GameService::defineNaturalReserveConfiguration() {
     int length = 0;
@@ -96,7 +97,7 @@ void GameService::readConstantsFile() {
 
             if(item.size() > 1){
                 cout << "   > executing configuration setting: " + item << endl;
-                vector<string> args = getCommandArguments(item);
+                vector<string> args = Command::getArguments(item);
 
                 if(args.size() >= 2){
                     //handling definitions for animals
@@ -190,5 +191,5 @@ void GameService::initialize() {
 
     displayAnimals(this->game);
     displayNaturalReserve(this->game);
-    handleCommands(&this->game);
+    Command::handleCommands(&this->game);
 }
