@@ -1,3 +1,0 @@
-SRabbit 20
-SSheep 40
-

@@ -1,4 +1,4 @@
-#include "services/GameService.h"
+#include "game/services/GameService.h"
 
 int main() {
     GameService gameService = GameService();
