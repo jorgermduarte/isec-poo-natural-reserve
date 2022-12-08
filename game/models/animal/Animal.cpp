@@ -46,10 +46,15 @@ void Animal::display() {
 }
 
 void Animal::feed(int nutritivePoints, int toxicityPoints) {
-    this->currentHP += nutritivePoints;
     this->currentHP -= toxicityPoints;
+    this->currentHP += nutritivePoints;
+
     if(this->currentHP > Animal::maxHP){
         this->currentHP = Animal::maxHP;
+    }
+
+    if(this->currentHP < 0){
+        this->currentHP = 0;
     }
 }
 

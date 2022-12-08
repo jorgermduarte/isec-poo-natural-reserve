@@ -9,15 +9,10 @@
 #include "GameService.h"
 #include "../models/animal/Rabbit.h"
 #include "../models/animal/Sheep.h"
-#include "../models/food/Grass.h"
 #include "../utils/utils.h"
 #include "../models/animal/Fox.h"
 #include "../models/animal/Kangaroo.h"
 #include "../models/animal/Wolf.h"
-#include "../models/food/Carrot.h"
-#include "../models/food/Blueberries.h"
-#include "../models/food/Body.h"
-#include "../models/food/Beef.h"
 #include "../models/commands/Command.h"
 
 using namespace std;

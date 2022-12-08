@@ -1,6 +1,7 @@
 //
 // Created by duarte on 11-11-2022.
 //
+#include <iostream>
 #include "Game.h"
 
 int Game::matrixGetNumRows() {
@@ -15,35 +16,46 @@ int Game::matrixGetNumColumns() {
 }
 
 void Game::addAnimal(Animal* animal) {
-    Node<Animal> *newAnimal = new Node<Animal>(animal);
+    Node<Animal> *newAnimalList = new Node<Animal>(animal);
+    Node<Animal> *newAnimalMatrixCell = new Node<Animal>(animal);
 
     if(this->animals == NULL) {
-        this->animals = newAnimal;
+        this->animals = newAnimalList;
     }else{
         Node<Animal> *tail = this->animals->getTail();
-        tail->next = newAnimal;
+        tail->next = newAnimalList;
+        newAnimalList->prev = tail;
     }
 
     if ( this->matrix[animal->position.column][animal->position.row].animals == NULL) {
-        this->matrix[animal->position.column][animal->position.row].animals = newAnimal;
+        this->matrix[animal->position.column][animal->position.row].animals = newAnimalMatrixCell;
     } else {
-       this->matrix[animal->position.column][animal->position.row].animals->next = newAnimal;
+        Node<Animal> *tail = this->matrix[animal->position.column][animal->position.row].animals->getTail();
+        tail->next = newAnimalMatrixCell;
+        newAnimalMatrixCell->prev = tail;
     }
 }
 
 void Game::addFood(Food* food) {
-    Node<Food> *newFood = new Node<Food>(food);
+
+    Node<Food> *newFoodList = new Node<Food>(food);
+    Node<Food> *newFoodMatrixCell = new Node<Food>(food);
 
     if(this->foods == NULL) {
-        this->foods = newFood;
+        this->foods = newFoodList;
     }else{
         Node<Food> *tail = this->foods->getTail();
-        tail->next = newFood;
+        tail->next = newFoodList;
+        newFoodList->prev = tail;
     }
+
     if ( this->matrix[food->position.column][food->position.row].foods == NULL) {
-        this->matrix[food->position.column][food->position.row].foods = newFood;
+        this->matrix[food->position.column][food->position.row].foods = newFoodMatrixCell;
+        std::cout << "     > Food added to matrix cell - empty list" << std::endl;
     } else {
-        this->matrix[food->position.column][food->position.row].foods->next = newFood;
+        Node<Food> *tail = this->matrix[food->position.column][food->position.row].foods->getTail();
+        tail->next = newFoodMatrixCell;
+        newFoodMatrixCell->prev = tail;
     }
 }
 
@@ -61,4 +73,26 @@ void Game::displayFoods() {
         current->value->display();
         current = current->next;
     }
+}
+
+Node<Food>* Game::findFoodNode(int id) {
+    Node<Food> *current = this->foods;
+    while(current != NULL){
+        if(current->value->id == id){
+            break;
+        }
+        current = current->next;
+    }
+    return current;
+}
+
+Node<Animal>* Game::findAnimalNode(int id) {
+    Node<Animal> *current = this->animals;
+    while(current != NULL){
+        if(current->value->id == id){
+            return current;
+        }
+        current = current->next;
+    }
+    return NULL;
 }

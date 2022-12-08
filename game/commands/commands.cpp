@@ -41,27 +41,6 @@ void exec_command_killid(std::vector<std::string> args){
     }
 }
 
-void exec_command_nofood(std::vector<std::string> args){
-    if(args.size() == 3){
-        if(isNumber(args[1]) && isNumber(args[2])){
-            string line = args[1];
-            string column = args[2];
-            std::cout << "  > Executing the nofood command for the line: " + line +" and column: " + column << std::endl;
-        }else{
-            std::cout << "  > Invalid command provided, the nofood command arguments should be numbers" << endl;
-        }
-    }else if(args.size() == 2){
-        if(isNumber(args[1])){
-            string id = args[1];
-            std::cout << "  > Executing the nofood command for the id: " + id << std::endl;
-        }else{
-            std::cout << "  > Invalid command provided, the nofood command arguments should be numbers" << endl;
-        }
-    }else{
-        std::cout << "  > Invalid command provided, the nofood command must contain 2 arguments, example: nofood <ID>, or nofood <line> <column>" << std::endl;
-    }
-}
-
 void exec_command_empty(std::vector<std::string> args){
     if(args.size() == 3){
         if(isNumber(args[1]) && isNumber(args[2])){

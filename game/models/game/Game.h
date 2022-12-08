@@ -22,6 +22,8 @@ public:
 
     void addAnimal(Animal* animal);
     void addFood(Food* food);
+    Node<Food>* findFoodNode(int id);
+    Node<Animal>* findAnimalNode(int id);
 
     void displayAnimals();
     void displayFoods();

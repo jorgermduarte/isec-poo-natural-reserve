@@ -17,6 +17,7 @@
 #include "../../commands/FoodCommand.h"
 #include "../../commands/FeedCommand.h"
 #include "../../commands/FeedIDCommand.h"
+#include "../../commands/NoFoodCommand.h"
 
 using namespace std;
 
@@ -94,8 +95,8 @@ void Command::execute(std::string &command, Game *game) {
             case 4: //feedID
                 (new FeedIDCommand(game,args))->execute();
                 break;
-            case 5:
-                exec_command_nofood(args);
+            case 5: //nofood
+                (new NoFoodCommand(game,args))->execute();
                 break;
             case 6:
                 exec_command_empty(args);

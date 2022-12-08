@@ -10,13 +10,14 @@
 #include <vector>
 #include "../models/game/Game.h"
 
-void exec_command_kill(std::vector<std::string> args);
-void exec_command_killid(std::vector<std::string> args);
-void exec_command_nofood(std::vector<std::string> args);
 void exec_command_empty(std::vector<std::string> args);
 void exec_command_see(std::vector<std::string> args);
-void exec_command_n(std::vector<std::string> args);
+
+void exec_command_kill(std::vector<std::string> args);
+void exec_command_killid(std::vector<std::string> args);
 
 void exec_command_store(std::vector<std::string> args);
 void exec_command_restore(std::vector<std::string> args);
+
+void exec_command_n(std::vector<std::string> args);
 #endif //POO_NATURAL_RESERVE_COMMANDS_H

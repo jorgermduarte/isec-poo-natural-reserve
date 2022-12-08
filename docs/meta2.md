@@ -3,11 +3,11 @@
 # Project meta 2 - implementations needed
 
 - [ ] implement the base commands
-  - [ ] exec_command_feedid
+  - [x] exec_command_nofood
   - [x] exec_command_feed
+  - [x] exec_command_feedid
   - [ ] exec_command_killid
   - [ ] exec_command_kill
-  - [ ] exec_command_nofood
   - [ ] exec_command_empty
   - [ ] exec_command_see
 - [x] after the implementation of the base commands above we need to implement the command:
