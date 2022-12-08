@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "Animal.h"
-int Animal::maxHP = 0;
+int Animal::configMaxHP = 0;
 
 Animal::Animal() {
     this->id = Entity::defineNewId();
@@ -41,11 +41,16 @@ void Animal::displayPosition() {
 }
 
 void Animal::display() {
-    std::cout << "[" + std::to_string(this->id)+ "] [" + std::to_string(this->position.row) + std::to_string(this->position.column) + "] " + this->identifierEmoji + " HP: " + std::to_string(this->currentHP) << std::endl;
+    std::cout << "[" + std::to_string(this->id)+ "] [" + std::to_string(this->position.row) + std::to_string(this->position.column) + "] " + this->identifierEmoji + + " MHP: " +
+            std::to_string(this->maxHP) + " CHP: " + std::to_string(this->currentHP) + " Weight: " + std::to_string(this->weight) << std::endl;
 }
 
-void Animal::feedAnimal() {
-
+void Animal::feed(int nutritivePoints, int toxicityPoints) {
+    this->currentHP += nutritivePoints;
+    this->currentHP -= toxicityPoints;
+    if(this->currentHP > Animal::maxHP){
+        this->currentHP = Animal::maxHP;
+    }
 }
 
 void Animal::move() {

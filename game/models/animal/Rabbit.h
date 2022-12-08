@@ -9,7 +9,7 @@
 
 class Rabbit: public Animal {
 public:
-    static int maxHP;
+    static int configMaxHP;
     Rabbit();
     void reproduce() override;
     void move() override;

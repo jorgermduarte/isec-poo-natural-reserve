@@ -10,7 +10,7 @@
 
 class Fox: public Animal{
 public:
-    static int maxHP;
+    static int configMaxHP;
     Fox();
     void reproduce() override;
     void move() override;

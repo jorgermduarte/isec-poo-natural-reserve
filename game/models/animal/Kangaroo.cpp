@@ -3,12 +3,13 @@
 //
 
 #include "Kangaroo.h"
-int Kangaroo::maxHP = 0;
+int Kangaroo::configMaxHP = 0;
 
 Kangaroo::Kangaroo() {
     this->identifierEmoji = "\U0001f998";
-    this->weight = 200; // todo: change it to the correct value
-    this->currentHP = Kangaroo::maxHP;
+    this->weight = 100 + (rand() % 150 + 1); // todo: change it to the correct value
+    this->currentHP = Kangaroo::configMaxHP;
+    this->maxHP = currentHP;
     this->identifier = 'G';
 }
 

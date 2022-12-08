@@ -10,7 +10,7 @@
 
 class Kangaroo : public Animal {
 public:
-    static int maxHP;
+    static int configMaxHP;
     Kangaroo();
     void reproduce() override;
     void move() override;

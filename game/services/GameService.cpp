@@ -63,11 +63,9 @@ void GameService::initializeMatrix() {
         vector<MatrixCell> col = {};
         for(y = 0; y < this->game.configuration.size.rows; y++){
             col.push_back(MatrixCell(x,y));
-            //cout << " > created cell -> x:" + to_string(x) + " y: " + to_string(y) << endl;
         }
         this->game.matrix.push_back(col);
     }
-    //cout << " > num rows configured: " + to_string(this->models.matrixGetNumRows()) + " cols: " + to_string(this->models.matrixGetNumColumns()) << endl;
 }
 
 void GameService::readConstantsFile() {
@@ -103,35 +101,35 @@ void GameService::readConstantsFile() {
                     //handling definitions for animals
                     if(args[0] == "SSheep"){
                         if(isNumber(args[1])){
-                            Sheep::maxHP = stoi(args[1]);
+                            Sheep::configMaxHP = stoi(args[1]);
                         }else{
                             cout << "   > Invalid second parameter detected for the sheep configuration" << endl;
                         }
                     }
                     else if(args[0] == "SRabbit"){
                         if(isNumber(args[1])){
-                            Rabbit::maxHP = stoi(args[1]);
+                            Rabbit::configMaxHP = stoi(args[1]);
                         }else{
                             cout << "   > Invalid second parameter detected for the sheep configuration" << endl;
                         }
                     }
                     else if(args[0] == "SFox"){
                         if(isNumber(args[1])){
-                            Fox::maxHP = stoi(args[1]);
+                            Fox::configMaxHP = stoi(args[1]);
                         }else{
                             cout << "   > Invalid second parameter detected for the fox configuration" << endl;
                         }
                     }
                     else if(args[0] == "SKangaroo"){
                         if(isNumber(args[1])){
-                            Kangaroo::maxHP = stoi(args[1]);
+                            Kangaroo::configMaxHP = stoi(args[1]);
                         }else{
                             cout << "   > Invalid second parameter detected for the kangaroo configuration" << endl;
                         }
                     }
                     else if(args[0] == "SWolf"){
                         if(isNumber(args[1])){
-                            Wolf::maxHP = stoi(args[1]);
+                            Wolf::configMaxHP = stoi(args[1]);
                         }else{
                             cout << "   > Invalid second parameter detected for the wolf configuration" << endl;
                         }

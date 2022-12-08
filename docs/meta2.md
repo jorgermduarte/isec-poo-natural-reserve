@@ -4,7 +4,7 @@
 
 - [ ] implement the base commands
   - [ ] exec_command_feedid
-  - [ ] exec_command_feed
+  - [x] exec_command_feed
   - [ ] exec_command_killid
   - [ ] exec_command_kill
   - [ ] exec_command_nofood

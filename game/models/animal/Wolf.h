@@ -10,7 +10,7 @@
 
 class Wolf: public Animal {
 public:
-    static int maxHP;
+    static int configMaxHP;
     Wolf();
     void reproduce() override;
     void move() override;

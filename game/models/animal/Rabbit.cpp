@@ -2,12 +2,13 @@
 // Created by duarte on 10-11-2022.
 //
 #include "Rabbit.h"
-int Rabbit::maxHP = 0;
+int Rabbit::configMaxHP = 0;
 
 Rabbit::Rabbit() {
     this->identifierEmoji = "\U0001f407";
-    this->weight = rand() % 4 + 1;
-    this->currentHP = Rabbit::maxHP;
+    this->weight =  1 + (rand() % 9 + 1);
+    this->currentHP = Rabbit::configMaxHP;
+    this->maxHP = currentHP;
     this->identifier = 'C';
 }
 

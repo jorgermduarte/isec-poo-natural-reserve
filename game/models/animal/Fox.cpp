@@ -3,12 +3,13 @@
 //
 
 #include "Fox.h"
-int Fox::maxHP = 0;
+int Fox::configMaxHP = 0;
 
 Fox::Fox() {
     this->identifierEmoji = "\U0001f98a";
-    this->weight = rand() % 4 + 1;
-    this->currentHP = Fox::maxHP;
+    this->weight =  20 + (rand() % 25 + 1);
+    this->currentHP = Fox::configMaxHP;
+    this->maxHP = currentHP;
     this->identifier = 'm';
 }
 

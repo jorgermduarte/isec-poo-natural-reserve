@@ -3,12 +3,13 @@
 //
 
 #include "Wolf.h"
-int Wolf::maxHP = 0;
+int Wolf::configMaxHP = 0;
 
 Wolf::Wolf() {
     this->identifierEmoji = "\U0001f43a";
-    this->weight = 200; // todo: change it to the correct value
-    this->currentHP = Wolf::maxHP;
+    this->weight =  30 + (rand() % 40 + 1); // todo: change it to the correct value
+    this->currentHP = Wolf::configMaxHP;
+    this->maxHP = currentHP;
     this->identifier = 'L';
 }
 

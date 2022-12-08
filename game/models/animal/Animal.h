@@ -12,8 +12,9 @@
 class Animal {
 public:
     Animal();
+    static int configMaxHP;
     int id;
-    static int maxHP;
+    int maxHP;
     int currentHP;
     char identifier;
     std::string identifierEmoji;
@@ -28,9 +29,8 @@ public:
     void display();
     void setPosition(int row, int column);
     void setCurrentHP(int value);
+    void feed(int nutritivePoints, int toxicityPoints);
 
-    //TODO: implement the function that feeds the current animal receiving a certain value
-    virtual void feedAnimal();
     //TODO: this function will contain all the logic representing the instant
     virtual void triggerInstant();
     //TODO: this function should be implemented from the child classes implementing the logic when perceiving food and other animals

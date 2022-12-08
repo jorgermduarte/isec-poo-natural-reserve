@@ -3,12 +3,13 @@
 //
 
 #include "Sheep.h"
-int Sheep::maxHP = 0;
+int Sheep::configMaxHP = 0;
 
 Sheep::Sheep() {
     this->identifierEmoji = "\U0001f411";
-    this->weight = rand() % 4 + 1;
-    this->currentHP = Sheep::maxHP;
+    this->weight =  15 + (rand() % 25 + 1);
+    this->currentHP = Sheep::configMaxHP;
+    this->maxHP = currentHP;
     this->identifier = 'O';
 }
 
