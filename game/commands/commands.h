@@ -12,8 +12,6 @@
 
 void exec_command_kill(std::vector<std::string> args);
 void exec_command_killid(std::vector<std::string> args);
-void exec_command_feed(std::vector<std::string> args);
-void exec_command_feedid(std::vector<std::string> args);
 void exec_command_nofood(std::vector<std::string> args);
 void exec_command_empty(std::vector<std::string> args);
 void exec_command_see(std::vector<std::string> args);

@@ -41,39 +41,6 @@ void exec_command_killid(std::vector<std::string> args){
     }
 }
 
-void exec_command_feed(std::vector<std::string> args){
-    if(args.size() == 5){
-        //line col, nutritive_value toxicity_points
-        if(isNumber(args[1]) && isNumber(args[2]) && isNumber(args[3]) && isNumber(args[4])){
-            string line = args[1];
-            string col = args[2];
-            string nutritivePoints = args[3];
-            string toxicityPoints = args[4];
-            std::cout << "  > Executing the feed command for line " + line + ", col "+ col + ", nutritive value: " + nutritivePoints + ", toxicity points: "+ toxicityPoints   << std::endl;
-        }else{
-            std::cout << "  > Invalid command provided, the feed command arguments should be all numbers" << std::endl;
-        }
-    }else{
-        std::cout << "  > Invalid command provided, the feed command must contain 4 arguments, example: feed <line> <column> <nutritive points> <toxicty points> " << std::endl;
-    }
-}
-
-void exec_command_feedid(std::vector<std::string> args){
-    if(args.size() == 4){
-        //line col, nutritive_value toxicity_points
-        if(isNumber(args[1]) && isNumber(args[2]) && isNumber(args[3])){
-            string id = args[1];
-            string nutritivePoints = args[2];
-            string toxicityPoints = args[3];
-            std::cout << "  > Executing the feedid command for id " + id + ", nutritive value: " + nutritivePoints + ", toxicity points: "+ toxicityPoints   << std::endl;
-        }else{
-            std::cout << "  > Invalid command provided, the feedid command arguments should be all numbers" << std::endl;
-        }
-    }else{
-        std::cout << "  > Invalid command provided, the feedid command must contain 3 arguments, example: feed <id> <nutritive points> <toxicty points> " << std::endl;
-    }
-}
-
 void exec_command_nofood(std::vector<std::string> args){
     if(args.size() == 3){
         if(isNumber(args[1]) && isNumber(args[2])){
