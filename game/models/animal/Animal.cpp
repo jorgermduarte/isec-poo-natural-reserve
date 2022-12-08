@@ -10,10 +10,6 @@ Animal::Animal() {
     this->id = Entity::defineNewId();
 }
 
-int Animal::getCurrentHP() {
-    return this->currentHP;
-}
-
 void Animal::setCurrentHP(int value) {
     this->currentHP = value;
 }

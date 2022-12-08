@@ -8,6 +8,7 @@
 Carrot::Carrot() {
     this->maxLifetime = -1;
     this->nutritiveValue = 4;
+    this->currentLifetime = maxLifetime;
     this->toxicity = 0;
     this->smells.push_back(ENUM_Vegetables);
     this->identifierEmoji = "\U0001f955";

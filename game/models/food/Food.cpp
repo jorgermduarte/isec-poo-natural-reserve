@@ -31,5 +31,6 @@ void Food::definePosition(int row, int line) {
 }
 
 void Food::display() {
-    std::cout << "[" + std::to_string(this->id)+ "] [" + std::to_string(this->position.row) + std::to_string(this->position.column) + "] " + this->identifierEmoji + " Toxicity: " + std::to_string(this->toxicity) << std::endl;
+    std::cout << "[" + std::to_string(this->id)+ "] [" + std::to_string(this->position.row) + std::to_string(this->position.column) + "] " + this->identifierEmoji + " Toxicity: " + std::to_string(this->toxicity) + " Nutritive Value: " +
+            std::to_string(this->nutritiveValue) + " MLF: " + std::to_string(this->maxLifetime) + " CLF: " + std::to_string(this->currentLifetime) << std::endl;
 }

@@ -22,7 +22,6 @@ public:
     int weight;
     int hunger;
     int angryLevel;
-    int getCurrentHP();
     void defineRandomPosition(int maxRow,int maxLine);
     void definePosition(int row, int line);
     void displayPosition();

@@ -14,10 +14,8 @@
 //TODO: verify if lists belong to C++
 //TODO: add the shared id to the Food
 class Food {
-private:
-    int currentLifetime;
-    bool available;
 public:
+    int currentLifetime;
     int id;
     char identifier;
     std::string identifierEmoji;
@@ -27,11 +25,13 @@ public:
     std::list<int> smells;
     int maxLifetime;
     Food();
-    void definePosition(int row, int line);
     void display();
+    void defineRandomPosition(int maxRow,int maxLine);
+
+    void definePosition(int row, int line);
     void isFoodAvailable();
     void incrementLifeTick();
-    void defineRandomPosition(int maxRow,int maxLine);
+
 
 };
 

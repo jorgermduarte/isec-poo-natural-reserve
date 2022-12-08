@@ -6,3 +6,4 @@ food b 0 1
 food r 7 7
 food a 5 5
 food t 5 7
+food a 0 0

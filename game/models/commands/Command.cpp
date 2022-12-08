@@ -18,6 +18,7 @@
 #include "../../commands/FeedCommand.h"
 #include "../../commands/FeedIDCommand.h"
 #include "../../commands/NoFoodCommand.h"
+#include "../../commands/SeeCommand.h"
 
 using namespace std;
 
@@ -102,7 +103,7 @@ void Command::execute(std::string &command, Game *game) {
                 exec_command_empty(args);
                 break;
             case 7:
-                exec_command_see(args);
+                (new SeeCommand(game,args))->execute();
                 break;
             case 8:
                 (new InfoCommand(game,args))->execute();

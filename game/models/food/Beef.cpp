@@ -7,6 +7,7 @@
 
 Beef::Beef() {
     this->maxLifetime = 30;
+    this->currentLifetime = maxLifetime;
     this->nutritiveValue = 10;
     this->toxicity = 2;
     this->smells.push_back(ENUM_Meat);

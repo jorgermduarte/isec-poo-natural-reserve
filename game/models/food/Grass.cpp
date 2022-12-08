@@ -9,6 +9,7 @@
 Grass::Grass() {
     this->maxLifetime = 20;
     this->nutritiveValue = 3;
+    this->currentLifetime = maxLifetime;
     this->toxicity = 0;
     this->smells.push_back(ENUM_Grass);
     this->smells.push_back(ENUM_Vegetables);

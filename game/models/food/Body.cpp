@@ -8,6 +8,7 @@
 Body::Body() {
     this->maxLifetime = -1;
     this->nutritiveValue = 0;
+    this->currentLifetime = maxLifetime;
     this->toxicity = 0;
     this->smells.push_back(ENUM_Meat);
     this->identifierEmoji = "\u2B55";

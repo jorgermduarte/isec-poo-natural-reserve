@@ -55,19 +55,6 @@ void exec_command_empty(std::vector<std::string> args){
     }
 }
 
-void exec_command_see(std::vector<std::string> args){
-    if(args.size() == 3){
-        if(isNumber(args[1]) && isNumber(args[2])) {
-            string line = args[1];
-            string column = args[2];
-            std::cout << "  > Executing the see command for line: " + line + " and column: " + column << std::endl;
-        }
-    }else{
-        std::cout << "  > Invalid command provided, the see command must contain only 2 arguments, example: see <line> <column>" << std::endl;
-    }
-
-}
-
 void exec_command_n(std::vector<std::string> args){
     if(args.size() == 1){
         std::cout << "  > Executing the n command" << std::endl;
@@ -88,8 +75,7 @@ void exec_command_n(std::vector<std::string> args){
         }
     }else{
         std::cout << "  > Invalid command provided, the n command should contain, no args, 1 or 2 args, example: n, n<N>, n <N> <P>" << std::endl;
-    };
-
+    }
 }
 
 void exec_command_store(std::vector<std::string> args){
