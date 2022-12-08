@@ -16,15 +16,18 @@ void VisAnimCommand::execute() {
     int minCols = game->configuration.screenPosition.column;
     int minRows = game->configuration.screenPosition.row;
 
-    Node<Animal>* item = game->animals->getHead();
+    if(game->animals != NULL){
+        Node<Animal>* item = game->animals->getHead();
 
-    while(item != NULL){
-        if(item->value != NULL){
-            if( item->value->position.row >= minRows && item->value->position.column >= minCols
-                && item->value->position.row <= currentMaxRows && item->value->position.column <= currentMaxCols){
-                item->value->display();
+        while(item != NULL){
+            if(item->value != NULL){
+                if( item->value->position.row >= minRows && item->value->position.column >= minCols
+                    && item->value->position.row <= currentMaxRows && item->value->position.column <= currentMaxCols){
+                    item->value->display();
+                }
+                item = item->next;
             }
-            item = item->next;
         }
     }
+
 }

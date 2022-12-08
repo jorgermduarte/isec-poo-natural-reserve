@@ -8,12 +8,14 @@
 void AnimCommand::execute() {
     std::cout << "  > Executing the anim command" << std::endl;
 
-    Node<Animal>* item = game->animals->getHead();
+    if(game->animals != NULL){
+        Node<Animal>* item = game->animals->getHead();
 
-    while(item != NULL){
-        if(item->value != NULL){
-            item->value->display();
-            item = item->next;
+        while(item != NULL){
+            if(item->value != NULL){
+                item->value->display();
+                item = item->next;
+            }
         }
     }
 }

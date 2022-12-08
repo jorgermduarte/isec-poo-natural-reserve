@@ -13,6 +13,8 @@
 #include "../../commands/VisAnimCommand.h"
 #include "../../commands/LoadCommand.h"
 #include "../../commands/SlideCommand.h"
+#include "../../commands/AnimalCommand.h"
+#include "../../commands/FoodCommand.h"
 
 using namespace std;
 
@@ -76,13 +78,13 @@ void Command::execute(std::string &command, Game *game) {
         //handling the execution of the different commands
         switch(got->second) {
             case 0: // this is the "animal" case
-                exec_command_animal(args);
+                (new AnimalCommand(game,args))->execute();
                 break;
             case 1: // this is the "kill" case
                 exec_command_kill(args);
                 break;
-            case 2:
-                exec_command_food(args);
+            case 2: //food
+                (new FoodCommand(game,args))->execute();
                 break;
             case 3:
                 exec_command_feed(args);

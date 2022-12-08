@@ -9,7 +9,7 @@ Fox::Fox() {
     this->identifierEmoji = "\U0001f98a";
     this->weight = rand() % 4 + 1;
     this->currentHP = Fox::maxHP;
-    this->identifier = 'f';
+    this->identifier = 'm';
 }
 
 void Fox::reproduce() {

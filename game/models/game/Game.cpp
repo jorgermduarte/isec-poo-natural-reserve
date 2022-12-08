@@ -1,8 +1,6 @@
 //
 // Created by duarte on 11-11-2022.
 //
-
-#include <iostream>
 #include "Game.h"
 
 int Game::matrixGetNumRows() {

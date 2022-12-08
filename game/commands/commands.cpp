@@ -10,29 +10,6 @@
 
 using namespace std;
 
-void exec_command_animal(std::vector<std::string> args){
-    std::cout << "  > Executing the animal command" << std::endl;
-
-    if(args.size() < 2){
-        std::cout << "  > Invalid command provided, the animal command must contain at least 1 argument <specie: c / o / l / g / m> or <specie: c / o / l / g / m> <line> <column>" << std::endl;
-    }else if(args.size() == 2){
-        std::cout << "  > Spawning the specie of type " + args[1] +  " in a random position" << std::endl;
-
-    }else if(args.size() == 4){
-        std::string line = args[2];
-        std::string column = args[3];
-
-        if(isNumber(line) && isNumber(column)){
-            std::cout << "  > Spawning the specie of type " + args[1] +  " in the position: l:" + line + " c:" + column << std::endl;
-        }else{
-            std::cout << "  > Invalid command provided, the animal command should contain the position and line arguments as integers and not characters" << std::endl;
-        }
-    }else{
-        std::cout << "  > Invalid command provided, the animal command must contain at least 1 argument <specie: c / o / l / g / m> or <specie: c / o / l / g / m> <line> <column>" << std::endl;
-    }
-
-}
-
 void exec_command_kill(std::vector<std::string> args){
     std::cout << "  > Executing the kill command" << std::endl;
 
@@ -47,37 +24,6 @@ void exec_command_kill(std::vector<std::string> args){
         }
     }else{
         std::cout << "  > Invalid command provided, the kill command can be kill <line> <column>> " << std::endl;
-    }
-}
-
-void exec_command_food(std::vector<std::string> args){
-    std::cout << "  > Executing the food command" << std::endl;
-    bool validFood = false;
-    if ( args.size() == 2 ) {
-        for( const auto &item : allowedFoodTypes){
-            if(args[1]== item) {
-                validFood = true;
-                std::cout << "Spawning " + item + " in a random position "<< std::endl;
-            }
-        }
-        if(validFood == false){
-            std::cout << " Please insert valid a type of food" << std::endl;
-        }
-    }
-    else if(args.size() == 4) {
-        for (const auto &item: allowedFoodTypes) {
-            if (args[1] == item) {
-                validFood = true;
-                if (isNumber(args[2]) && isNumber(args[3])) {
-                    std::cout << "  > Spawning " + args[1] + " in the position: l: " + args[2] + " c:" + args[3]  << std::endl;
-                }
-            }
-        }
-        if (validFood == false) {
-            std::cout << " Please insert valid a type of food or integer values on the line/column" << std::endl;
-        }
-    }else{
-        std::cout << " Food command should look like: (food <tipo: r / t / b / a> <linha> <coluna>  or (food <tipo: r / t / b / a>)" << std::endl;
     }
 }
 

@@ -14,29 +14,34 @@ void InfoCommand::execute() {
             int id = atoi(args[1].c_str());
 
 
-            Node<Animal>* item = game->animals->getHead();
+            if(game->animals != NULL){
+                Node<Animal>* item = game->animals->getHead();
 
-            while(item != NULL){
-                if(item->value != NULL){
-                    if(item->value->id == id){
-                        found = true;
-                        item->value->display();
-                    }
-                }
-                item = item->next;
-            }
-
-            if(!found){
-                Node<Food>* itemFoods = game->foods->getHead();
-
-                while(itemFoods != NULL){
-                    if(itemFoods->value != NULL){
-                        if(itemFoods->value->id == id){
+                while(item != NULL){
+                    if(item->value != NULL){
+                        if(item->value->id == id){
                             found = true;
-                            itemFoods->value->display();
+                            item->value->display();
                         }
                     }
-                    itemFoods = itemFoods->next;
+                    item = item->next;
+                }
+            }
+
+
+            if(!found){
+                if(game->foods != NULL){
+                    Node<Food>* itemFoods = game->foods->getHead();
+
+                    while(itemFoods != NULL){
+                        if(itemFoods->value != NULL){
+                            if(itemFoods->value->id == id){
+                                found = true;
+                                itemFoods->value->display();
+                            }
+                        }
+                        itemFoods = itemFoods->next;
+                    }
                 }
             }
 

@@ -36,9 +36,11 @@ void displayNaturalReserve(Game &game){
 
 void displayAnimals(Game &game){
     std::cout << "=============================== | ANIMALS | =================================== " << std::endl;
-    Node<Animal> *current = game.animals->getHead();
-    while(current != NULL){
-        current->value->display();
-        current = current->next;
+    if(game.animals != NULL){
+        Node<Animal> *current = game.animals->getHead();
+        while(current != NULL){
+            current->value->display();
+            current = current->next;
+        }
     }
 }
