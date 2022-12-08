@@ -99,7 +99,7 @@ void GameService::readConstantsFile() {
                 cout << "   > executing configuration setting: " + item << endl;
                 vector<string> args = Command::getArguments(item);
 
-                if(args.size() >= 2){
+                if(args.size() == 2){
                     //handling definitions for animals
                     if(args[0] == "SSheep"){
                         if(isNumber(args[1])){
@@ -108,12 +108,32 @@ void GameService::readConstantsFile() {
                             cout << "   > Invalid second parameter detected for the sheep configuration" << endl;
                         }
                     }
-                    //handling definitions for animals
-                    if(args[0] == "SRabbit"){
+                    else if(args[0] == "SRabbit"){
                         if(isNumber(args[1])){
                             Rabbit::maxHP = stoi(args[1]);
                         }else{
                             cout << "   > Invalid second parameter detected for the sheep configuration" << endl;
+                        }
+                    }
+                    else if(args[0] == "SFox"){
+                        if(isNumber(args[1])){
+                            Fox::maxHP = stoi(args[1]);
+                        }else{
+                            cout << "   > Invalid second parameter detected for the fox configuration" << endl;
+                        }
+                    }
+                    else if(args[0] == "SKangaroo"){
+                        if(isNumber(args[1])){
+                            Kangaroo::maxHP = stoi(args[1]);
+                        }else{
+                            cout << "   > Invalid second parameter detected for the kangaroo configuration" << endl;
+                        }
+                    }
+                    else if(args[0] == "SWolf"){
+                        if(isNumber(args[1])){
+                            Wolf::maxHP = stoi(args[1]);
+                        }else{
+                            cout << "   > Invalid second parameter detected for the wolf configuration" << endl;
                         }
                     }
                 }else{

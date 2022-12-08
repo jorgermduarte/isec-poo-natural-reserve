@@ -25,6 +25,8 @@
 - [ ] do a project global check
 - [ ] verify the animals/foods properties and correct if necessary
 - [ ] implement the S and V handling types for all the animals and foods( not sure if the foods needs it) (constantes.txt)
+  - [x] S Types
+  - [ ] V Types
 - [ ] have a meeting to decide the main functions necessary to the animals interactions
 - [ ] implement the main functions necessary to the animals interactions
 - [ ] implement the "daily" function inside the execute_command_n
