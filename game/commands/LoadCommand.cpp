@@ -20,6 +20,7 @@ void LoadCommand::execute() {
         std::string currentCommand;
         std::fstream newfile;
         newfile.open(args[1],std::ios::in); //open a file to perform read operation using file object
+        newfile.ignore(3); // this is to prevent errors on the first line from the environments files
         if (newfile.is_open()){ //checking whether the file is open
             cout << "We have detected a " + args[1] + " file, executing.." << endl;
             string tp;
