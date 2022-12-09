@@ -80,12 +80,14 @@ void NoFoodCommand::execute() {
             int column = stoi(args[2]);
             std::cout << "  > Executing the nofood command for the line: " + std::to_string(line) +" and column: " + std::to_string(column) << std::endl;
 
-            //remove the food from the matrix
-            Node<Food> *foodMatrixCell = game->matrix[column][line].foods;
-            while(foodMatrixCell != NULL){
-                deleteFoodById(game, foodMatrixCell->value->id);
-                foodMatrixCell = foodMatrixCell->next;
+            if(game->matrix[column][line].foods != NULL) {
+                Node<Food> *foodMatrixCell = game->matrix[column][line].foods;
+                while(foodMatrixCell != NULL){
+                    deleteFoodById(game, foodMatrixCell->value->id);
+                    foodMatrixCell = foodMatrixCell->next;
+                }
             }
+
         }else{
             std::cout << "  > Invalid command provided, the nofood command arguments should be numbers" << std::endl;
         }

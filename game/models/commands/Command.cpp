@@ -19,6 +19,9 @@
 #include "../../commands/FeedIDCommand.h"
 #include "../../commands/NoFoodCommand.h"
 #include "../../commands/SeeCommand.h"
+#include "../../commands/KillCommand.h"
+#include "../../commands/KillIDCommand.h"
+#include "../../commands/EmptyCommand.h"
 
 using namespace std;
 
@@ -85,7 +88,7 @@ void Command::execute(std::string &command, Game *game) {
                 (new AnimalCommand(game,args))->execute();
                 break;
             case 1: // this is the "kill" case
-                exec_command_kill(args);
+                (new KillCommand(game,args))->execute();
                 break;
             case 2: //food
                 (new FoodCommand(game,args))->execute();
@@ -100,7 +103,7 @@ void Command::execute(std::string &command, Game *game) {
                 (new NoFoodCommand(game,args))->execute();
                 break;
             case 6:
-                exec_command_empty(args);
+                (new EmptyCommand(game,args))->execute();
                 break;
             case 7:
                 (new SeeCommand(game,args))->execute();
@@ -130,7 +133,7 @@ void Command::execute(std::string &command, Game *game) {
                 (new SlideCommand(game,args))->execute();
                 break;
             case 16:
-                exec_command_killid(args);
+                (new KillIDCommand(game,args))->execute();
                 break;
             default:
                 break;

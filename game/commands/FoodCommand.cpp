@@ -29,7 +29,7 @@ void spawnFood(std::string type, bool randomCoordinates, int col, int row, Game*
 
     if(validType){
         if(randomCoordinates){
-            food->defineRandomPosition(game->matrixGetNumRows(),game->matrixGetNumColumns());
+            food->defineRandomPosition(game->configuration.size.rows-1,game->configuration.size.cols-1);
         }else{
             food->position.column = col;
             food->position.row = row;

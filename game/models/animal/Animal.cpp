@@ -22,6 +22,9 @@ void Animal::setPosition(int row, int column) {
 void Animal::defineRandomPosition(int maxRow,int maxLine) {
     int row = rand() % (maxRow);
     int col = rand() % (maxLine);
+
+    std::cout << " > Animal " << this->id << " is being placed in the position: line: " << row << " col:" << col << std::endl;
+
     this->position.row = row;
     this->position.column = col;
 }

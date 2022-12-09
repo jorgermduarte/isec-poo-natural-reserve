@@ -2,14 +2,14 @@
 
 # Project meta 2 - implementations needed
 
-- [ ] implement the base commands
+- [x] implement the base commands
   - [x] exec_command_nofood
   - [x] exec_command_feed
   - [x] exec_command_feedid
   - [x] exec_command_see
-  - [ ] exec_command_killid
-  - [ ] exec_command_kill
-  - [ ] exec_command_empty
+  - [x] exec_command_killid
+  - [x] exec_command_kill
+  - [x] exec_command_empty
 - [x] after the implementation of the base commands above we need to implement the command:
   - [x] exec_command_animal
   - [x] exec_command_food

@@ -33,7 +33,7 @@ void spawnAnimal(std::string type, bool randomCoordinates, int col, int row, Gam
 
     if(validType){
         if(randomCoordinates){
-            animal->defineRandomPosition(game->matrixGetNumRows(),game->matrixGetNumColumns());
+            animal->defineRandomPosition(game->configuration.size.rows-1,game->configuration.size.cols-1);
         }else{
             animal->position.column = col;
             animal->position.row = row;

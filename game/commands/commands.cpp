@@ -10,51 +10,6 @@
 
 using namespace std;
 
-void exec_command_kill(std::vector<std::string> args){
-    std::cout << "  > Executing the kill command" << std::endl;
-
-    if (args.size() == 3){
-        //kill entities at a given position args[1] and args[2]
-        std::string line = args[1];
-        std::string column = args[2];
-        if (isNumber(line) && isNumber(column)) {
-            std::cout << "  > killing the animal in the position: l: " + args[1] + " c:" + args[2] << std::endl;
-        } else {
-            std::cout << "  > Invalid command provided, the line and columns arguments must be integers" << std::endl;
-        }
-    }else{
-        std::cout << "  > Invalid command provided, the kill command can be kill <line> <column>> " << std::endl;
-    }
-}
-
-void exec_command_killid(std::vector<std::string> args){
-    std::cout << "  > Executing the killid command" << std::endl;
-    if(args.size()== 2){
-        if(isNumber(args[1])){
-            //kill an entity id on args[1];
-            std::cout << "  > killing the animal with id: " + args[1] << std::endl;
-        }else{
-            std::cout << "  > Invalid command provided, the id must be an integer" << std::endl;
-        }
-    }else{
-        std::cout << "  > Invalid command provided, the killid command should be be killid <id> " << std::endl;
-    }
-}
-
-void exec_command_empty(std::vector<std::string> args){
-    if(args.size() == 3){
-        if(isNumber(args[1]) && isNumber(args[2])){
-            string line = args[1];
-            string column = args[2];
-            std::cout << "  > Executing the empty command for line: " + line + " and column: " + column << std::endl;
-        }else{
-            std::cout << "  > Invalid command provided, the empty command arguments should be numbers" << endl;
-        }
-    }else{
-        std::cout << "  > Invalid command provided, the empty command must contain only 2 arguments, example: empty <line> <column>" << std::endl;
-    }
-}
-
 void exec_command_n(std::vector<std::string> args){
     if(args.size() == 1){
         std::cout << "  > Executing the n command" << std::endl;
