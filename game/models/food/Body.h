@@ -8,8 +8,10 @@
 
 #include "Food.h"
 
+
 class Body: public Food{
 public:
+    static int configMaxIterations;
     Body();
 };
 

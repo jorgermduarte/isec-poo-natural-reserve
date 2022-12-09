@@ -11,6 +11,7 @@
 class Kangaroo : public Animal {
 public:
     static int configMaxHP;
+    static int configMaxIterations;
     Kangaroo();
     void reproduce() override;
     void move() override;

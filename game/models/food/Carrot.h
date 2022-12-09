@@ -10,6 +10,7 @@
 
 class Carrot: public Food{
 public:
+    static int configMaxIterations;
     Carrot();
 };
 

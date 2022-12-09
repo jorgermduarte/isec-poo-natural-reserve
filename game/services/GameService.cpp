@@ -14,6 +14,11 @@
 #include "../models/animal/Kangaroo.h"
 #include "../models/animal/Wolf.h"
 #include "../models/commands/Command.h"
+#include "../models/food/Carrot.h"
+#include "../models/food/Beef.h"
+#include "../models/food/Grass.h"
+#include "../models/food/Body.h"
+#include "../models/food/Blueberries.h"
 
 using namespace std;
 
@@ -127,6 +132,76 @@ void GameService::readConstantsFile() {
                             Wolf::configMaxHP = stoi(args[1]);
                         }else{
                             cout << "   > Invalid second parameter detected for the wolf configuration" << endl;
+                        }
+                    }
+                    if(args[0] == "VSheep"){
+                        if(isNumber(args[1])){
+                            Sheep::configMaxIterations = stoi(args[1]);
+                        }else{
+                            cout << "   > Invalid second parameter detected for the sheep configuration" << endl;
+                        }
+                    }
+                    else if(args[0] == "VRabbit"){
+                        if(isNumber(args[1])){
+                            Rabbit::configMaxIterations = stoi(args[1]);
+                        }else{
+                            cout << "   > Invalid second parameter detected for the sheep configuration" << endl;
+                        }
+                    }
+                    else if(args[0] == "VFox"){
+                        if(isNumber(args[1])){
+                            Fox::configMaxIterations = stoi(args[1]);
+                        }else{
+                            cout << "   > Invalid second parameter detected for the fox configuration" << endl;
+                        }
+                    }
+                    else if(args[0] == "VKangaroo"){
+                        if(isNumber(args[1])){
+                            Kangaroo::configMaxIterations = stoi(args[1]);
+                        }else{
+                            cout << "   > Invalid second parameter detected for the kangaroo configuration" << endl;
+                        }
+                    }
+                    else if(args[0] == "VWolf"){
+                        if(isNumber(args[1])){
+                            Wolf::configMaxIterations = stoi(args[1]);
+                        }else{
+                            cout << "   > Invalid second parameter detected for the wolf configuration" << endl;
+                        }
+                    }
+                    else if(args[0] == "VGrass"){
+                        if(isNumber(args[1])){
+                            Grass::configMaxIterations = stoi(args[1]);
+                        }else{
+                            cout << "   > Invalid second parameter detected for the grass configuration" << endl;
+                        }
+                    }
+                    else if(args[0] == "VBeef"){
+                        if(isNumber(args[1])){
+                            Beef::configMaxIterations = stoi(args[1]);
+                        }else{
+                            cout << "   > Invalid second parameter detected for the beef configuration" << endl;
+                        }
+                    }
+                    else if(args[0] == "VBody"){
+                        if(isNumber(args[1])){
+                            Body::configMaxIterations = stoi(args[1]);
+                        }else{
+                            cout << "   > Invalid second parameter detected for the body configuration" << endl;
+                        }
+                    }
+                    else if(args[0] == "VCarrot"){
+                        if(isNumber(args[1])){
+                            Carrot::configMaxIterations = stoi(args[1]);
+                        }else{
+                            cout << "   > Invalid second parameter detected for the carrot configuration" << endl;
+                        }
+                    }
+                    else if(args[0] == "VBlueberries"){
+                        if(isNumber(args[1])){
+                            Blueberries::configMaxIterations = stoi(args[1]);
+                        }else{
+                            cout << "   > Invalid second parameter detected for the blueberries configuration" << endl;
                         }
                     }
                 }else{

@@ -15,7 +15,9 @@
 //TODO: add the shared id to the Food
 class Food {
 public:
-    int currentLifetime;
+    static int configMaxIterations;
+    int currentIterations = 0;
+    int maxIterations;
     int id;
     char identifier;
     std::string identifierEmoji;
@@ -23,7 +25,6 @@ public:
     int nutritiveValue;
     int toxicity;
     std::list<int> smells;
-    int maxLifetime;
     Food();
     void display();
     void defineRandomPosition(int maxRow,int maxLine);

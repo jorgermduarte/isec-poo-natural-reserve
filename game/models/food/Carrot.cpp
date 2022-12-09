@@ -5,10 +5,11 @@
 #include "Carrot.h"
 #include "../enums/Smell.h"
 
+int Carrot::configMaxIterations = 0;
+
 Carrot::Carrot() {
-    this->maxLifetime = -1;
     this->nutritiveValue = 4;
-    this->currentLifetime = maxLifetime;
+    this->maxIterations = Carrot::configMaxIterations;
     this->toxicity = 0;
     this->smells.push_back(ENUM_Vegetables);
     this->identifierEmoji = "\U0001f955";

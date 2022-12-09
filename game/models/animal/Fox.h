@@ -11,6 +11,7 @@
 class Fox: public Animal{
 public:
     static int configMaxHP;
+    static int configMaxIterations;
     Fox();
     void reproduce() override;
     void move() override;

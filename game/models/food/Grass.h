@@ -9,6 +9,7 @@
 
 class Grass: public Food{
 public:
+    static int configMaxIterations;
     Grass();
 };
 

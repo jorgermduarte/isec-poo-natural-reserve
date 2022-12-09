@@ -10,6 +10,7 @@
 class Rabbit: public Animal {
 public:
     static int configMaxHP;
+    static int configMaxIterations;
     Rabbit();
     void reproduce() override;
     void move() override;

@@ -5,9 +5,10 @@
 #include "Beef.h"
 #include "../enums/Smell.h"
 
+int Beef::configMaxIterations = 0;
+
 Beef::Beef() {
-    this->maxLifetime = 30;
-    this->currentLifetime = maxLifetime;
+    this->maxIterations = Beef::configMaxIterations;
     this->nutritiveValue = 10;
     this->toxicity = 2;
     this->smells.push_back(ENUM_Meat);

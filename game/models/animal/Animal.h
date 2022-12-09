@@ -13,22 +13,24 @@ class Animal {
 public:
     Animal();
     static int configMaxHP;
+    static int configMaxIterations;
     int id;
     int maxHP;
     int currentHP;
+    int currentIterations = 0;
+    int maxIterations;
     char identifier;
     std::string identifierEmoji;
     Position position = {0,0};
     int weight;
-    int hunger;
-    int angryLevel;
+    void feed(int nutritivePoints, int toxicityPoints);
+    void display();
     void defineRandomPosition(int maxRow,int maxLine);
     void definePosition(int row, int line);
     void displayPosition();
-    void display();
     void setPosition(int row, int column);
     void setCurrentHP(int value);
-    void feed(int nutritivePoints, int toxicityPoints);
+
 
     //TODO: this function will contain all the logic representing the instant
     virtual void triggerInstant();

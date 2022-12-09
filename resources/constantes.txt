@@ -3,3 +3,13 @@ SSheep 30
 SFox 40
 SKangaroo 50
 SWolf 40
+VRabbit 35
+VSheep 30
+VFox 25
+VKangaroo 20
+VWolf 25
+VGrass 20
+VBeef 30
+VBody 999999
+VCarrot 999999
+VBlueberries 50

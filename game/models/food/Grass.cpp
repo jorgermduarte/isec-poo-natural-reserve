@@ -5,11 +5,11 @@
 #include "Grass.h"
 #include "../enums/Smell.h"
 
+int Grass::configMaxIterations = 0;
 
 Grass::Grass() {
-    this->maxLifetime = 20;
     this->nutritiveValue = 3;
-    this->currentLifetime = maxLifetime;
+    this->maxIterations = Grass::configMaxIterations;
     this->toxicity = 0;
     this->smells.push_back(ENUM_Grass);
     this->smells.push_back(ENUM_Vegetables);

@@ -19,9 +19,9 @@
     - [x] different types of foods
     - [x] different types of animals
 - [ ] do a project global check
-- [ ] implement the S and V handling types for all the animals and foods( not sure if the foods needs it) (constantes.txt)
+- [X] implement the S and V handling types for all the animals and foods( not sure if the foods needs it) (constantes.txt)
   - [x] S Types
-  - [ ] V Types
+  - [X] V Types
 - [ ] create a way to store all the commands executed by the user
   - [ ] create a way to store the commands in a list called on the Command.cpp (execute function)
     - [ ] remember that all the commands are based on the BaseCommand (easier)

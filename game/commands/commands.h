@@ -12,6 +12,6 @@
 
 void exec_command_store(std::vector<std::string> args);
 void exec_command_restore(std::vector<std::string> args);
-
 void exec_command_n(std::vector<std::string> args);
+
 #endif //POO_NATURAL_RESERVE_COMMANDS_H

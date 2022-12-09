@@ -5,9 +5,10 @@
 #include "Blueberries.h"
 #include "../enums/Smell.h"
 
+int Blueberries::configMaxIterations = 0;
+
 Blueberries::Blueberries() {
-    this->maxLifetime = 20;
-    this->currentLifetime = maxLifetime;
+    this->maxIterations = Blueberries::configMaxIterations;
     this->nutritiveValue = 15;
     this->toxicity = 0;
     this->smells.push_back(ENUM_Vegetables);
