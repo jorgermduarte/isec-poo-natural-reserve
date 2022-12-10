@@ -73,6 +73,10 @@ void SaveGame::setSaveGameName(std::string saveName) {
     this->name = saveName;
 }
 
+std::string SaveGame::getSaveGameName() {
+    return this->name;
+}
+
 void SaveGame::saveAnimals(Node<Animal> *animals) {
     while(animals != NULL){
         if(animals->value != NULL){

@@ -25,6 +25,7 @@ public:
     Node<Food>* findFoodNode(int id);
     Node<Animal>* findAnimalNode(int id);
 
+    std::string getSaveGameName();
     void setSaveGameName(std::string saveGame);
     void saveAnimals(Node<Animal> *animals);
     void saveFoods(Node<Food> *foods);
