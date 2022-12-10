@@ -6,7 +6,6 @@
 #include <iostream>
 #include "Command.h"
 #include "../../user_interface/userInterface.h"
-#include "../../commands/commands.h"
 #include "allowedCommands.h"
 #include "../../commands/InfoCommand.h"
 #include "../../commands/AnimCommand.h"
@@ -22,6 +21,9 @@
 #include "../../commands/KillCommand.h"
 #include "../../commands/KillIDCommand.h"
 #include "../../commands/EmptyCommand.h"
+#include "../../commands/StoreCommand.h"
+#include "../../commands/RestoreCommand.h"
+#include "../../commands/NCommand.h"
 
 using namespace std;
 
@@ -112,7 +114,7 @@ void Command::execute(std::string &command, Game *game) {
                 (new InfoCommand(game,args))->execute();
                 break;
             case 9:
-                exec_command_n(args);
+                (new NCommand(game,args))->execute();
                 break;
             case 10:
                 (new AnimCommand(game))->execute();
@@ -121,10 +123,10 @@ void Command::execute(std::string &command, Game *game) {
                 (new VisAnimCommand(game))->execute();
                 break;
             case 12:
-                exec_command_store(args);
+                (new StoreCommand(game,args))->execute();
                 break;
             case 13:
-                exec_command_restore(args);
+                (new RestoreCommand(game,args))->execute();
                 break;
             case 14:
                 (new LoadCommand(game,args))->execute();

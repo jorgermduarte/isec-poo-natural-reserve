@@ -1,21 +1,31 @@
+﻿//
+// Created by duarte on 09-12-2022.
 //
-// Created by duarte on 11-11-2022.
-//
+#include "SaveGame.h"
 #include <iostream>
-#include "Game.h"
 
-int Game::matrixGetNumRows() {
-    return this->matrix.size();
-}
-
-int Game::matrixGetNumColumns() {
-    if(this->matrixGetNumRows() > 0){
-        return this->matrix[0].size();
+Node<Food>* SaveGame::findFoodNode(int id) {
+    Node<Food> *current = this->foods;
+    while(current != NULL){
+        if(current->value->id == id){
+            break;
+        }
+        current = current->next;
     }
-    return 0;
+    return current;
 }
 
-void Game::addAnimal(Animal* animal) {
+Node<Animal>* SaveGame::findAnimalNode(int id) {
+    Node<Animal> *current = this->animals;
+    while(current != NULL){
+        if(current->value->id == id){
+            return current;
+        }
+        current = current->next;
+    }
+    return NULL;
+}
+void SaveGame::addAnimal(Animal* animal) {
     Node<Animal> *newAnimalList = new Node<Animal>(animal);
     Node<Animal> *newAnimalMatrixCell = new Node<Animal>(animal);
 
@@ -36,7 +46,7 @@ void Game::addAnimal(Animal* animal) {
     }
 }
 
-void Game::addFood(Food* food) {
+void SaveGame::addFood(Food* food) {
 
     Node<Food> *newFoodList = new Node<Food>(food);
     Node<Food> *newFoodMatrixCell = new Node<Food>(food);
@@ -59,40 +69,41 @@ void Game::addFood(Food* food) {
     }
 }
 
-void Game::displayAnimals() {
-    Node<Animal> *current = this->animals;
-    while(current != NULL){
-        current->value->display();
-        current = current->next;
-    }
+void SaveGame::setSaveGameName(std::string saveName) {
+    this->name = saveName;
 }
 
-void Game::displayFoods() {
-    Node<Food> *current = this->foods;
-    while(current != NULL){
-        current->value->display();
-        current = current->next;
-    }
-}
+void SaveGame::saveAnimals(Node<Animal> *animals) {
+    while(animals != NULL){
+        if(animals->value != NULL){
+            Animal* animal = new Animal();
+            *animal = *animals->value;
 
-Node<Food>* Game::findFoodNode(int id) {
-    Node<Food> *current = this->foods;
-    while(current != NULL){
-        if(current->value->id == id){
-            break;
+            this->addAnimal(animal);
+            animals = animals->next;
         }
-        current = current->next;
     }
-    return current;
 }
 
-Node<Animal>* Game::findAnimalNode(int id) {
-    Node<Animal> *current = this->animals;
-    while(current != NULL){
-        if(current->value->id == id){
-            return current;
+void SaveGame::saveFoods(Node<Food> *foods) {
+    while(foods != NULL){
+        if(foods->value != NULL){
+            Food* food = new Food();
+            *food = *foods->value;
+
+            this->addFood(food);
+            foods = foods->next;
         }
-        current = current->next;
     }
-    return NULL;
+}
+
+void SaveGame::initializeMatrix(std::vector<std::vector<MatrixCell>> matrix,MatrixSize *matrixSize){
+    int x,y;
+    for( x = 0; x < matrixSize->cols; x++){
+        std::vector<MatrixCell> col = {};
+        for(y = 0; y < matrixSize->rows; y++){
+            col.push_back(MatrixCell(x,y));
+        }
+        this->matrix.push_back(col);
+    }
 }

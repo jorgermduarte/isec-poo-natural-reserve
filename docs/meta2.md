@@ -18,16 +18,17 @@
     - [x] multiple animals at the same line column
     - [x] different types of foods
     - [x] different types of animals
-- [ ] do a project global check
 - [X] implement the S and V handling types for all the animals and foods( not sure if the foods needs it) (constantes.txt)
   - [x] S Types
   - [X] V Types
-- [ ] create a way to store all the commands executed by the user
-  - [ ] create a way to store the commands in a list called on the Command.cpp (execute function)
-    - [ ] remember that all the commands are based on the BaseCommand (easier)
-      - [ ] implement the exec_command_store
-      - [ ] implement the exec_command_restore command
-
+- [x] do a project global check
+  - [ ] add validations on the commands that ask line/columns (check if the line/column is valid)
+  - [ ] add validation for integers on the board size setup ( verify max size too )
+  - [ ] verify if the kill command should invoke the body animal type on the location
+  - [ ] do a change to the slide command ????? or not?
+- [x] create a way to store all the in-game memory reserve executed by the user
+  - [x] implement the exec_command_store
+  - [ ] implement the exec_command_restore command
 - [ ] verify the animals/foods properties and correct if necessary
 - [ ] have a meeting to decide the main functions necessary to the animals interactions
 - [ ] implement the main functions necessary to the animals interactions
