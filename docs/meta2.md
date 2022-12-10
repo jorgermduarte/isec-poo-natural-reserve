@@ -33,8 +33,8 @@
   - [ ] be aware / do a global checkup of the pointers/ memory to remove completely using the store/restore and kill commands
   - [ ] only one food per position should be allowed
 - [x] have a meeting to decide the main functions necessary to the animals interactions
-- [ ] implement the "daily" function inside the execute_command_n
-  - [ ] finish the execute_command_n command
+- [x] implement the "daily" function inside the execute_command_n
+  - [x] finish the execute_command_n command
 - [ ] implement the main functions necessary to all  the animals interactions
   - [ ] fox
   - [ ] rabbit
