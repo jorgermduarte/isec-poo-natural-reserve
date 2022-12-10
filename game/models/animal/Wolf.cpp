@@ -2,6 +2,7 @@
 // Created by duarte on 07-12-2022.
 //
 
+#include <iostream>
 #include "Wolf.h"
 int Wolf::configMaxHP = 0;
 int Wolf::configMaxIterations = 0;
@@ -16,16 +17,30 @@ Wolf::Wolf() {
 }
 
 void Wolf::reproduce() {
-}
-
-void Wolf::triggerInstant() {
-
-}
-
-void Wolf::perceive() {
 
 }
 
 void Wolf::move() {
 
+}
+
+void Wolf::perception() {
+
+}
+
+void Wolf::eat() {
+
+}
+
+void Wolf::fight() {
+
+}
+
+void Wolf::verifications() {
+
+}
+
+void Wolf::do_iteration() {
+    std::cout << "      > Wolf iteration: ";
+    Animal::display();
 }

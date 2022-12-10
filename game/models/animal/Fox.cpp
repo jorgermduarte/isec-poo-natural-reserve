@@ -2,6 +2,7 @@
 // Created by duarte on 07-12-2022.
 //
 
+#include <iostream>
 #include "Fox.h"
 int Fox::configMaxHP = 0;
 int Fox::configMaxIterations = 0;
@@ -18,14 +19,22 @@ Fox::Fox() {
 void Fox::reproduce() {
 }
 
-void Fox::triggerInstant() {
-
-}
-
-void Fox::perceive() {
-
-}
-
 void Fox::move() {
+}
 
+void Fox::perception() {
+}
+
+void Fox::eat() {
+}
+
+void Fox::fight() {
+}
+
+void Fox::verifications() {
+}
+
+void Fox::do_iteration() {
+    std::cout << "      > Fox iteration: ";
+    Animal::display();
 }

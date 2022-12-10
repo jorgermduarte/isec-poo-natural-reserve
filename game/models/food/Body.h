@@ -10,9 +10,14 @@
 
 
 class Body: public Food{
+private:
+    virtual void reproduce() ;
+    virtual void verifications() ;
 public:
     static int configMaxIterations;
     Body();
+    //TODO: this function will contain all the logic representing the instant
+    virtual void do_iteration() override;
 };
 
 

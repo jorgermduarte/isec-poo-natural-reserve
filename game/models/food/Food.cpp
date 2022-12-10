@@ -36,3 +36,17 @@ void Food::display() {
     std::cout << "[" + std::to_string(this->id)+ "] [" + std::to_string(this->position.row) + std::to_string(this->position.column) + "] " + this->identifierEmoji + " Toxicity: " + std::to_string(this->toxicity) + " Nutritive Value: " +
             std::to_string(this->nutritiveValue) + " MLF: " + std::to_string(this->maxIterations) + " CLF: " + std::to_string(this->currentIterations) << std::endl;
 }
+
+void Food::do_iteration() {
+    //this->currentIterations++;
+    //this->reproduce();
+    //this->verifications();
+}
+
+void Food::verifications() {
+
+}
+
+void Food::reproduce() {
+
+}

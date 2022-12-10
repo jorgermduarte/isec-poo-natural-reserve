@@ -14,6 +14,9 @@
 //TODO: verify if lists belong to C++
 //TODO: add the shared id to the Food
 class Food {
+private:
+    virtual void reproduce() ;
+    virtual void verifications() ;
 public:
     static int configMaxIterations;
     int currentIterations = 0;
@@ -33,6 +36,8 @@ public:
     void isFoodAvailable();
     void incrementLifeTick();
 
+    //TODO: this function will contain all the logic representing the instant
+    virtual void do_iteration();
 
 };
 

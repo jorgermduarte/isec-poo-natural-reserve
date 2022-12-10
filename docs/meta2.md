@@ -25,14 +25,26 @@
   - [x] implement the exec_command_store
   - [x] implement the exec_command_restore command
 - [x] do a project global check
+  - [x] add validation for integers on the board size setup ( verify max size too )
   - [ ] add validations on the commands that ask line/columns (check if the line/column is valid)
-  - [ ] add validation for integers on the board size setup ( verify max size too )
   - [ ] verify if the kill command should invoke the body animal type on the location
   - [ ] do a change to the slide command ????? or not?
   - [ ] verify the animals/foods properties and correct if necessary
   - [ ] be aware / do a global checkup of the pointers/ memory to remove completely using the store/restore and kill commands
-- [ ] have a meeting to decide the main functions necessary to the animals interactions
-- [ ] implement the main functions necessary to the animals interactions
+  - [ ] only one food per position should be allowed
+- [x] have a meeting to decide the main functions necessary to the animals interactions
 - [ ] implement the "daily" function inside the execute_command_n
-- [ ] finish the execute_command_n command
-- [ ] global check of the project
+  - [ ] finish the execute_command_n command
+- [ ] implement the main functions necessary to all  the animals interactions
+  - [ ] fox
+  - [ ] rabbit
+  - [ ] wolf
+  - [ ] kangaroo
+  - [ ] sheep
+- [ ] implement the main functions necessary to all  the foods interactions
+  - [ ] carrot
+  - [ ] beef
+  - [ ] blueberries
+  - [ ] body
+  - [ ] grass
+- [ ] last global check of the project

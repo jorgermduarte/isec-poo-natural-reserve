@@ -2,6 +2,7 @@
 // Created by duarte on 07-12-2022.
 //
 
+#include <iostream>
 #include "Kangaroo.h"
 int Kangaroo::configMaxHP = 0;
 int Kangaroo::configMaxIterations = 0;
@@ -18,14 +19,22 @@ Kangaroo::Kangaroo() {
 void Kangaroo::reproduce() {
 }
 
-void Kangaroo::triggerInstant() {
-
-}
-
-void Kangaroo::perceive() {
-
-}
-
 void Kangaroo::move() {
+}
 
+void Kangaroo::perception() {
+}
+
+void Kangaroo::eat() {
+}
+
+void Kangaroo::fight() {
+}
+
+void Kangaroo::verifications() {
+}
+
+void Kangaroo::do_iteration() {
+    std::cout << "      > Kangaroo iteration: ";
+    Animal::display();
 }

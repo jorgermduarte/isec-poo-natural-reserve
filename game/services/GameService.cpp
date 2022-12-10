@@ -23,38 +23,37 @@
 using namespace std;
 
 void GameService::defineNaturalReserveConfiguration() {
-    int length = 0;
-    int height = 0;
-    bool failedValidations = false;
+    string length;
+    string height;
+
 
     cout << "Please provide the length of the natural reserve, value between 5-500" << endl;
-    cout << "Length: ";
+    cout << "   > Length: ";
     cin >> length;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-    if(!std::cin.good())
-        failedValidations = true;
+    cout << "Please provide the height of the natural reserve, value between 5-500" << endl;
+    cout << "   > Height: ";
+    cin >> height;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-    if(!failedValidations){
-        cout << "Please provide the height of the natural reserve, value between 5-500" << endl;
-        cout << "Height: ";
-        cin >> height;
-    }
 
-    if(!std::cin.good())
-       failedValidations = true;
-
-    if(failedValidations){
-        cin.clear();
-        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cout << " > Something went wrong defining the values of the natural reserve" << endl;
-        cout << " > Please provide them again..." << endl;
+    if(!isNumber(length) || !isNumber(height)){
+        cout << "   > Some values provided are not numbers, please try again" << endl;
         this->defineNaturalReserveConfiguration();
     }else{
-        cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
+        int lengthInt = stoi(length);
+        int heightInt = stoi(height);
 
-        this->game.configuration.setMatrixSize(height,length);
-        this->game.configuration.displayMatrixSize();
+        if(lengthInt < 5 || lengthInt > 500 || heightInt < 5 || heightInt > 500) {
+            cout << "   > Some values provided are not between the range of 5-500, please try again" << endl;
+            this->defineNaturalReserveConfiguration();
+        }else{
+            this->game.configuration.setMatrixSize(heightInt, lengthInt);
+            this->game.configuration.displayMatrixSize();
+        }
     }
+
 }
 
 void GameService::initializeMatrix() {

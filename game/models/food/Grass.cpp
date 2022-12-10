@@ -2,6 +2,7 @@
 // Created by duarte on 10-11-2022.
 //
 
+#include <iostream>
 #include "Grass.h"
 #include "../enums/Smell.h"
 
@@ -22,3 +23,15 @@ Grass::Grass() {
     this->position = { 0,0 };
 }
 
+void Grass::reproduce() {
+
+}
+
+void Grass::verifications() {
+
+}
+
+void Grass::do_iteration() {
+    std::cout << "      > Grass iteration: ";
+    Food::display();
+}

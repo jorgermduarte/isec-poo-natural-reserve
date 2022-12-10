@@ -1,6 +1,7 @@
 //
 // Created by duarte on 10-11-2022.
 //
+#include <iostream>
 #include "Rabbit.h"
 int Rabbit::configMaxHP = 0;
 int Rabbit::configMaxIterations = 0;
@@ -17,14 +18,22 @@ Rabbit::Rabbit() {
 void Rabbit::reproduce() {
 }
 
-void Rabbit::triggerInstant() {
-
-}
-
-void Rabbit::perceive() {
-
-}
-
 void Rabbit::move() {
+}
 
+void Rabbit::perception() {
+}
+
+void Rabbit::eat() {
+}
+
+void Rabbit::fight() {
+}
+
+void Rabbit::verifications() {
+}
+
+void Rabbit::do_iteration() {
+    std::cout << "      > Rabbit iteration: ";
+    Animal::display();
 }

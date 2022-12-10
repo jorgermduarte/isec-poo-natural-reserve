@@ -8,6 +8,8 @@
 #include "../models/commands/DefaultCommand.h"
 
 class NCommand: public DefaultCommand {
+private:
+    void instantExecution();
 public:
     NCommand(Game* game,std::vector<std::string> args): DefaultCommand(game,args){}
     void execute() override;

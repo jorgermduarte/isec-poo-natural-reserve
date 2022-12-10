@@ -9,14 +9,20 @@
 #include "Animal.h"
 
 class Fox: public Animal{
+private:
+    virtual void perception() override;
+    virtual void move() override;
+    virtual void reproduce()  override;
+    virtual void eat()  override;
+    virtual void fight()  override;
+    virtual void verifications()  override;
 public:
     static int configMaxHP;
     static int configMaxIterations;
+    //TODO: this function will contain all the logic representing the instant
+    virtual void do_iteration() override;
     Fox();
-    void reproduce() override;
-    void move() override;
-    void perceive() override;
-    void triggerInstant() override;
+
 };
 
 

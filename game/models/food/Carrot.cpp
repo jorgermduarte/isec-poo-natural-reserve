@@ -2,6 +2,7 @@
 // Created by duarte on 07-12-2022.
 //
 
+#include <iostream>
 #include "Carrot.h"
 #include "../enums/Smell.h"
 
@@ -21,3 +22,15 @@ Carrot::Carrot() {
     this->position = { 0,0 };
 }
 
+void Carrot::reproduce() {
+
+}
+
+void Carrot::verifications() {
+
+}
+
+void Carrot::do_iteration() {
+    std::cout << "      > Carrot iteration: ";
+    Food::display();
+}

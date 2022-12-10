@@ -63,15 +63,32 @@ void Animal::move() {
 
 }
 
-void Animal::perceive() {
-
-}
-
 void Animal::reproduce() {
 
 }
 
-void Animal::triggerInstant() {
+void Animal::eat() {
 
 }
 
+void Animal::fight() {
+
+}
+
+void Animal::verifications() {
+
+}
+
+void Animal::perception() {
+
+}
+
+void Animal::do_iteration() {
+    //this->currentIterations++;
+    //this->perception();
+    //this->move();
+    //this->reproduce();
+    //this->eat();
+    //this->fight();
+    //this->verifications();
+}
