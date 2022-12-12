@@ -29,7 +29,7 @@
   - [ ] add validations on the commands that ask line/columns (check if the line/column is valid)
   - [ ] verify if the kill command should invoke the body animal type on the location
   - [ ] do a change to the slide command ????? or not?
-  - [ ] verify the animals/foods properties and correct if necessary
+  - [x] verify the animals/foods properties and correct if necessary
   - [ ] be aware / do a global checkup of the pointers/ memory to remove completely using the store/restore and kill commands
   - [ ] only one food per position should be allowed
 - [x] have a meeting to decide the main functions necessary to the animals interactions

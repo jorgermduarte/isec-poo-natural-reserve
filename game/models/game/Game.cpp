@@ -153,11 +153,11 @@ std::vector<MatrixCell> Game::getMatrixCellsByArea(int i, Position position) {
     int minCol = position.column - i;
     int minRow = position.row - i;
 
-    if(maxCol > this->configuration.size.cols){
-        maxCol = this->configuration.size.cols;
+    if(maxCol >= this->configuration.size.cols){
+        maxCol = this->configuration.size.cols - 1;
     }
-    if(maxRow > this->configuration.size.rows){
-        maxRow = this->configuration.size.rows;
+    if(maxRow >= this->configuration.size.rows){
+        maxRow = this->configuration.size.rows - 1;
     }
     if(minCol < 0){
         minCol = 0;
@@ -166,9 +166,11 @@ std::vector<MatrixCell> Game::getMatrixCellsByArea(int i, Position position) {
         minRow = 0;
     }
 
-    for( minCol; minCol < maxCol; minCol++){
-        for(minRow; minRow < maxRow; minRow++){
-            result.push_back(this->matrix[minCol][minRow]);
+    int x, y = 0;
+    for( x = minCol; x < maxCol +1; x++){
+        for(y = minRow; y < maxRow +1; y++){
+                std::cout << " pushed col: n" + std::to_string(x) +" row: " + std::to_string(y) << std::endl;
+                result.push_back(this->matrix[x][y]);
         }
     }
 

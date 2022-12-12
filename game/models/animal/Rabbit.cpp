@@ -93,7 +93,6 @@ void Rabbit::move(Position position) {
             this->position.column += distanceLeft;
     }
 
-
     if(this->position.row < 0)
         this->position.row = 0;
     if(this->position.column < 0)
@@ -117,7 +116,6 @@ void Rabbit::move() {
     Game* game = GameSingleton::getGame();
     //remove from the matrix
     KillCommand::deleteAnimalFromMatrix(game,this->id);
-
 
     int distance = 0;
     if(this->hunger  < 10){

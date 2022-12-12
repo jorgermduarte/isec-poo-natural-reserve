@@ -1,0 +1,5 @@
+﻿animal c 0 0
+food r 0 4
+food r 0 7
+food r 4 0
+food r 4 3
