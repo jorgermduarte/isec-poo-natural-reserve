@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include "RestoreCommand.h"
-#include "../models/game/GameSingleton.h"
 
 //TODO: Implement the restore command
 void RestoreCommand::execute() {
@@ -30,9 +29,6 @@ void RestoreCommand::execute() {
             std::cout << "  > Restoring the foods" << std::endl;
             this->game->foods = saveGame->foods;
             std::cout << "  > Restored successfully" << std::endl;
-
-            //Update singleton
-            GameSingleton::setGame(this->game);
 
         }else{
             std::cout << "   > We couldn't find any save file with the name provided to restore..." << std::endl;

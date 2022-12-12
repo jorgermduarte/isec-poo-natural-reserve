@@ -16,31 +16,31 @@ Sheep::Sheep() {
     this->identifier = 'O';
 }
 
-void Sheep::reproduce() {
+void Sheep::reproduce(Game* game) {
 
 }
 
-void Sheep::move() {
+void Sheep::move(Game* game) {
 
 }
 
-void Sheep::move(Position position) {
+void Sheep::move(Game* game,Position position) {
 
 }
 
-void Sheep::eat(Food *food) {
+void Sheep::eat(Game* game,Food *food) {
 
 }
 
-void Sheep::fight(Animal *animal) {
+void Sheep::fight(Game* game,Animal *animal) {
 
 }
 
-void Sheep::verifications() {
+void Sheep::verifications(Game* game) {
 
 }
 
-void Sheep::do_iteration() {
+void Sheep::do_iteration(Game* game) {
     std::cout << "      > Sheep iteration: ";
     Animal::display();
 }

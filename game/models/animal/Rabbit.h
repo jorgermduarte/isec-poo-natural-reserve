@@ -9,18 +9,18 @@
 
 class Rabbit: public Animal {
 private:
-    virtual void move() override;
-    virtual void move(Position position) override;
-    virtual void reproduce()  override;
-    virtual void eat(Food* food)  override;
-    virtual void fight(Animal* animal)  override;
-    virtual void verifications()  override;
+    virtual void move(Game* game) override;
+    virtual void move(Game* game,Position position) override;
+    virtual void reproduce(Game* game)  override;
+    virtual void eat(Game* game, Food* food)  override;
+    virtual void fight(Game* game, Animal* animal)  override;
+    virtual void verifications(Game* game)  override;
 public:
     static int configMaxHP;
     static int configMaxIterations;
     Rabbit();
     //TODO: this function will contain all the logic representing the instant
-    virtual void do_iteration() override;
+    virtual void do_iteration(Game* game) override;
 };
 
 

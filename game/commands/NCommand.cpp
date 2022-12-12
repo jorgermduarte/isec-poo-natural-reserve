@@ -14,7 +14,7 @@ void NCommand::instantExecution() {
     Node<Animal> * current = this->game->animals;
     std::vector<int> animalsToDelete = {};
     while(current != NULL){
-        current->value->do_iteration();
+        current->value->do_iteration(game);
         if(current->value->currentHP <= 0){
             std::cout << "      > Animal died: ";
             current->value->display();

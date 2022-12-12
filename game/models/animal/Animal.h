@@ -11,14 +11,16 @@
 #include "../Entity.h"
 #include "../food/Food.h"
 
+class Game;
+
 class Animal {
 private:
-    virtual void move();
-    virtual void move(Position position);
-    virtual void reproduce();
-    virtual void eat(Food* food);
-    virtual void fight(Animal* animal);
-    virtual void verifications();
+    virtual void move(Game* game);
+    virtual void move(Game* game, Position position);
+    virtual void reproduce(Game* game);
+    virtual void eat(Game* game, Food* food);
+    virtual void fight(Game* game, Animal* animal);
+    virtual void verifications(Game* game);
 public:
     Animal();
     static int configMaxHP;
@@ -42,7 +44,7 @@ public:
     void setPosition(int row, int column);
     void setCurrentHP(int value);
 
-    virtual void do_iteration();
+    virtual void do_iteration(Game* game);
 };
 
 #endif //POO_NATURAL_RESERVE_ANIMAL_H

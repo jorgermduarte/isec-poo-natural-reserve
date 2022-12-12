@@ -6,7 +6,6 @@
 #include "../enums/Smell.h"
 #include "../../commands/NoFoodCommand.h"
 #include "../../commands/KillCommand.h"
-#include "../game/GameSingleton.h"
 
 int Rabbit::configMaxHP = 0;
 int Rabbit::configMaxIterations = 0;
@@ -20,8 +19,7 @@ Rabbit::Rabbit() {
     this->identifier = 'C';
 }
 
-void Rabbit::reproduce() {
-    Game* game = GameSingleton::getGame();
+void Rabbit::reproduce(Game* game) {
     if(this->reprodutionCounter >= 8){
         int random = rand() % 100 + 1;
         if(random > 50){
@@ -49,9 +47,8 @@ void Rabbit::reproduce() {
 
 }
 
-void Rabbit::fight(Animal *animal) {
+void Rabbit::fight(Game* game,Animal *animal) {
     //TODO: escape the predator to the oposite direction
-    Game* game = GameSingleton::getGame();
 
     int distance = 0;
     if(this->hunger  < 10){
@@ -105,8 +102,7 @@ void Rabbit::fight(Animal *animal) {
 
 }
 
-void Rabbit::move(Position position) {
-    Game* game = GameSingleton::getGame();
+void Rabbit::move(Game* game,Position position) {
     //remove from the matrix
     KillCommand::deleteAnimalFromMatrix(game,this->id);
 
@@ -163,9 +159,7 @@ void Rabbit::move(Position position) {
 }
 
 //random move
-void Rabbit::move() {
-
-    Game* game = GameSingleton::getGame();
+void Rabbit::move(Game* game) {
     //remove from the matrix
     KillCommand::deleteAnimalFromMatrix(game,this->id);
 
@@ -213,8 +207,7 @@ void Rabbit::move() {
     std::cout << "          > Rabbit position updated successfully" << std::endl;
 }
 
-void Rabbit::eat(Food *food) {
-    Game* game = GameSingleton::getGame();
+void Rabbit::eat(Game* game,Food *food) {
     Animal::feed(food->nutritiveValue,food->toxicity);
     this->hunger -= food->nutritiveValue;
     if(this->hunger < 0)
@@ -222,9 +215,8 @@ void Rabbit::eat(Food *food) {
     NoFoodCommand::deleteFoodById(game,food->id);
 }
 
-void Rabbit::verifications() {
-    Game* game = GameSingleton::getGame();
-    this->reproduce();
+void Rabbit::verifications(Game* game) {
+    this->reproduce(game);
 
     this->currentIterations++;
     this->reprodutionCounter++;
@@ -247,11 +239,9 @@ void Rabbit::verifications() {
     }
 }
 
-void Rabbit::do_iteration() {
+void Rabbit::do_iteration(Game* game) {
     std::cout << "      > Rabbit iteration: ";
     this->display();
-
-    Game* game = GameSingleton::getGame();
 
     // - get cells by area ( 4 positions around )
     std::vector<MatrixCell> cells = game->getMatrixCellsByArea(4, this->position);
@@ -299,22 +289,22 @@ void Rabbit::do_iteration() {
 
     if(predators.size() > 0){
         //escape the predator
-        this->fight(predators[0]);
+        this->fight(game,predators[0]);
     }else{
 
         if(foods.size() > 0) {
             //eat the food
             if (foodInCurrentPosition) {
-                this->eat(foods[0]);
+                this->eat(game,foods[0]);
             } else {
                 //move to the food
-                this->move(foods[0]->position);
+                this->move(game,foods[0]->position);
             }
         }else{
             //if he does not perceive food or predator moves randomly
-            this->move();
+            this->move(game);
         }
     }
 
-    this->verifications();
+    this->verifications(game);
 }

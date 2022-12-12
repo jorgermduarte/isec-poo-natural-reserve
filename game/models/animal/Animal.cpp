@@ -59,10 +59,11 @@ void Animal::feed(int nutritivePoints, int toxicityPoints) {
     }
 }
 
-void Animal::do_iteration() {}
-void Animal::move() {}
-void Animal::move(Position position) {}
-void Animal::reproduce() {}
-void Animal::eat( Food *food) {}
-void Animal::fight( Animal *animal) {}
-void Animal::verifications() {}
+
+void Animal::do_iteration(Game *game) {}
+void Animal::eat(Game *game, Food *food) {}
+void Animal::move(Game *game) {}
+void Animal::move(Game *game, Position position) {}
+void Animal::fight(Game *game, Animal *animal) {}
+void Animal::verifications(Game *game) {}
+void Animal::reproduce(Game *game) {}

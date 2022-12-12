@@ -11,18 +11,18 @@
 class Kangaroo : public Animal {
 private:
 private:
-    virtual void move();
-    virtual void move(Position position);
-    virtual void reproduce();
-    virtual void eat(Food* food);
-    virtual void fight(Animal* animal);
-    virtual void verifications();
+    virtual void move(Game* game) override;
+    virtual void move(Game* game,Position position) override;
+    virtual void reproduce(Game* game) override;
+    virtual void eat(Game* game,Food* food) override;
+    virtual void fight(Game* game,Animal* animal) override;
+    virtual void verifications(Game* game) override;
 public:
     static int configMaxHP;
     static int configMaxIterations;
     Kangaroo();
     //TODO: this function will contain all the logic representing the instant
-    virtual void do_iteration() override;
+    virtual void do_iteration(Game* game) override;
 };
 
 #endif //POO_NATURAL_RESERVE_KANGAROO_H

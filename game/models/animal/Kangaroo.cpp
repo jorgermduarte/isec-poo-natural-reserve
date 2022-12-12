@@ -16,32 +16,32 @@ Kangaroo::Kangaroo() {
     this->identifier = 'G';
 }
 
-void Kangaroo::reproduce() {
+void Kangaroo::reproduce(Game* game) {
 
 }
 
-void Kangaroo::move() {
+void Kangaroo::move(Game* game) {
 
 }
 
-void Kangaroo::move( Position position) {
+void Kangaroo::move(Game* game, Position position) {
 
 }
 
 
-void Kangaroo::eat( Food *food) {
+void Kangaroo::eat(Game* game, Food *food) {
 
 }
 
-void Kangaroo::fight(Animal *animal) {
+void Kangaroo::fight(Game* game,Animal *animal) {
 
 }
 
-void Kangaroo::verifications() {
+void Kangaroo::verifications(Game* game) {
 
 }
 
-void Kangaroo::do_iteration() {
+void Kangaroo::do_iteration(Game* game) {
     std::cout << "      > Kangaroo iteration: ";
     Animal::display();
 }

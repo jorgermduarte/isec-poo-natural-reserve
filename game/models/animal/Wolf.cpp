@@ -17,31 +17,31 @@ Wolf::Wolf() {
 }
 
 
-void Wolf::reproduce() {
+void Wolf::reproduce(Game* game) {
 
 }
 
-void Wolf::move() {
+void Wolf::move(Game* game) {
 
 }
 
-void Wolf::move( Position position) {
+void Wolf::move(Game* game, Position position) {
 
 }
 
-void Wolf::eat(Food *food) {
+void Wolf::eat(Game* game,Food *food) {
 
 }
 
-void Wolf::fight(Animal *animal) {
+void Wolf::fight(Game* game,Animal *animal) {
 
 }
 
-void Wolf::verifications() {
+void Wolf::verifications(Game* game) {
 
 }
 
-void Wolf::do_iteration() {
+void Wolf::do_iteration(Game* game) {
     std::cout << "      > Wolf iteration: ";
     Animal::display();
 }

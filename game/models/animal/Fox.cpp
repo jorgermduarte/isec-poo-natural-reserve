@@ -16,31 +16,31 @@ Fox::Fox() {
     this->identifier = 'm';
 }
 
-void Fox::reproduce() {
+void Fox::reproduce(Game* game) {
 
 }
 
-void Fox::eat(Food *food) {
+void Fox::eat(Game* game,Food *food) {
 
 }
 
-void Fox::verifications() {
+void Fox::verifications(Game* game) {
 
 }
 
-void Fox::move() {
+void Fox::move(Game* game) {
 
 }
 
-void Fox::move(Position position) {
+void Fox::move(Game* game,Position position) {
 
 }
 
-void Fox::fight(Animal *animal) {
+void Fox::fight(Game* game,Animal *animal) {
 
 }
 
-void Fox::do_iteration() {
+void Fox::do_iteration(Game* game) {
     std::cout << "      > Fox iteration: ";
     Animal::display();
 }

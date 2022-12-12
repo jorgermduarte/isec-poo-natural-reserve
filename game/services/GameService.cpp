@@ -19,7 +19,6 @@
 #include "../models/food/Grass.h"
 #include "../models/food/Body.h"
 #include "../models/food/Blueberries.h"
-#include "../models/game/GameSingleton.h"
 
 using namespace std;
 
@@ -227,8 +226,6 @@ void GameService::initialize() {
     srand((unsigned)time(NULL));
 
     readConstantsFile();
-
-    GameSingleton::setGame(&this->game);
 
     std::cout << "===============================================================================" << std::endl;
     std::cout << " > The natural reserve has been initialized with the following animals and foods: " << std::endl;
