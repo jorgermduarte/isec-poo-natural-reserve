@@ -16,6 +16,7 @@ Wolf::Wolf() {
     this->identifier = 'L';
 }
 
+
 void Wolf::reproduce() {
 
 }
@@ -24,15 +25,15 @@ void Wolf::move() {
 
 }
 
-void Wolf::perception() {
+void Wolf::move( Position position) {
 
 }
 
-void Wolf::eat() {
+void Wolf::eat(Food *food) {
 
 }
 
-void Wolf::fight() {
+void Wolf::fight(Animal *animal) {
 
 }
 

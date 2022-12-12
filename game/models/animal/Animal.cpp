@@ -59,36 +59,10 @@ void Animal::feed(int nutritivePoints, int toxicityPoints) {
     }
 }
 
-void Animal::move() {
-
-}
-
-void Animal::reproduce() {
-
-}
-
-void Animal::eat() {
-
-}
-
-void Animal::fight() {
-
-}
-
-void Animal::verifications() {
-
-}
-
-void Animal::perception() {
-
-}
-
-void Animal::do_iteration() {
-    //this->currentIterations++;
-    //this->perception();
-    //this->move();
-    //this->reproduce();
-    //this->eat();
-    //this->fight();
-    //this->verifications();
-}
+void Animal::do_iteration() {}
+void Animal::move() {}
+void Animal::move(Position position) {}
+void Animal::reproduce() {}
+void Animal::eat( Food *food) {}
+void Animal::fight( Animal *animal) {}
+void Animal::verifications() {}

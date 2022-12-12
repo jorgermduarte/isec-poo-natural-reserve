@@ -10,6 +10,9 @@
 class NoFoodCommand: public DefaultCommand {
 public:
     NoFoodCommand(Game* game,std::vector<std::string> args): DefaultCommand(game,args){}
+    static void deleteFoodById(Game* game, int id);
+    static void deleteFoodFromMatrix(Game* game, int id);
+    static void deleteFoodFromList(Game* game, int id);
     void execute() override;
 };
 

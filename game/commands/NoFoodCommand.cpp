@@ -6,7 +6,70 @@
 #include "NoFoodCommand.h"
 #include "../utils/utils.h"
 
-void deleteFoodById(Game* game, int id){
+void NoFoodCommand::deleteFoodFromList(Game *game, int id) {
+    Node<Food>* foodNodeList = game->findFoodNode(id);
+
+    //remove the food from the food list
+    while(foodNodeList != NULL){
+        if(foodNodeList->value->id == id){
+            //std::cout << "  > Removing the food from the food list" << std::endl;
+
+            if(foodNodeList->prev == NULL && foodNodeList->next == NULL) { //only one element(working)
+                game->foods = NULL;
+            }
+            else if(foodNodeList->prev == NULL && foodNodeList->next != NULL){ // first element(working)
+                game->foods = foodNodeList->next;
+                foodNodeList->next->prev = NULL;
+            }
+            else if(foodNodeList->prev != NULL && foodNodeList->next == NULL){ //last element (working)
+                foodNodeList->prev->next = NULL;
+            }
+            else if(foodNodeList->prev != NULL && foodNodeList->next != NULL){ //middle element (working)
+                foodNodeList->prev->next = foodNodeList->next;
+                foodNodeList->next->prev = foodNodeList->prev;
+            }
+            break;
+        }
+        foodNodeList = foodNodeList->next;
+    }
+
+}
+
+void NoFoodCommand::deleteFoodFromMatrix(Game *game, int id) {
+
+    Node<Food>* foodNodeList = game->findFoodNode(id);
+    if(foodNodeList != NULL){
+        //remove the food from the matrix
+        Node<Food> *foodMatrixCell = game->matrix[foodNodeList->value->position.column][foodNodeList->value->position.row].foods;
+        while(foodMatrixCell != NULL){
+
+            if(foodMatrixCell->value->id == id){
+                //std::cout << "  > Removing the food from the matrix cell" << std::endl;
+
+                if(foodMatrixCell->prev == NULL && foodMatrixCell->next == NULL) { //only one element(working)
+                    game->matrix[foodNodeList->value->position.column][foodNodeList->value->position.row].foods = NULL;
+                }
+                else if(foodMatrixCell->prev == NULL && foodMatrixCell->next != NULL){ // first element(working)
+                    game->matrix[foodNodeList->value->position.column][foodNodeList->value->position.row].foods = foodMatrixCell->next;
+                    foodMatrixCell->next->prev = NULL;
+                }
+                else if(foodMatrixCell->prev != NULL && foodMatrixCell->next == NULL){ //last element (working)
+                    foodMatrixCell->prev->next = NULL;
+                }
+                else if(foodMatrixCell->prev != NULL && foodMatrixCell->next != NULL){ //middle element (working)
+                    foodMatrixCell->prev->next = foodMatrixCell->next;
+                    foodMatrixCell->next->prev = foodMatrixCell->prev;
+                }
+                break;
+
+            }
+            foodMatrixCell = foodMatrixCell->next;
+        }
+    }
+
+}
+
+void NoFoodCommand::deleteFoodById(Game *game, int id) {
     Node<Food>* foodNodeList = game->findFoodNode(id);
 
     if(foodNodeList != NULL && foodNodeList->value != NULL){
@@ -83,7 +146,7 @@ void NoFoodCommand::execute() {
             if(game->matrix[column][line].foods != NULL) {
                 Node<Food> *foodMatrixCell = game->matrix[column][line].foods;
                 while(foodMatrixCell != NULL){
-                    deleteFoodById(game, foodMatrixCell->value->id);
+                    NoFoodCommand::deleteFoodById(game, foodMatrixCell->value->id);
                     foodMatrixCell = foodMatrixCell->next;
                 }
             }
@@ -94,7 +157,7 @@ void NoFoodCommand::execute() {
     }else if(args.size() == 2){
         if(isNumber(args[1])){
             int id = std::stoi(args[1]);
-            deleteFoodById(this->game, id);
+            NoFoodCommand::deleteFoodById(this->game, id);
         }else{
             std::cout << "  > Invalid command provided, the nofood command arguments should be numbers" << std::endl;
         }

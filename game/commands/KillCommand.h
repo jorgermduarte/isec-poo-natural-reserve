@@ -10,6 +10,9 @@
 class KillCommand: public DefaultCommand {
 public:
     KillCommand(Game* game, std::vector<std::string> args): DefaultCommand(game, args){}
+    static void deleteAnimalById(Game* game, int id);
+    static void deleteAnimalFromMatrix(Game* game, int id);
+    static void deleteAnimalFromList(Game* game, int id);
     void execute() override;
 };
 

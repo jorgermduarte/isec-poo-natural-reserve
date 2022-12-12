@@ -9,12 +9,12 @@
 
 class Sheep : public Animal {
 private:
-    virtual void perception() override;
-    virtual void move() override;
-    virtual void reproduce()  override;
-    virtual void eat()  override;
-    virtual void fight()  override;
-    virtual void verifications()  override;
+    virtual void move();
+    virtual void move(Position position);
+    virtual void reproduce();
+    virtual void eat(Food* food);
+    virtual void fight(Animal* animal);
+    virtual void verifications();
 public:
     static int configMaxHP;
     static int configMaxIterations;

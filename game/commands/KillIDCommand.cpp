@@ -6,7 +6,7 @@
 #include "KillIDCommand.h"
 #include "../utils/utils.h"
 
-void deleteAnimalById_k(Game* game, int id){
+void KillIDCommand::deleteAnimalById(Game *game, int id) {
     Node<Animal>* foodAnimalList = game->findAnimalNode(id);
 
     if(foodAnimalList != NULL && foodAnimalList->value != NULL){
@@ -79,7 +79,7 @@ void KillIDCommand::execute() {
         if(isNumber(args[1])){
             //kill an entity id on args[1];
             std::cout << "  > killing the animal with id: " + args[1] << std::endl;
-            deleteAnimalById_k(game, std::stoi(args[1]));
+            KillIDCommand::deleteAnimalById(game, std::stoi(args[1]));
         }else{
             std::cout << "  > Invalid command provided, the id must be an integer" << std::endl;
         }

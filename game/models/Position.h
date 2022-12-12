@@ -10,6 +10,10 @@ public:
     int column;
     int row;
     Position(int col, int row);
+    void setX(int col); // set column
+    int getX();
+    void setY(int row); // set row
+    int getY();
 };
 
 

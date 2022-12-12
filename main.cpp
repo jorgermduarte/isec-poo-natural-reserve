@@ -3,5 +3,6 @@
 int main() {
     GameService gameService = GameService();
     gameService.initialize();
+
     return 0;
 }

@@ -27,8 +27,14 @@ public:
     Node<Food>* findFoodNode(int id);
     Node<Animal>* findAnimalNode(int id);
 
+    void addAnimalToTheMatrix(Animal* animal);
+    void addAnimalToTheList(Animal* animal);
+    void addFoodToTheMatrix(Food* food);
+    void addFoodToTheList(Food* food);
+
     void displayAnimals();
     void displayFoods();
+    std::vector<MatrixCell> getMatrixCellsByArea(int i, Position position);
 };
 
 #endif //POO_NATURAL_RESERVE_GAME_H

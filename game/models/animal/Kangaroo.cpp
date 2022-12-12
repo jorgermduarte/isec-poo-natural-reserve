@@ -17,24 +17,32 @@ Kangaroo::Kangaroo() {
 }
 
 void Kangaroo::reproduce() {
+
 }
 
 void Kangaroo::move() {
+
 }
 
-void Kangaroo::perception() {
+void Kangaroo::move( Position position) {
+
 }
 
-void Kangaroo::eat() {
+
+void Kangaroo::eat( Food *food) {
+
 }
 
-void Kangaroo::fight() {
+void Kangaroo::fight(Animal *animal) {
+
 }
 
 void Kangaroo::verifications() {
+
 }
 
 void Kangaroo::do_iteration() {
     std::cout << "      > Kangaroo iteration: ";
     Animal::display();
 }
+

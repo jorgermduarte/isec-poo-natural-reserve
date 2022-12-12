@@ -6,8 +6,66 @@
 #include "KillCommand.h"
 #include "../utils/utils.h"
 
+void KillCommand::deleteAnimalFromMatrix(Game *game, int id) {
+    Node<Animal>* foodAnimalList = game->findAnimalNode(id);
+    if(foodAnimalList != NULL){
+        //remove the food from the matrix
+        Node<Animal> *AnimalMatrixCell = game->matrix[foodAnimalList->value->position.column][foodAnimalList->value->position.row].animals;
+        while(AnimalMatrixCell != NULL){
 
-void deleteAnimalById(Game* game, int id){
+            if(AnimalMatrixCell->value->id == id){
+                //std::cout << "  > Removing the animal from the matrix cell" << std::endl;
+
+                if(AnimalMatrixCell->prev == NULL && AnimalMatrixCell->next == NULL) { //only one element(working)
+                    game->matrix[AnimalMatrixCell->value->position.column][AnimalMatrixCell->value->position.row].animals = NULL;
+                }
+                else if(AnimalMatrixCell->prev == NULL && AnimalMatrixCell->next != NULL){ // first element(working)
+                    game->matrix[AnimalMatrixCell->value->position.column][AnimalMatrixCell->value->position.row].animals = AnimalMatrixCell->next;
+                    AnimalMatrixCell->next->prev = NULL;
+                }
+                else if(AnimalMatrixCell->prev != NULL && AnimalMatrixCell->next == NULL){ //last element (working)
+                    AnimalMatrixCell->prev->next = NULL;
+                }
+                else if(AnimalMatrixCell->prev != NULL && AnimalMatrixCell->next != NULL){ //middle element (working)
+                    AnimalMatrixCell->prev->next = AnimalMatrixCell->next;
+                    AnimalMatrixCell->next->prev = AnimalMatrixCell->prev;
+                }
+                break;
+            }
+            AnimalMatrixCell = AnimalMatrixCell->next;
+        }
+    }
+}
+
+void KillCommand::deleteAnimalFromList(Game *game, int id) {
+    Node<Animal>* foodAnimalList = game->findAnimalNode(id);
+
+    //remove the animal from the animal list
+    while(foodAnimalList != NULL){
+        if(foodAnimalList->value->id == id){
+            std::cout << "  > Removing the animal from the animal list" << std::endl;
+
+            if(foodAnimalList->prev == NULL && foodAnimalList->next == NULL) { //only one element(working)
+                game->animals = NULL;
+            }
+            else if(foodAnimalList->prev == NULL && foodAnimalList->next != NULL){ // first element(working)
+                game->animals = foodAnimalList->next;
+                foodAnimalList->next->prev = NULL;
+            }
+            else if(foodAnimalList->prev != NULL && foodAnimalList->next == NULL){ //last element (working)
+                foodAnimalList->prev->next = NULL;
+            }
+            else if(foodAnimalList->prev != NULL && foodAnimalList->next != NULL){ //middle element (working)
+                foodAnimalList->prev->next = foodAnimalList->next;
+                foodAnimalList->next->prev = foodAnimalList->prev;
+            }
+            break;
+        }
+        foodAnimalList = foodAnimalList->next;
+    }
+}
+
+void KillCommand::deleteAnimalById(Game *game, int id) {
     Node<Animal>* foodAnimalList = game->findAnimalNode(id);
 
     if(foodAnimalList != NULL && foodAnimalList->value != NULL){
@@ -49,7 +107,7 @@ void deleteAnimalById(Game* game, int id){
                 //std::cout << "  > Removing the food from the food list" << std::endl;
 
                 if(foodAnimalList->prev == NULL && foodAnimalList->next == NULL) { //only one element(working)
-                    game->foods = NULL;
+                    game->animals = NULL;
                 }
                 else if(foodAnimalList->prev == NULL && foodAnimalList->next != NULL){ // first element(working)
                     game->animals = foodAnimalList->next;
@@ -74,6 +132,7 @@ void deleteAnimalById(Game* game, int id){
     }
 }
 
+
 void KillCommand::execute() {
     std::cout << "  > Executing the kill command" << std::endl;
 
@@ -90,7 +149,7 @@ void KillCommand::execute() {
             if(this->game->matrix[line][column].animals != NULL){
                 Node<Animal> *current = this->game->matrix[line][column].animals;
                 while(current != NULL){
-                    deleteAnimalById(this->game, current->value->id);
+                    KillCommand::deleteAnimalById(this->game, current->value->id);
                     current = current->next;
                 }
             }

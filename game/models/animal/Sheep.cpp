@@ -24,15 +24,15 @@ void Sheep::move() {
 
 }
 
-void Sheep::perception() {
+void Sheep::move(Position position) {
 
 }
 
-void Sheep::eat() {
+void Sheep::eat(Food *food) {
 
 }
 
-void Sheep::fight() {
+void Sheep::fight(Animal *animal) {
 
 }
 

@@ -17,21 +17,27 @@ Fox::Fox() {
 }
 
 void Fox::reproduce() {
+
 }
 
-void Fox::move() {
-}
+void Fox::eat(Food *food) {
 
-void Fox::perception() {
-}
-
-void Fox::eat() {
-}
-
-void Fox::fight() {
 }
 
 void Fox::verifications() {
+
+}
+
+void Fox::move() {
+
+}
+
+void Fox::move(Position position) {
+
+}
+
+void Fox::fight(Animal *animal) {
+
 }
 
 void Fox::do_iteration() {

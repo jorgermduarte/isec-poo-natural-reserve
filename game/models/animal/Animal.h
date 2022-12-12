@@ -6,17 +6,19 @@
 #define POO_NATURAL_RESERVE_ANIMAL_H
 
 #include <string>
+#include <vector>
 #include "../Position.h"
 #include "../Entity.h"
+#include "../food/Food.h"
 
 class Animal {
 private:
-    virtual void perception();
-    virtual void move() ;
-    virtual void reproduce() ;
-    virtual void eat() ;
-    virtual void fight() ;
-    virtual void verifications() ;
+    virtual void move();
+    virtual void move(Position position);
+    virtual void reproduce();
+    virtual void eat(Food* food);
+    virtual void fight(Animal* animal);
+    virtual void verifications();
 public:
     Animal();
     static int configMaxHP;
@@ -26,6 +28,8 @@ public:
     int currentHP;
     int currentIterations = 0;
     int maxIterations;
+    int hunger = 0;;
+    int reprodutionCounter = 0;
     char identifier;
     std::string identifierEmoji;
     Position position = {0,0};
@@ -38,8 +42,6 @@ public:
     void setPosition(int row, int column);
     void setCurrentHP(int value);
 
-
-    //TODO: this function will contain all the logic representing the instant
     virtual void do_iteration();
 };
 

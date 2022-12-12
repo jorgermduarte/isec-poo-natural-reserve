@@ -9,11 +9,11 @@
 
 class Rabbit: public Animal {
 private:
-    virtual void perception() override;
     virtual void move() override;
+    virtual void move(Position position) override;
     virtual void reproduce()  override;
-    virtual void eat()  override;
-    virtual void fight()  override;
+    virtual void eat(Food* food)  override;
+    virtual void fight(Animal* animal)  override;
     virtual void verifications()  override;
 public:
     static int configMaxHP;

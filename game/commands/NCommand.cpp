@@ -1,10 +1,10 @@
 ﻿//
 // Created by duarte on 10-12-2022.
-//
 
 #include <iostream>
 #include "NCommand.h"
 #include "../utils/utils.h"
+#include "KillCommand.h"
 #include <chrono>
 #include <thread>
 
@@ -12,10 +12,19 @@ void NCommand::instantExecution() {
     //iterate the animals executing the do_iteration function
     std::cout << "  > Executing one instant for all the animals " << std::endl;
     Node<Animal> * current = this->game->animals;
+    std::vector<int> animalsToDelete = {};
     while(current != NULL){
         current->value->do_iteration();
-        //TODO: change the animal position on the matrix if necessary
+        if(current->value->currentHP <= 0){
+            std::cout << "      > Animal died: ";
+            current->value->display();
+            animalsToDelete.push_back(current->value->id);
+        }
         current = current->next;
+    }
+
+    for(int i = 0; i < animalsToDelete.size(); i++){
+        KillCommand::deleteAnimalFromList(game,animalsToDelete[i]);
     }
 
     //iterate the food executing the do_iteration function
