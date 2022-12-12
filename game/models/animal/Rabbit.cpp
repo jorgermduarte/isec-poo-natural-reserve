@@ -25,7 +25,7 @@ void Rabbit::reproduce() {
     Game* game = GameSingleton::getGame();
     if(this->reprodutionCounter >= 8){
         int random = rand() % 100 + 1;
-        if(random > 20){
+        if(random > 50){
             Position position = this->position;
 
             //TODO: correct the randomness of the position
@@ -94,10 +94,17 @@ void Rabbit::move(Position position) {
             this->position.column += distanceLeft;
     }
 
+
     if(this->position.row < 0)
         this->position.row = 0;
     if(this->position.column < 0)
         this->position.column = 0;
+
+    if(this->position.row  >= game->configuration.size.rows)
+        this->position.row = game->configuration.size.rows - 1;
+
+    if(this->position.column >= game->configuration.size.cols)
+        this->position.column = game->configuration.size.cols -1;
 
     std::cout << "     > Rabbit position updated [not random]: ";
     Animal::display();
