@@ -50,7 +50,59 @@ void Rabbit::reproduce() {
 }
 
 void Rabbit::fight(Animal *animal) {
-    //TODO: escape the predator
+    //TODO: escape the predator to the oposite direction
+    Game* game = GameSingleton::getGame();
+
+    int distance = 0;
+    if(this->hunger  < 10){
+        distance = 1 + (rand() % 2 + 1);
+    }else if(this->hunger  < 20){
+        distance =  1 + (rand() % 3 + 1);
+    }else{
+        distance =  1 + (rand() % 4 + 1);
+    }
+
+    //   -  x  -
+    //   -  -  -
+    //   -  y  -
+
+    //   -  -  -
+    //   -  -  -
+    //   x  -  y
+
+
+    //   x  -  -
+    //   -  -  -
+    //   -  -  y
+
+    //   xy  -  -
+    //   -  -  -
+    //   -  -  -
+
+
+
+    //same line different column
+    /*
+    if(this->position.row == animal->position.row && this->position.column != animal->position.column){
+        if(this->position.row <= game->configuration.size.rows - 2){
+            //TODO: calculate distance left to avoid setting the animal outside the matrix
+
+            this->position.row -= distance;
+        }else{
+            this->position.row += distance;
+        }
+    }
+    //same column different line
+    else if(this->position.column == animal->position.column && this->position.row != animal->position.row){
+        if(this->position.column <= game->configuration.size.cols - 2){
+
+        }
+    }
+    // colum
+
+    */
+
+
 }
 
 void Rabbit::move(Position position) {
@@ -105,7 +157,7 @@ void Rabbit::move(Position position) {
         this->position.column = game->configuration.size.cols -1;
 
     std::cout << "     > Rabbit position updated [not random]: ";
-    Animal::display();
+    this->display();
     //add to the matrix in the new position
     game->addAnimalToTheMatrix(this);
 }
@@ -143,7 +195,6 @@ void Rabbit::move() {
 
     }
 
-
     if(this->position.row < 0)
         this->position.row = 0;
     if(this->position.column < 0)
@@ -156,7 +207,7 @@ void Rabbit::move() {
         this->position.column = game->configuration.size.cols -1;
 
     std::cout << "          > Rabbit position updated: ";
-    Animal::display();
+    this->display();
     //add to the matrix in the new position
     game->addAnimalToTheMatrix(this);
     std::cout << "          > Rabbit position updated successfully" << std::endl;
@@ -198,14 +249,14 @@ void Rabbit::verifications() {
 
 void Rabbit::do_iteration() {
     std::cout << "      > Rabbit iteration: ";
-    Animal::display();
+    this->display();
 
     Game* game = GameSingleton::getGame();
 
     // - get cells by area ( 4 positions around )
     std::vector<MatrixCell> cells = game->getMatrixCellsByArea(4, this->position);
-    std::vector<Animal> predators = {};
-    std::vector<Food> foods = {};
+    std::vector<Animal*> predators = {};
+    std::vector<Food*> foods = {};
     bool foodInCurrentPosition = false;
 
     // iterate each cell to find a predator or food
@@ -217,7 +268,7 @@ void Rabbit::do_iteration() {
                 if(current->value->weight > 10){
                     std::cout << "      > Rabbit detected a predator: ";
                     current->value->display();
-                    predators.push_back(*current->value);
+                    predators.push_back(current->value);
                     break;
                 }
                 current = current->next;
@@ -234,7 +285,7 @@ void Rabbit::do_iteration() {
                         smellsDetected.push_back(cSmell);
                         std::cout << "      > Rabbit detected a smell: ";
                         current->value->display();
-                        foods.push_back(*current->value);
+                        foods.push_back(current->value);
                         if(this->position.row == current->value->position.row && this->position.column == current->value->position.column){
                             foodInCurrentPosition = true;
                         }
@@ -248,16 +299,16 @@ void Rabbit::do_iteration() {
 
     if(predators.size() > 0){
         //escape the predator
-        this->fight(&predators[0]);
+        this->fight(predators[0]);
     }else{
 
         if(foods.size() > 0) {
             //eat the food
             if (foodInCurrentPosition) {
-                this->eat(&foods[0]);
+                this->eat(foods[0]);
             } else {
                 //move to the food
-                this->move(foods[0].position);
+                this->move(foods[0]->position);
             }
         }else{
             //if he does not perceive food or predator moves randomly
