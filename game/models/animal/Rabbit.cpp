@@ -2,7 +2,6 @@
 // Created by duarte on 10-11-2022.
 //
 #include <iostream>
-#include <jmorecfg.h>
 #include "Rabbit.h"
 #include "../enums/Smell.h"
 #include "../../commands/NoFoodCommand.h"
@@ -209,7 +208,7 @@ void Rabbit::do_iteration() {
     std::vector<MatrixCell> cells = game->getMatrixCellsByArea(4, this->position);
     std::vector<Animal> predators = {};
     std::vector<Food> foods = {};
-    boolean foodInCurrentPosition = false;
+    bool foodInCurrentPosition = false;
 
     // iterate each cell to find a predator or food
     for (const auto &item: cells){
