@@ -5,7 +5,7 @@
 #include <iostream>
 #include "Grass.h"
 #include "../enums/Smell.h"
-#include "../game/Game.h"
+#include "../../commands/NoFoodCommand.h"
 
 int Grass::configMaxIterations = 0;
 
@@ -18,20 +18,23 @@ Grass::Grass() {
     this->identifierEmoji = "\U0001f33f";
     this->identifier = 'r';
     this->position = { 0,0 };
+    this->currentIterations = 0;
 }
 
 void Grass::reproduce(Game* game) {
 
-    bool shouldReproduce = this->currentIterations >= (this->maxIterations * 0.75);
+    bool shouldReproduce = false;
+
     if(shouldReproduce){
         //TODO: calculate between 4-8 positions (random position) of distance in the matrix and add a new food
-
-        //if any food already exists in that position, don't add it
     }
 }
 
 void Grass::verifications(Game* game) {
-    this->currentIterations++;
+    this->currentIterations += 1;
+    if(this->currentIterations >= this->maxIterations){
+        NoFoodCommand::deleteFoodFromMatrix(game, this->id);
+    }
 }
 
 void Grass::do_iteration(Game* game) {
@@ -39,4 +42,5 @@ void Grass::do_iteration(Game* game) {
     Food::display();
     this->reproduce(game);
     this->verifications(game);
+
 }

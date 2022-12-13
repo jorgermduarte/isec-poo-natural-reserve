@@ -30,7 +30,6 @@ public:
     void display();
     void defineRandomPosition(int maxRow,int maxLine);
     void definePosition(int row, int line);
-    //TODO: this function will contain all the logic representing the instant
     virtual void do_iteration(Game* game);
 
 };

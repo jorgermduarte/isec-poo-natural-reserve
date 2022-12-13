@@ -34,17 +34,19 @@ void NCommand::instantExecution() {
     std::vector<int> foodsToDelete = {};
     while(currentFood != NULL){
         currentFood->value->do_iteration(game);
-        if(currentFood->value->currentIterations >= current->value->maxIterations){
-            foodsToDelete.push_back(currentFood->value->id);
+        Food * cFoodValue = currentFood->value;
+
+        if(cFoodValue->currentIterations >= cFoodValue->maxIterations){
+            std::cout << "      > Food died: ";
+            cFoodValue->display();
+            foodsToDelete.push_back(cFoodValue->id);
         }
         currentFood = currentFood->next;
     }
 
-    for(int i = 0; i < foodsToDelete.size(); i++){
-        NoFoodCommand::deleteFoodFromList(game,foodsToDelete[i]);
+    for(int y = 0; y < foodsToDelete.size(); y++){
+        NoFoodCommand::deleteFoodFromList(game,foodsToDelete[y]);
     }
-
-
     std::cout << "  > Instant completed successfully" << std::endl;
 }
 
