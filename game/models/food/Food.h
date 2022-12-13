@@ -10,13 +10,11 @@
 #include "../Position.h"
 #include "../Entity.h"
 
-//TODO: verify if we can spawn food above food
-//TODO: verify if lists belong to C++
-//TODO: add the shared id to the Food
+class Game;
 class Food {
 private:
-    virtual void reproduce() ;
-    virtual void verifications() ;
+    virtual void reproduce(Game* game);
+    virtual void verifications(Game* game);
 public:
     static int configMaxIterations;
     int currentIterations = 0;
@@ -31,13 +29,9 @@ public:
     Food();
     void display();
     void defineRandomPosition(int maxRow,int maxLine);
-
     void definePosition(int row, int line);
-    void isFoodAvailable();
-    void incrementLifeTick();
-
     //TODO: this function will contain all the logic representing the instant
-    virtual void do_iteration();
+    virtual void do_iteration(Game* game);
 
 };
 

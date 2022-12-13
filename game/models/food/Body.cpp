@@ -21,15 +21,15 @@ Body::Body() {
     this->position = { 0,0 };
 }
 
-void Body::reproduce() {
+void Body::reproduce(Game* game) {
 
 }
 
-void Body::verifications() {
+void Body::verifications(Game* game) {
 
 }
 
-void Body::do_iteration() {
+void Body::do_iteration(Game* game) {
     std::cout << "      > Body iteration: ";
     Food::display();
 }

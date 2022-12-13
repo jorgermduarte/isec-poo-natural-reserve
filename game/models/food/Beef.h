@@ -10,13 +10,12 @@
 
 class Beef : public Food{
 private:
-    virtual void reproduce() ;
-    virtual void verifications() ;
+    virtual void reproduce(Game* game) override;
+    virtual void verifications(Game* game) override;
 public:
     static int configMaxIterations;
     Beef();
-    //TODO: this function will contain all the logic representing the instant
-    virtual void do_iteration() override;
+    virtual void do_iteration(Game* game) override;
 };
 
 #endif //POO_NATURAL_RESERVE_BEEF_H

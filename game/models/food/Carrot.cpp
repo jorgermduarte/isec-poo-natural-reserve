@@ -22,15 +22,15 @@ Carrot::Carrot() {
     this->position = { 0,0 };
 }
 
-void Carrot::reproduce() {
+void Carrot::reproduce(Game* game) {
 
 }
 
-void Carrot::verifications() {
+void Carrot::verifications(Game* game) {
 
 }
 
-void Carrot::do_iteration() {
+void Carrot::do_iteration(Game* game) {
     std::cout << "      > Carrot iteration: ";
     Food::display();
 }

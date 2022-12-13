@@ -1,20 +1,10 @@
 //
 // Created by duarte on 10-11-2022.
 //
-
 #include <iostream>
 #include "Food.h"
 
 int Food::configMaxIterations = 0;
-
-void Food::incrementLifeTick() {
-
-}
-
-
-void Food::isFoodAvailable() {
-
-}
 
 void Food::defineRandomPosition(int maxRow, int maxLine) {
     int row = rand() % (maxRow);
@@ -37,16 +27,6 @@ void Food::display() {
             std::to_string(this->nutritiveValue) + " MLF: " + std::to_string(this->maxIterations) + " CLF: " + std::to_string(this->currentIterations) << std::endl;
 }
 
-void Food::do_iteration() {
-    //this->currentIterations++;
-    //this->reproduce();
-    //this->verifications();
-}
-
-void Food::verifications() {
-
-}
-
-void Food::reproduce() {
-
-}
+void Food::do_iteration(Game* game) {}
+void Food::verifications(Game* game){}
+void Food::reproduce(Game* game) {}

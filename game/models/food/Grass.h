@@ -9,13 +9,12 @@
 
 class Grass: public Food{
 private:
-    virtual void reproduce() ;
-    virtual void verifications() ;
+    virtual void reproduce(Game* game) override;
+    virtual void verifications(Game* game) override;
 public:
     static int configMaxIterations;
     Grass();
-    //TODO: this function will contain all the logic representing the instant
-    virtual void do_iteration() override;
+    virtual void do_iteration(Game* game) override;
 };
 
 

@@ -22,15 +22,15 @@ Blueberries::Blueberries() {
     this->position = { 0,0 };
 }
 
-void Blueberries::reproduce() {
+void Blueberries::reproduce(Game* game) {
 
 }
 
-void Blueberries::verifications() {
+void Blueberries::verifications(Game* game) {
 
 }
 
-void Blueberries::do_iteration() {
+void Blueberries::do_iteration(Game* game) {
     std::cout << "      > Blueberries iteration: ";
     Food::display();
 }

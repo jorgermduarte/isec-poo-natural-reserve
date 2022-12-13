@@ -23,15 +23,15 @@ Beef::Beef() {
     this->position = { 0,0 };
 }
 
-void Beef::reproduce() {
+void Beef::reproduce(Game* game) {
 
 }
 
-void Beef::verifications() {
+void Beef::verifications(Game* game) {
 
 }
 
-void Beef::do_iteration() {
+void Beef::do_iteration(Game* game) {
     std::cout << "      > Beef iteration: ";
     Food::display();
 }

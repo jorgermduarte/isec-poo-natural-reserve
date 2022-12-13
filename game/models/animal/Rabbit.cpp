@@ -115,6 +115,9 @@ void Rabbit::move(Game* game,Position position) {
     }else{
         distance =  1 + (rand() % 4 + 1);
     }
+
+
+
     if(this->position.row > position.row){
         int distanceLeft = this->position.row - position.row;
         if(distanceLeft > distance)

@@ -5,6 +5,7 @@
 #include <iostream>
 #include "Grass.h"
 #include "../enums/Smell.h"
+#include "../game/Game.h"
 
 int Grass::configMaxIterations = 0;
 
@@ -16,22 +17,26 @@ Grass::Grass() {
     this->smells.push_back(ENUM_Vegetables);
     this->identifierEmoji = "\U0001f33f";
     this->identifier = 'r';
-
-    //TODO: for now the food is spawning at 0,0 for test purposes
-    // we need to implement a way to spawn the food in a random position in the matrix
-    // if there's any command that specify the position of the food, we can create a new constructor for that purpose
     this->position = { 0,0 };
 }
 
-void Grass::reproduce() {
+void Grass::reproduce(Game* game) {
 
+    bool shouldReproduce = this->currentIterations >= (this->maxIterations * 0.75);
+    if(shouldReproduce){
+        //TODO: calculate between 4-8 positions (random position) of distance in the matrix and add a new food
+
+        //if any food already exists in that position, don't add it
+    }
 }
 
-void Grass::verifications() {
-
+void Grass::verifications(Game* game) {
+    this->currentIterations++;
 }
 
-void Grass::do_iteration() {
+void Grass::do_iteration(Game* game) {
     std::cout << "      > Grass iteration: ";
     Food::display();
+    this->reproduce(game);
+    this->verifications(game);
 }

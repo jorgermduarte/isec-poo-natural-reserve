@@ -5,6 +5,7 @@
 #include "NCommand.h"
 #include "../utils/utils.h"
 #include "KillCommand.h"
+#include "NoFoodCommand.h"
 #include <chrono>
 #include <thread>
 
@@ -30,10 +31,19 @@ void NCommand::instantExecution() {
     //iterate the food executing the do_iteration function
     std::cout << "  > Executing one instant for all the foods " << std::endl;
     Node<Food> * currentFood = this->game->foods;
+    std::vector<int> foodsToDelete = {};
     while(currentFood != NULL){
-        currentFood->value->do_iteration();
+        currentFood->value->do_iteration(game);
+        if(currentFood->value->currentIterations >= current->value->maxIterations){
+            foodsToDelete.push_back(currentFood->value->id);
+        }
         currentFood = currentFood->next;
     }
+
+    for(int i = 0; i < foodsToDelete.size(); i++){
+        NoFoodCommand::deleteFoodFromList(game,foodsToDelete[i]);
+    }
+
 
     std::cout << "  > Instant completed successfully" << std::endl;
 }
