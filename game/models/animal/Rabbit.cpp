@@ -25,7 +25,6 @@ void Rabbit::reproduce(Game* game) {
         if(random > 50){
             Position position = this->position;
 
-            //TODO: correct the randomness of the position
             position.row = position.row + (rand() % 10 + 1);
             position.column = position.column + (rand() % 10 + 1);
 
@@ -48,57 +47,65 @@ void Rabbit::reproduce(Game* game) {
 }
 
 void Rabbit::fight(Game* game,Animal *animal) {
-    //TODO: escape the predator to the oposite direction
+    //remove from the matrix
+    KillCommand::deleteAnimalFromMatrix(game,this->id);
 
-    int distance = 0;
+    int radius = 0;
     if(this->hunger  < 10){
-        distance = 1 + (rand() % 2 + 1);
+        radius = 1 + (rand() % 2 + 1);
     }else if(this->hunger  < 20){
-        distance =  1 + (rand() % 3 + 1);
+        radius =  1 + (rand() % 3 + 1);
     }else{
-        distance =  1 + (rand() % 4 + 1);
+        radius =  1 + (rand() % 4 + 1);
     }
 
-    //   -  x  -
-    //   -  -  -
-    //   -  y  -
+    std::vector<MatrixCell> cells = game->getMatrixCellsByArea(radius, this->position );
+    std::vector<MatrixCell> escapeCells = std::vector<MatrixCell>();
+    for (MatrixCell cell : cells) {
+        if(cell.position.row == this->position.row || cell.position.column == this->position.column){
+            if(cell.position.row != this->position.row || cell.position.column != this->position.column){
+                escapeCells.push_back(cell);
+            }
+        }
+    }
 
-    //   -  -  -
-    //   -  -  -
-    //   x  -  y
-
-
-    //   x  -  -
-    //   -  -  -
-    //   -  -  y
-
-    //   xy  -  -
-    //   -  -  -
-    //   -  -  -
-
-
-
-    //same line different column
-    /*
-    if(this->position.row == animal->position.row && this->position.column != animal->position.column){
-        if(this->position.row <= game->configuration.size.rows - 2){
-            //TODO: calculate distance left to avoid setting the animal outside the matrix
-
-            this->position.row -= distance;
+    // based on the possible escape cells assuming that there coming from a 2d matrix (torus)
+    // we can calculate the distance from the position on the escape cell to the position of the animal
+    // the matrix is a torus, so we can calculate the distance in 2 ways
+    // 1 - if the distance is less than the half of the matrix size we can calculate the distance
+    // 2 - if the distance is greater than the half of the matrix size we can calculate the distance by subtracting the distance from the matrix size
+    // the distance is calculated by the formula abs(x1 - x2) + abs(y1 - y2)
+    // where x1 and y1 are the position of the animal and x2 and y2 are the position of the escape cell
+    // the cell with the highest distance is the one that the rabbit will escape
+    // if there is more than one cell with the same distance the rabbit will escape to the first one
+    int maxDistance = 0;
+    MatrixCell escapeCell = escapeCells[0];
+    for (MatrixCell cell : escapeCells) {
+        int distance = 0;
+        if(abs(cell.position.row - animal->position.row) > game->configuration.size.rows/2){
+            distance = game->configuration.size.rows - abs(cell.position.row - animal->position.row);
         }else{
-            this->position.row += distance;
+            distance = abs(cell.position.row - animal->position.row);
+        }
+
+        if(abs(cell.position.column - animal->position.column) > game->configuration.size.cols/2){
+            distance = distance + (game->configuration.size.cols - abs(cell.position.column - animal->position.column));
+        }else{
+            distance = distance + abs(cell.position.column - animal->position.column);
+        }
+
+        if(distance > maxDistance){
+            maxDistance = distance;
+            escapeCell = cell;
         }
     }
-    //same column different line
-    else if(this->position.column == animal->position.column && this->position.row != animal->position.row){
-        if(this->position.column <= game->configuration.size.cols - 2){
 
-        }
-    }
-    // colum
+    //set the new position
+    this->position = escapeCell.position;
 
-    */
-
+    std::cout << "          > The " <<  this->identifierEmoji << " is trying to avoid the " << animal->identifierEmoji << "  with id: " << animal->id  << " [Radius: "<< std::to_string(radius) << "]moving the rabbit to [" <<  std::to_string(this->position.row) << std::to_string(this->position.column) <<  "]"  << std::endl;
+    //add to the matrix in the new position
+    game->addAnimalToTheMatrix(this);
 
 }
 
@@ -107,53 +114,63 @@ void Rabbit::move(Game* game,Position position) {
     KillCommand::deleteAnimalFromMatrix(game,this->id);
 
     //calculate distances
-    int distance = 0;
+    int radius = 0;
     if(this->hunger  < 10){
-        distance = 1 + (rand() % 2 + 1);
+        radius = 1 + (rand() % 2 + 1);
     }else if(this->hunger  < 20){
-        distance =  1 + (rand() % 3 + 1);
+        radius =  1 + (rand() % 3 + 1);
     }else{
-        distance =  1 + (rand() % 4 + 1);
+        radius =  1 + (rand() % 4 + 1);
     }
 
-    if(this->position.row > position.row){
-        int distanceLeft = this->position.row - position.row;
-        if(distanceLeft > distance)
-            this->position.row -= distance;
-        else
-            this->position.row -= distanceLeft;
-    }else if(this->position.row < position.row){
-        int distanceLeft = position.row - this->position.row;
-        if(distanceLeft > distance)
-            this->position.row += distance;
-        else
-            this->position.row += distanceLeft;
-    }else if(this->position.column > position.column){
-        int distanceLeft = this->position.column - position.column;
-        if(distanceLeft > distance)
-            this->position.column -= distance;
-        else
-            this->position.column -= distanceLeft;
-    }else if(this->position.column < position.column){
-        int distanceLeft = position.column - this->position.column;
-        if(distanceLeft > distance)
-            this->position.column += distance;
-        else
-            this->position.column += distanceLeft;
+    std::vector<MatrixCell> possible = game->getMatrixCellsByArea(radius, this->position );
+    std::vector<MatrixCell> filteredCells = std::vector<MatrixCell>();
+    for (MatrixCell cell : possible) {
+        if(cell.position.row == this->position.row || cell.position.column == this->position.column){
+            if(cell.position.row != this->position.row || cell.position.column != this->position.column){
+                filteredCells.push_back(cell);
+            }
+        }
     }
 
-    if(this->position.row < 0)
-        this->position.row = 0;
-    if(this->position.column < 0)
-        this->position.column = 0;
+    // find the closer cell to the position passed as parameter
+    // assume that there is at least one cell in the vector filteredCells
+    // assume that there is always one cell closer to the position passed as parameter
+    // assume that the position passed as parameter is not always in the filteredCells vector
+    MatrixCell closerCell = filteredCells[0];
 
-    if(this->position.row  >= game->configuration.size.rows)
-        this->position.row = game->configuration.size.rows - 1;
+    for (MatrixCell cell : filteredCells) {
+        if(cell.position.row == position.row && cell.position.column == position.column){
+            closerCell = cell;
+            break;
+        }
+        if(cell.position.row == position.row){
+            if(cell.position.column < position.column){
+                if(closerCell.position.column < cell.position.column){
+                    closerCell = cell;
+                }
+            }else{
+                if(closerCell.position.column > cell.position.column){
+                    closerCell = cell;
+                }
+            }
+        }else if(cell.position.column == position.column){
+            if(cell.position.row < position.row){
+                if(closerCell.position.row < cell.position.row){
+                    closerCell = cell;
+                }
+            }else{
+                if(closerCell.position.row > cell.position.row){
+                    closerCell = cell;
+                }
+            }
+        }
+    }
 
-    if(this->position.column >= game->configuration.size.cols)
-        this->position.column = game->configuration.size.cols -1;
+    //set the new position
+    this->position = closerCell.position;
 
-    std::cout << "     > Rabbit position updated [not random]: ";
+    std::cout << "     > Rabbit position updated [not random] : [Radius:" << std::to_string(radius) <<  "] ";
     this->display();
     //add to the matrix in the new position
     game->addAnimalToTheMatrix(this);
@@ -164,48 +181,42 @@ void Rabbit::move(Game* game) {
     //remove from the matrix
     KillCommand::deleteAnimalFromMatrix(game,this->id);
 
-    int distance = 0;
+    int radius = 0;
+
     if(this->hunger  < 10){
-        distance = 1 + (rand() % 2 + 1);
+        radius = 1 + (rand() % 2 + 1);
     }else if(this->hunger  < 20){
-        distance =  1 + (rand() % 3 + 1);
+        radius =  1 + (rand() % 3 + 1);
     }else{
-        distance =  1 + (rand() % 4 + 1);
+        radius =  1 + (rand() % 4 + 1);
+    }
+    // get the perceptions based on radius ( all rabbit movements allowed in the matrix based on the radius)
+    std::vector<MatrixCell> cells = game->getMatrixCellsByArea(radius, this->position );
+
+    // filter the cells with only cells that have the same column or row
+    // the rabbit can not move diagonally 'so' we need to filter the cells
+    // the rabbit can not move to the same position
+    std::vector<MatrixCell> filteredCells = std::vector<MatrixCell>();
+    for (MatrixCell cell : cells) {
+        if(cell.position.row == this->position.row || cell.position.column == this->position.column){
+            if(cell.position.row != this->position.row || cell.position.column != this->position.column){
+                filteredCells.push_back(cell);
+            }
+        }
     }
 
-    int direction = rand() % 4 + 1;
-    switch (direction) {
-        case 1:
-            this->position.setX(this->position.getX() + distance);
-            break;
-        case 2:
-            this->position.setX(this->position.getX() - distance);
-            break;
-        case 3:
-            this->position.setY(this->position.getY() + distance);
-            break;
-        case 4:
-            this->position.setY(this->position.getY() - distance);
-            break;
+    //get a random cell from the filtered cells
+    if(filteredCells.size() > 0){
+        int random = rand() % filteredCells.size();
+        this->position.row = filteredCells[random].position.row;
+        this->position.column = filteredCells[random].position.column;
 
+        std::cout << "          > Rabbit position updated [random][Radius:" + std::to_string(radius) + "]: ";
+        this->display();
     }
 
-    if(this->position.row < 0)
-        this->position.row = 0;
-    if(this->position.column < 0)
-        this->position.column = 0;
-
-    if(this->position.row  >= game->configuration.size.rows)
-        this->position.row = game->configuration.size.rows - 1;
-
-    if(this->position.column >= game->configuration.size.cols)
-        this->position.column = game->configuration.size.cols -1;
-
-    std::cout << "          > Rabbit position updated: ";
-    this->display();
     //add to the matrix in the new position
     game->addAnimalToTheMatrix(this);
-    std::cout << "          > Rabbit position updated successfully" << std::endl;
 }
 
 void Rabbit::eat(Game* game,Food *food) {
@@ -257,7 +268,7 @@ void Rabbit::do_iteration(Game* game) {
             Node<Animal> *current = item.animals;
             while (current != NULL){
                 if(current->value->weight > 10){
-                    std::cout << "      > Rabbit detected a predator: ";
+                    std::cout << "          > Rabbit detected a predator: ";
                     current->value->display();
                     predators.push_back(current->value);
                     break;
@@ -274,7 +285,7 @@ void Rabbit::do_iteration(Game* game) {
                 for (int cSmell : current->value->smells) {
                     if(cSmell == Smell::ENUM_Grass){
                         smellsDetected.push_back(cSmell);
-                        std::cout << "      > Rabbit detected a smell: ";
+                        std::cout << "          > Rabbit detected a smell: ";
                         current->value->display();
                         foods.push_back(current->value);
                         if(this->position.row == current->value->position.row && this->position.column == current->value->position.column){

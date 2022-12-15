@@ -22,11 +22,71 @@ Grass::Grass() {
 }
 
 void Grass::reproduce(Game* game) {
-
     bool shouldReproduce = false;
 
-    if(shouldReproduce){
-        //TODO: calculate between 4-8 positions (random position) of distance in the matrix and add a new food
+    if(this->currentIterations >= this->maxIterations * 0.50){
+        shouldReproduce = true;
+    }
+
+    if(shouldReproduce) {
+        int direction = 4 + rand() % 5;
+        int distance = rand() % 5 + 4;
+        int newGrassRow = this->position.row;
+        int newGrassColumn = this->position.column;
+
+        switch (direction) {
+            case 1:
+                newGrassRow -= distance;
+                newGrassColumn -= distance;
+                break;
+            case 2:
+                newGrassRow -= distance;
+                break;
+            case 3:
+                newGrassRow -= distance;
+                newGrassColumn += distance;
+                break;
+            case 4:
+                newGrassColumn -= distance;
+                break;
+            case 5:
+                newGrassColumn += distance;
+                break;
+            case 6:
+                newGrassRow += distance;
+                newGrassColumn -= distance;
+                break;
+            case 7:
+                newGrassRow += distance;
+                break;
+            case 8:
+                newGrassRow += distance;
+                newGrassColumn += distance;
+                break;
+        }
+
+        if (newGrassRow < 0) {
+            newGrassRow = 0;
+        }
+
+        if (newGrassColumn < 0) {
+            newGrassColumn = 0;
+        }
+
+        if (newGrassRow >= game->configuration.size.rows || newGrassColumn >= game->configuration.size.cols) {
+           return;
+        }
+
+        if (newGrassRow == this->position.row && newGrassColumn == this->position.column) {
+            return;
+        }
+
+        Position newPosition = {newGrassRow, newGrassColumn};
+        if (game->matrix[newGrassRow][newGrassColumn].foods == NULL) {
+            Grass *newGrass = new Grass();
+            newGrass->position = newPosition;
+            game->addFood(newGrass);
+        }
     }
 }
 

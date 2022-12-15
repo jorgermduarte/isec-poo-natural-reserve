@@ -145,33 +145,31 @@ Node<Animal>* Game::findAnimalNode(int id) {
 }
 
 
-std::vector<MatrixCell> Game::getMatrixCellsByArea(int i, Position position) {
-    std::vector<MatrixCell> result = {};
+std::vector<MatrixCell> Game::getMatrixCellsByArea(int radius, Position position) {
+    std::vector<MatrixCell> neighbors;
 
-    int maxCol = position.column + i;
-    int maxRow = position.row + i;
-    int minCol = position.column - i;
-    int minRow = position.row - i;
-
-    if(maxCol >= this->configuration.size.cols){
-        maxCol = this->configuration.size.cols - 1;
-    }
-    if(maxRow >= this->configuration.size.rows){
-        maxRow = this->configuration.size.rows - 1;
-    }
-    if(minCol < 0){
-        minCol = 0;
-    }
-    if(minRow < 0){
-        minRow = 0;
-    }
-
-    int x, y = 0;
-    for( x = minCol; x < maxCol +1; x++){
-        for(y = minRow; y < maxRow +1; y++){
-                result.push_back(this->matrix[x][y]);
+    for (int i = position.column - radius; i <= position.column + radius; i++) {
+        for (int j = position.row - radius; j <= position.row + radius; j++) {
+            int x = i;
+            int y = j;
+            if (x < 0) {
+                x = this->configuration.size.cols + x;
+            }
+            if (y < 0) {
+                y = this->configuration.size.rows + y;
+            }
+            if (x >= this->configuration.size.cols) {
+                x = x - this->configuration.size.cols;
+            }
+            if (y >= this->configuration.size.rows) {
+                y = y - this->configuration.size.rows;
+            }
+            //if( x != position.column || y != position.row) {
+                //std::cout << " Cell on radius provided: column: " << std::to_string(x) << " line:" << std::to_string(y) << std::endl;
+                neighbors.push_back(this->matrix[x][y]);
+            //}
         }
     }
 
-    return result;
+    return neighbors;
 }
