@@ -28,7 +28,8 @@
   - [x] add validation for integers on the board size setup ( verify max size too )
   - [ ] add validations on the commands that ask line/columns (check if the line/column is valid)
   - [ ] verify if the kill command should invoke the body animal type on the location
-  - [ ] do a change to the slide command ????? or not?
+  - [x] do a change to the slide command ????? or not?
+    - [x] changed the visible area display
   - [x] verify the animals/foods properties and correct if necessary
   - [ ] be aware / do a global checkup of the pointers/ memory to remove completely using the store/restore and kill commands
   - [ ] only one food per position should be allowed
@@ -37,10 +38,10 @@
   - [x] finish the execute_command_n command
 - [ ] implement the main functions necessary to all  the animals interactions
   - [ ] fox
-  - [x] rabbit
   - [ ] wolf
   - [ ] kangaroo
-  - [ ] sheep
+  - [x] rabbit
+  - [x] sheep
 - [ ] implement the main functions necessary to all  the foods interactions
   - [x] carrot
   - [x] beef
