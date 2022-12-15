@@ -5,6 +5,8 @@
 #include <iostream>
 #include "Beef.h"
 #include "../enums/Smell.h"
+#include "../game/Game.h"
+#include "../../commands/NoFoodCommand.h"
 
 int Beef::configMaxIterations = 0;
 
@@ -16,10 +18,6 @@ Beef::Beef() {
     this->smells.push_back(ENUM_Ketchup);
     this->identifierEmoji = "\U0001f969";
     this->identifier = 'b';
-
-    //TODO: for now the food is spawning at 0,0 for test purposes
-    // we need to implement a way to spawn the food in a random position in the matrix
-    // if there's any command that specify the position of the food, we can create a new constructor for that purpose
     this->position = { 0,0 };
 }
 
@@ -28,10 +26,19 @@ void Beef::reproduce(Game* game) {
 }
 
 void Beef::verifications(Game* game) {
-
+    this->currentIterations += 1;
+    if(this->currentIterations >= this->maxIterations){
+        //delete the food from the game
+        NoFoodCommand::deleteFoodFromMatrix(game, this->id);
+    }else{
+        if(this->nutritiveValue > 0){
+            this->nutritiveValue--;
+        }
+    }
 }
 
 void Beef::do_iteration(Game* game) {
     std::cout << "      > Beef iteration: ";
     Food::display();
+    this->verifications(game);
 }

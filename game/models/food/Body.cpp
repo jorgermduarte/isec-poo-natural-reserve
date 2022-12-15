@@ -1,7 +1,6 @@
 ﻿//
 // Created by duarte on 07-12-2022.
 //
-
 #include <iostream>
 #include "Body.h"
 #include "../enums/Smell.h"
@@ -14,10 +13,6 @@ Body::Body() {
     this->smells.push_back(ENUM_Meat);
     this->identifierEmoji = "\u2B55";
     this->identifier = 'p';
-
-    //TODO: for now the food is spawning at 0,0 for test purposes
-    // we need to implement a way to spawn the food in a random position in the matrix
-    // if there's any command that specify the position of the food, we can create a new constructor for that purpose
     this->position = { 0,0 };
 }
 
@@ -26,10 +21,21 @@ void Body::reproduce(Game* game) {
 }
 
 void Body::verifications(Game* game) {
+    //each iteration the nutritive values decreases 1 unit and the toxicity increases 1 unit
+    //the toxicity stops increasing when the toxicity is bigger by 2 times the nutritive value
+    if (this->toxicity < this->nutritiveValue * 2) {
+        this->toxicity++;
+    }
+    this->nutritiveValue--;
 
+    if(nutritiveValue <= 0){
+        nutritiveValue = 0;
+    }
+    this->currentIterations += 1;
 }
 
 void Body::do_iteration(Game* game) {
     std::cout << "      > Body iteration: ";
     Food::display();
+    this->verifications(game);
 }

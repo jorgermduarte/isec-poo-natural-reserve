@@ -37,14 +37,14 @@
   - [x] finish the execute_command_n command
 - [ ] implement the main functions necessary to all  the animals interactions
   - [ ] fox
-  - [ ] rabbit
+  - [x] rabbit
   - [ ] wolf
   - [ ] kangaroo
   - [ ] sheep
 - [ ] implement the main functions necessary to all  the foods interactions
-  - [ ] carrot
-  - [ ] beef
-  - [ ] blueberries
-  - [ ] body
-  - [ ] grass
+  - [x] carrot
+  - [x] beef
+  - [x] blueberries
+  - [x] body
+  - [x] grass
 - [ ] last global check of the project

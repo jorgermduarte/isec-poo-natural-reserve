@@ -15,10 +15,6 @@ Carrot::Carrot() {
     this->smells.push_back(ENUM_Vegetables);
     this->identifierEmoji = "\U0001f955";
     this->identifier = 't';
-
-    //TODO: for now the food is spawning at 0,0 for test purposes
-    // we need to implement a way to spawn the food in a random position in the matrix
-    // if there's any command that specify the position of the food, we can create a new constructor for that purpose
     this->position = { 0,0 };
 }
 
@@ -27,10 +23,18 @@ void Carrot::reproduce(Game* game) {
 }
 
 void Carrot::verifications(Game* game) {
-
+    //from 10 to 10 iteration, the toxicity of the carrot will increase by 1 to the max of 3
+    if (this->currentIterations % 10 == 0 && this->currentIterations != 0) {
+        if (this->toxicity < 3) {
+            this->toxicity++;
+            std::cout << "          > The toxicity of the carrot increased to " << this->toxicity << std::endl;
+        }
+    }
+    this->currentIterations += 1;
 }
 
 void Carrot::do_iteration(Game* game) {
     std::cout << "      > Carrot iteration: ";
     Food::display();
+    this->verifications(game);
 }
