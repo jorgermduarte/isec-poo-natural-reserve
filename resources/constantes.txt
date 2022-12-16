@@ -2,7 +2,7 @@ SRabbit 20
 SSheep 30
 SFox 40
 SKangaroo 50
-SWolf 40
+SWolf 25
 VRabbit 35
 VSheep 35
 VFox 25
