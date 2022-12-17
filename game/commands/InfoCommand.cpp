@@ -6,6 +6,25 @@
 #include "InfoCommand.h"
 #include "../utils/utils.h"
 
+Animal *InfoCommand::getAnimalById(Game* game, int id) {
+    Animal* response = NULL;
+
+    if(game->animals != NULL){
+        Node<Animal>* item = game->animals->getHead();
+
+        while(item != NULL){
+            if(item->value != NULL){
+                if(item->value->id == id){
+                    response = item->value;
+                }
+            }
+            item = item->next;
+        }
+    }
+
+    return response;
+}
+
 void InfoCommand::execute() {
     std::cout << "  > Executing the info command" << std::endl;
     if(this->args.size() == 2){

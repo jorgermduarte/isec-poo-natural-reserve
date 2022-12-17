@@ -13,6 +13,7 @@
 class InfoCommand: public DefaultCommand {
 public:
     InfoCommand(Game* game,std::vector<std::string> args): DefaultCommand(game,args){}
+    static Animal* getAnimalById(Game* game, int id);
     void execute() override;
 };
 

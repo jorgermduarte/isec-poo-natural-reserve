@@ -33,6 +33,7 @@ public:
     int hunger = 0;;
     int reprodutionCounter = 0;
     char identifier;
+    int progenitorId = -1;
     std::string identifierEmoji;
     Position position = {0,0};
     int weight;

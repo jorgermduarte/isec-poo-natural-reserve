@@ -37,12 +37,12 @@
 - [x] implement the "daily" function inside the execute_command_n
   - [x] finish the execute_command_n command
 - [ ] implement the main functions necessary to all  the animals interactions
-  - [ ] fox
+  - [x] fox
   - [ ] wolf
-  - [ ] kangaroo
+  - [x] kangaroo
   - [x] rabbit
   - [x] sheep
-- [ ] implement the main functions necessary to all  the foods interactions
+- [x] implement the main functions necessary to all  the foods interactions
   - [x] carrot
   - [x] beef
   - [x] blueberries

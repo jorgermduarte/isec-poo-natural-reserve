@@ -17,6 +17,8 @@ private:
     virtual void eat(Game* game,Food* food) override;
     virtual void fight(Game* game,Animal* animal) override;
     virtual void verifications(Game* game) override;
+    bool onMarsupial = false;
+    int onMarsupialInstants = 0;
 public:
     static int configMaxHP;
     static int configMaxIterations;
