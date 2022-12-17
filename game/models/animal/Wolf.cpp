@@ -26,9 +26,30 @@ Wolf::Wolf() {
 
 
 void Wolf::reproduce(Game* game) {
-    // one wolf one brings another wolf to life one time.
-    // the instant is random in the wolf lifetime.
-    // the new wolf appears in max 15 cells away from the parent wolf.
+
+    if(!this->alreadyReproduced){
+        int random = rand() % this->maxIterations; // 0 - 40
+        if(this->currentIterations >= random){
+
+            Position position = this->position;
+
+            position.row = position.row + (rand() % 15 + 1);
+            position.column = position.column + (rand() % 15 + 1);
+
+            if(position.row >= game->configuration.size.rows){
+                position.row = game->configuration.size.rows -1;
+            }
+            if(position.column >= game->configuration.size.cols){
+                position.column = game->configuration.size.cols -1;
+            }
+            this->alreadyReproduced = true;
+            std::cout << "              > Wolf Reproduced" << std::endl;
+            Wolf* newWolf = new Wolf();
+            newWolf->setPosition(position.row,position.column);
+            game->addAnimal(newWolf);
+
+        }
+    }
 
 }
 
@@ -378,5 +399,6 @@ void Wolf::do_iteration(Game* game) {
         }
     }
 
+    this->reproduce(game);
     this->verifications(game);
 }

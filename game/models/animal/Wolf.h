@@ -20,6 +20,7 @@ public:
     static int configMaxIterations;
     Wolf();
     virtual void do_iteration(Game* game) override;
+    bool alreadyReproduced = false;
 };
 
 

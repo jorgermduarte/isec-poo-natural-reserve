@@ -36,9 +36,9 @@
 - [x] have a meeting to decide the main functions necessary to the animals interactions
 - [x] implement the "daily" function inside the execute_command_n
   - [x] finish the execute_command_n command
-- [ ] implement the main functions necessary to all  the animals interactions
+- [x] implement the main functions necessary to all  the animals interactions
   - [x] fox
-  - [ ] wolf
+  - [x] wolf
   - [x] kangaroo
   - [x] rabbit
   - [x] sheep
@@ -49,3 +49,5 @@
   - [x] body
   - [x] grass
 - [ ] last global check of the project
+  - we can improve the "following food/target" algorithm
+  - we can improve the reproduction algorithm of the animals / foods
