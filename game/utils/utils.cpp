@@ -17,3 +17,7 @@ bool isNumber(const std::string& s)
     while (it != s.end() && std::isdigit(*it)) ++it;
     return !s.empty() && it == s.end();
 }
+
+bool isNumbersValidOnMatrix(Game*game, int row, int col){
+    return row >= 0 && row < game->configuration.size.rows && col >= 0 && col < game->configuration.size.cols;
+}

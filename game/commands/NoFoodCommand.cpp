@@ -141,14 +141,21 @@ void NoFoodCommand::execute() {
         if(isNumber(args[1]) && isNumber(args[2])){
             int line = stoi(args[1]);
             int column = stoi(args[2]);
-            std::cout << "  > Executing the nofood command for the line: " + std::to_string(line) +" and column: " + std::to_string(column) << std::endl;
 
-            if(game->matrix[column][line].foods != NULL) {
-                Node<Food> *foodMatrixCell = game->matrix[column][line].foods;
-                while(foodMatrixCell != NULL){
-                    NoFoodCommand::deleteFoodById(game, foodMatrixCell->value->id);
-                    foodMatrixCell = foodMatrixCell->next;
+            if(isNumbersValidOnMatrix(this->game,line,column)){
+
+                if(game->matrix[column][line].foods != NULL) {
+                    Node<Food> *foodMatrixCell = game->matrix[column][line].foods;
+                    while(foodMatrixCell != NULL){
+                        NoFoodCommand::deleteFoodById(game, foodMatrixCell->value->id);
+                        foodMatrixCell = foodMatrixCell->next;
+                    }
                 }
+
+                std::cout << "  > Executed the nofood command for the line: " + std::to_string(line) +" and column: " + std::to_string(column) << std::endl;
+
+            }else{
+                std::cout << "      > Invalid coordinates provided, the numbers should not exceed the max rows and columns, remind that it starts on 0." << std::endl;
             }
 
         }else{

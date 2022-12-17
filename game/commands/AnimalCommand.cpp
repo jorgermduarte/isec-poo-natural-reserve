@@ -52,11 +52,15 @@ void AnimalCommand::execute() {
     }else if(this->args.size() == 4) {
         //execute a animal on a given position
         if (isNumber(this->args[2]) && isNumber(this->args[3])) {
-            spawnAnimal(this->args[1], false, std::stoi(this->args[3]), std::stoi(this->args[2]), this->game);
+            if(isNumbersValidOnMatrix(this->game,std::stoi(this->args[2]),std::stoi(this->args[3]))){
+                spawnAnimal(this->args[1], false, std::stoi(this->args[3]), std::stoi(this->args[2]), this->game);
+            }else{
+                std::cout << "      > Invalid coordinates provided, the numbers should not exceed the max rows and columns, remind that it starts on 0." << std::endl;
+            }
         } else {
-            std::cout << "  > Invalid command provided, the line and columns arguments must be integers" << std::endl;
+            std::cout << "      > Invalid command provided, the line and columns arguments must be integers" << std::endl;
         }
     }else{
-        std::cout << "  > Invalid command provided, the animal command must contain at least 1 argument <specie: c / o / l / g / m> or <specie: c / o / l / g / m> <line> <column>" << std::endl;
+        std::cout << "      > Invalid command provided, the animal command must contain at least 1 argument <specie: c / o / l / g / m> or <specie: c / o / l / g / m> <line> <column>" << std::endl;
     }
 }

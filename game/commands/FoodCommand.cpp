@@ -48,7 +48,14 @@ void FoodCommand::execute() {
     }else if(this->args.size() == 4) {
         //execute a animal on a given position
         if (isNumber(this->args[2]) && isNumber(this->args[3])) {
-            spawnFood(this->args[1], false, std::stoi(this->args[3]), std::stoi(this->args[2]), this->game);
+            int line = std::stoi(args[2]);
+            int col = std::stoi(args[3]);
+
+            if(isNumbersValidOnMatrix(this->game,line,col)){
+                spawnFood(this->args[1], false, col,line, this->game);
+            }else{
+                std::cout << "      > Invalid coordinates provided, the numbers should not exceed the max rows and columns, remind that it starts on 0." << std::endl;
+            }
         } else {
             std::cout << "  > Invalid command provided, the line and columns arguments must be integers" << std::endl;
         }

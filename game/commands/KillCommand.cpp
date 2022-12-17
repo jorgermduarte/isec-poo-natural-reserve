@@ -144,17 +144,21 @@ void KillCommand::execute() {
             int line = std::stoi(args[1]);
             int column = std::stoi(args[2]);
 
-            std::cout << "  > killing the animals in the position: l: " + args[1] + " c:" + args[2] << std::endl;
+            if(isNumbersValidOnMatrix(this->game,line,column)){
 
-            if(this->game->matrix[line][column].animals != NULL){
-                Node<Animal> *current = this->game->matrix[line][column].animals;
-                while(current != NULL){
-                    KillCommand::deleteAnimalById(this->game, current->value->id);
-                    current = current->next;
+                if(this->game->matrix[column][line].animals != NULL){
+                    Node<Animal> *current = this->game->matrix[column][line].animals;
+                    while(current != NULL){
+                        KillCommand::deleteAnimalById(this->game, current->value->id);
+                        current = current->next;
+                    }
                 }
+
+                std::cout << "  > killed the animals in the position: l: " + args[1] + " c:" + args[2] << std::endl;
+
+            }else{
+                std::cout << "      > Invalid coordinates provided, the numbers should not exceed the max rows and columns, remind that it starts on 0." << std::endl;
             }
-
-
         } else {
             std::cout << "  > Invalid command provided, the line and columns arguments must be integers" << std::endl;
         }

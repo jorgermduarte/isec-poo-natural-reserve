@@ -149,24 +149,29 @@ void EmptyCommand::execute() {
             int line = stoi(args[1]);
             int column = stoi(args[2]);
 
-            if(this->game->matrix[line][column].animals != NULL){
-                Node<Animal> *current = this->game->matrix[line][column].animals;
-                while(current != NULL){
-                    deleteAnimalByIdEmpty(this->game, current->value->id);
-                    current = current->next;
+            if(isNumbersValidOnMatrix(this->game,line,column)){
+
+                if(this->game->matrix[column][line].animals != NULL){
+                    Node<Animal> *current = this->game->matrix[column][line].animals;
+                    while(current != NULL){
+                        deleteAnimalByIdEmpty(this->game, current->value->id);
+                        current = current->next;
+                    }
                 }
-            }
 
-            if(this->game->matrix[line][column].foods != NULL){
-                Node<Food> *current = this->game->matrix[line][column].foods;
-                while(current != NULL){
-                    deleteFoodByIdEmpty(this->game, current->value->id);
-                    current = current->next;
+                if(this->game->matrix[column][line].foods != NULL){
+                    Node<Food> *current = this->game->matrix[column][line].foods;
+                    while(current != NULL){
+                        deleteFoodByIdEmpty(this->game, current->value->id);
+                        current = current->next;
+                    }
                 }
+
+
+                std::cout << "  > Executing the empty command for line: " + args[1] + " and column: " + args[2] << std::endl;
+            }else{
+                std::cout << "      > Invalid coordinates provided, the numbers should not exceed the max rows and columns, remind that it starts on 0." << std::endl;
             }
-
-
-            std::cout << "  > Executing the empty command for line: " + args[1] + " and column: " + args[2] << std::endl;
         }else{
             std::cout << "  > Invalid command provided, the empty command arguments should be numbers" << std::endl;
         }
