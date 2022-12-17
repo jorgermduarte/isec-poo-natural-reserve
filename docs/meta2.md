@@ -46,8 +46,8 @@
   - [x] body
   - [x] grass
 - [ ] last global check of the project
-  - [ ] only one food per position should be allowed
-  - [ ] verify if the kill command should invoke the body animal type on the location
+  - [x] only one food per position should be allowed
+  - [ ] verify if the kill command should invoke the body animal type on the location (ask professor)
   - [ ] be aware / do a global checkup of the pointers/ memory to remove completely using the store/restore and kill commands (and when animal dies)
   - we can improve the "following food/target" algorithm
   - we can improve the reproduction algorithm of the animals / foods
