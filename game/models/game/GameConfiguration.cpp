@@ -14,54 +14,40 @@ void GameConfiguration::displayMatrixSize() {
     std::cout << "Defined configurations -> [length(cols)]:" + std::to_string(this->size.cols) + " [height(rows)]: " + std::to_string(this->size.rows) << std::endl;
 }
 
-void GameConfiguration::moveScreenDisplayPosition(std::string direction, std::string target) {
+void GameConfiguration::moveScreenDisplayPosition(std::string direction, int target) {
     if(direction == "up"){
-        if(target == "columns"){
-            if(this->screenPosition.row > 0){
-                this->screenPosition.row--;
-            }
-        }
-        if(target == "lines"){
-            if(this->screenPosition.row > 0){
-                this->screenPosition.row--;
+        if(this->screenPosition.row > 0){
+            this->screenPosition.row -= target;
+            if(this->screenPosition.row < 0){
+                this->screenPosition.row = 0;
             }
         }
     }
     else if(direction == "down"){
-        int total = ((this->size.rows) * 0.8) + this->screenPosition.row + 1;
-        if(target == "columns"){
-            if(this->screenPosition.row >= 0 && total <= this->size.rows){
-                this->screenPosition.row++;
-            }
-        }
-        if(target == "lines"){
-            if(this->screenPosition.row >= 0 && total <= this->size.rows){
-                this->screenPosition.row++;
+        int total = ((this->size.rows) * 0.8) + this->screenPosition.row + target;
+
+        if(this->screenPosition.row >= 0 && total <= this->size.rows){
+            this->screenPosition.row += target;
+            if(this->screenPosition.row >= this->size.rows){
+                this->screenPosition.row = this->size.rows -1;
             }
         }
     }
-    else if(direction == "left"){
-        if(target == "columns"){
-            if(this->screenPosition.column > 0){
-                this->screenPosition.column--;
-            }
-        }
-        if(target == "lines"){
-            if(this->screenPosition.column > 0 ){
-                this->screenPosition.column--;
+
+    else if(direction == "left") {
+        if (this->screenPosition.column > 0) {
+            this->screenPosition.column -= target;
+            if (this->screenPosition.column < 0) {
+                this->screenPosition.column = 0;
             }
         }
     }
     else if(direction == "right"){
-        int total = ((this->size.cols) * 0.8) + this->screenPosition.column + 1;
-        if(target == "columns"){
-            if(this->screenPosition.column >= 0 && total <= this->size.cols){
-                this->screenPosition.column++;
-            }
-        }
-        if(target == "lines"){
-            if(this->screenPosition.column >= 0 && total <= this->size.cols){
-                this->screenPosition.column++;
+        int total = ((this->size.cols) * 0.8) + this->screenPosition.column + target;
+        if(this->screenPosition.column >= 0 && total <= this->size.cols){
+            this->screenPosition.column += target;
+            if( this->screenPosition.column >= this->size.cols){
+                this->screenPosition.column = this->size.cols -1;
             }
         }
     }

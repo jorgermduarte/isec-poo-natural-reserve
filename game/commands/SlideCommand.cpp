@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include "SlideCommand.h"
 #include "../models/commands/allowedCommands.h"
+#include "../utils/utils.h"
 
 void SlideCommand::execute() {
     std::cout << "  > Executing the slide command" << std::endl;
@@ -17,34 +18,30 @@ void SlideCommand::execute() {
             {"right", 4}
     };
 
-    std::unordered_map<std::string,int> allowedSecondArgument = {
-            {"lines",1},
-            {"columns", 2},
-    };
-
     if(args.size() == 3){
+
         //validate  the first argument
         std::unordered_map<std::string,int>::const_iterator got = allowedDirections.find(args[1]);
 
         bool allowedDirection = false;
-        bool allowedTarget = false;
 
         if(got != allowedCommands.end()){
             allowedDirection = true;
         }
-        std::unordered_map<std::string,int>::const_iterator got2 = allowedSecondArgument.find(args[2]);
-        if(got2 != allowedSecondArgument.end()){
-            allowedTarget = true;
-        }
 
-        if(allowedDirection == true && allowedTarget == true){
-            game->configuration.moveScreenDisplayPosition(args[1],args[2]);
-            std::cout << "  > Moved the natural reserve display correctly" << std::endl;
+        if(isNumber(args[2])){
+            if(allowedDirection == true){
+                std::cout << "  > Moved the natural reserve display correctly" << std::endl;
+
+                int target = std::stoi(args[2]);
+                game->configuration.moveScreenDisplayPosition(args[1],target);
+            }else{
+                std::cout << "  > Please verify your arguments, remind that the second argument must be a number and the first <direction: up/down/right/left>" << std::endl;
+            }
         }else{
-            std::cout << "  > Please verify your arguments, remind that the second argument must be <lines/columns> and the first <direction: up/down/right/left>" << std::endl;
+            std::cout << "  > Please verify your arguments, remind that the second argument must be a number and the first <direction: up/down/right/left>" << std::endl;
         }
-
     }else{
-        std::cout << "  > Failed to execute the slide command, please follow the sintax: slide <direction: up/down/right/left> <lines/columns> " << std::endl;
+        std::cout << "  > Failed to execute the slide command, please follow the sintax: slide <direction: up/down/right/left> number " << std::endl;
     }
 }
